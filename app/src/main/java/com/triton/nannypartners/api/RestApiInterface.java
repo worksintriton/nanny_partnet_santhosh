@@ -301,6 +301,10 @@ public interface RestApiInterface {
     @GET("service_provider/sp_dropdown")
     Call<SPServiceListResponse> SPServiceListResponseCall(@Header("Content-Type") String type);
 
+    /*service provider services list*/
+    @GET("SP_services/service_list")
+    Call<ServiceListResponse> ServiceListResponseCall(@Header("Content-Type") String type);
+
     /*service provider filter price list*/
     @GET("service_provider/filter_price_list")
     Call<SPFilterPriceListResponse> SPFilterPriceListResponseCall(@Header("Content-Type") String type);

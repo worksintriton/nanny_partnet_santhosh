@@ -46,6 +46,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.triton.nannypartners.R;
 import com.triton.nannypartners.api.API;
+import com.triton.nannypartners.requestpojo.DocBusInfoUploadRequest;
+import com.triton.nannypartners.requestpojo.ServiceProviderRegisterFormCreateRequest;
 import com.triton.nannypartners.responsepojo.GetAddressResultResponse;
 import com.triton.nannypartners.service.GPSTracker;
 import com.triton.nannypartners.serviceprovider.ServiceProviderRegisterFormActivity;
@@ -53,6 +55,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -122,6 +125,7 @@ public class SetLocationSPNewActivity extends FragmentActivity implements OnMapR
 
     private String fromactivity;
     private String placesearchactivity;
+    private ArrayList<ServiceProviderRegisterFormCreateRequest> serviceProviderRegisterFormCreateRequestArrayList;
 
 
     @SuppressLint("LogNotTimber")
@@ -137,6 +141,9 @@ public class SetLocationSPNewActivity extends FragmentActivity implements OnMapR
         if (extras != null) {
             fromactivity = extras.getString("fromactivity");
             placesearchactivity = extras.getString("placesearchactivity");
+            serviceProviderRegisterFormCreateRequestArrayList = (ArrayList<ServiceProviderRegisterFormCreateRequest>) getIntent().getSerializableExtra("serviceProviderRegisterFormCreateRequestArrayList");
+            Log.w(TAG,"serviceProviderRegisterFormCreateRequestArrayList : "+new Gson().toJson(serviceProviderRegisterFormCreateRequestArrayList));
+
             Log.w(TAG,"fromactivity if : "+fromactivity+"placesearchactivity : "+placesearchactivity);
 
         }else{
@@ -183,13 +190,14 @@ public class SetLocationSPNewActivity extends FragmentActivity implements OnMapR
 
         btn_setpickuppoint.setOnClickListener(v -> {
             if(CityName != null){
-                    Intent intent = new Intent(SetLocationSPNewActivity.this, ServiceProviderRegisterFormActivity.class);
-                    intent.putExtra("latlng",strlatlng);
-                    intent.putExtra("cityname",CityName);
-                    intent.putExtra("address",AddressLine);
-                    intent.putExtra("PostalCode",PostalCode);
-                    intent.putExtra("fromactivity",fromactivity);
-                    startActivity(intent);
+                Intent intent = new Intent(SetLocationSPNewActivity.this, ServiceProviderRegisterFormActivity.class);
+                intent.putExtra("latlng",strlatlng);
+                intent.putExtra("cityname",CityName);
+                intent.putExtra("address",AddressLine);
+                intent.putExtra("PostalCode",PostalCode);
+                intent.putExtra("fromactivity",fromactivity);
+                intent.putExtra("serviceProviderRegisterFormCreateRequestArrayList",serviceProviderRegisterFormCreateRequestArrayList);
+                startActivity(intent);
             }else{
                 Toasty.warning(SetLocationSPNewActivity.this,"Please select citynmae",Toasty.LENGTH_SHORT).show();
             }
@@ -438,7 +446,7 @@ public class SetLocationSPNewActivity extends FragmentActivity implements OnMapR
             if(placesearchactivity != null && placesearchactivity.equalsIgnoreCase("placesearchactivity")){
                 if(latitude != 0 && longitude != 0){
                     latLng = new LatLng(latitude,longitude);
-                   // Log.w(TAG,"onLocationChanged BundleData if-->"+"Call getAddressResultResponse");
+                    // Log.w(TAG,"onLocationChanged BundleData if-->"+"Call getAddressResultResponse");
                     //Log.w(TAG,"onLocationChanged BundleData for searched places :"+"lat :"+lat+" "+"lon :"+lon);
                     strlatlng = String.valueOf(latLng);
                     //Log.w(TAG,"onLocationChanged BundleData"+strlatlng);
@@ -501,6 +509,7 @@ public class SetLocationSPNewActivity extends FragmentActivity implements OnMapR
             }
         }
     }
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NotNull String @NotNull [] permissions, @NotNull int @NotNull [] grantResults) {
         if (requestCode == MY_PERMISSIONS_REQUEST_LOCATION) {
@@ -620,12 +629,11 @@ public class SetLocationSPNewActivity extends FragmentActivity implements OnMapR
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(SetLocationSPNewActivity.this, ServiceProviderRegisterFormActivity.class));
         finish();
     }
 
     private void getAddressResultResponse(LatLng latLng) {
-       // Log.w(TAG,"GetAddressResultResponse-->"+latLng);
+        // Log.w(TAG,"GetAddressResultResponse-->"+latLng);
         //avi_indicator.setVisibility(View.VISIBLE);
         // avi_indicator.smoothToShow();
         Retrofit retrofit = new Retrofit.Builder()
@@ -635,12 +643,12 @@ public class SetLocationSPNewActivity extends FragmentActivity implements OnMapR
 
         API service = retrofit.create(API.class);
         String strlatlng = String.valueOf(latLng);
-      //  Log.w(TAG,"getAddressResultResponse strlatlng-->"+strlatlng);
+        //  Log.w(TAG,"getAddressResultResponse strlatlng-->"+strlatlng);
         String newString = strlatlng.replace("lat/lng:", "");
-       // Log.w(TAG,"getAddressResultResponse latlng=="+newString);
+        // Log.w(TAG,"getAddressResultResponse latlng=="+newString);
 
         String latlngs = newString.trim().replaceAll("\\(", "").replaceAll("\\)","").trim();
-       //Log.w(TAG,"getAddressResultResponse latlngs=="+latlngs);
+        //Log.w(TAG,"getAddressResultResponse latlngs=="+latlngs);
 
 
 
@@ -694,7 +702,7 @@ public class SetLocationSPNewActivity extends FragmentActivity implements OnMapR
                                 for (int j = 0; j < addressComponentsBeanList.get(i).getTypes().size(); j++) {
                                     //Log.w(TAG, "getTypes size : " + addressComponentsBeanList.get(i).getTypes().size());
 
-                                   // Log.w(TAG, "TYPES-->" + addressComponentsBeanList.get(i).getTypes());
+                                    // Log.w(TAG, "TYPES-->" + addressComponentsBeanList.get(i).getTypes());
                                     List<String> typesList = addressComponentsBeanList.get(i).getTypes();
 
                                     if (typesList.contains("postal_code")) {

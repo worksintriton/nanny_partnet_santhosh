@@ -42,14 +42,14 @@ public class AddMoreServiceAdapter extends RecyclerView.Adapter<AddMoreServiceAd
 
     @Override
     public void onBindViewHolder(@NonNull AddExpViewHolder holder, final int position) {
-        if (bus_service_list.get(position).getBus_service_list()!= null) {
+        /*if (bus_service_list.get(position).getBus_service_list()!= null) {
             holder.txt_servicename.setText(bus_service_list.get(position).getBus_service_list());
-        }
+        }*/
 
 
 
         holder.img_close.setOnClickListener(view -> {
-            addMoreServiceRemoveListener.addMoreServiceRemoveListener(position,bus_service_list.get(position).getBus_service_list());
+            //addMoreServiceRemoveListener.addMoreServiceRemoveListener(position,bus_service_list.get(position).getBus_service_list());
             bus_service_list.remove(position);
             Log.w(TAG,"Remove bus_service_list : "+new Gson().toJson(bus_service_list));
             notifyDataSetChanged();

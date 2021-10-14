@@ -113,13 +113,13 @@ public class SPServiceListAdapter extends  RecyclerView.Adapter<RecyclerView.Vie
 
                 if(isChecked && !isValueAdded){
                     if (holder.checkbox_service_type.isChecked()) {
-                        spServiceCheckedListener.onItemSPServiceCheck(position,chservice,isChbxChecked);
+                        spServiceCheckedListener.onItemSPServiceCheck(position,chservice,isChbxChecked,"");
                         holder.txt_timeslottype.setText(spServiceList.get(position).getTime_slots());
 
                     }
 
                 }else{
-                    spServiceCheckedListener.onItemSPServiceUnCheck(position,chservice,isChbxChecked);
+                    spServiceCheckedListener.onItemSPServiceUnCheck(position,chservice,isChbxChecked,"");
                     if(strTimeslot != null){
                         holder.txt_timeslottype.setText(strTimeslot);
                     }
