@@ -2,14 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ll_usertypeflow"
     android:layout_width="150dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginEnd="10dp"
-    android:orientation="vertical"
-    android:visibility="visible">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/ll_usertypes"
@@ -38,9 +36,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
                 android:button="@drawable/cb_selector"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="5dp"
                 android:checked="true" />
 
         </androidx.cardview.widget.CardView>
@@ -55,14 +53,14 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:ellipsize="end"
         android:fontFamily="@font/futuramediumbt"
         android:gravity="center_horizontal"
-        android:maxLines="2"
         android:text="@string/petlovers"
         android:textAlignment="center"
         android:textColor="@color/new_txt_color"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:maxLines="2"
+        android:ellipsize="end"/>
 
 
 </LinearLayout>

@@ -265,7 +265,7 @@
                                 android:fontFamily="@font/futuramediumbt"
                                 android:hint="@string/filters"
                                 android:inputType="none"
-                                android:textColorHint="@color/new_txt_color"
+                                android:textColorHint="@color/white"
                                 android:textSize="12sp"
                                 tools:ignore="Autofill,LabelFor" />
 

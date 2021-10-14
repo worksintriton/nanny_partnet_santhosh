@@ -10,9 +10,8 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:layout_weight="1"
-        android:background="@drawable/img_circle"
+        android:background="@drawable/img_circle_blue"
         android:visibility="visible">
 
         <ImageView
@@ -104,48 +103,16 @@
         android:id="@+id/root_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="@drawable/nav_home"
         android:orientation="horizontal">
-
-        <RelativeLayout
-            android:id="@+id/rl_care"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="0.5"
-            android:visibility="visible">
-
-
-            <TextView
-                android:id="@+id/title_care"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/img_care"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/futuramediumbt"
-                android:text="@string/Consultation"
-                android:textColor="@color/text_color"
-                android:textSize="10sp"
-                tools:ignore="HardcodedText" />
-
-            <ImageView
-                android:id="@+id/img_care"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/petcare_fill"
-                tools:ignore="ContentDescription" />
-        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/rl_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="20dp"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:visibility="visible">
 
 
@@ -157,9 +124,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/futuramediumbt"
-                android:text="@string/Diagnostics"
+                android:text="Service"
                 android:textColor="@color/text_color"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 tools:ignore="HardcodedText" />
 
             <ImageView
@@ -167,7 +134,40 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/petserv_fill"
+                android:src="@drawable/grey_servc"
+                tools:ignore="ContentDescription" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_shop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:visibility="visible">
+
+
+            <TextView
+                android:id="@+id/title_shop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_shop"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/futuramediumbt"
+                android:text="@string/shop"
+                android:textColor="@color/text_color"
+                android:textSize="12sp"
+                tools:ignore="HardcodedText" />
+
+            <ImageView
+                android:id="@+id/img_shop"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/grey_shop"
                 tools:ignore="ContentDescription" />
         </RelativeLayout>
 
@@ -204,33 +204,34 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_shop"
+            android:id="@+id/rl_care"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
             android:visibility="visible">
 
 
             <TextView
-                android:id="@+id/title_shop"
+                android:id="@+id/title_care"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/img_shop"
+                android:layout_below="@id/img_care"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/futuramediumbt"
-                android:text="@string/shop"
+                android:text="Offer"
                 android:textColor="@color/text_color"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 tools:ignore="HardcodedText" />
 
             <ImageView
-                android:id="@+id/img_shop"
+                android:id="@+id/img_care"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/shop_fill"
+                android:src="@drawable/grey_care"
                 tools:ignore="ContentDescription" />
         </RelativeLayout>
 
@@ -252,9 +253,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/futuramediumbt"
-                android:text="@string/Profile"
+                android:text="Profile"
                 android:textColor="@color/text_color"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 tools:ignore="HardcodedText" />
 
             <ImageView
@@ -262,7 +263,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/community_fill"
+                android:src="@drawable/grey_community"
                 tools:ignore="ContentDescription" />
         </RelativeLayout>
 

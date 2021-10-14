@@ -477,15 +477,13 @@
                 android:padding="2dp"
                 android:text="@string/pets_handled"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:visibility="gone" />
+                android:textSize="16sp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview_pet_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:visibility="gone"
                 app:cardBackgroundColor="@color/light_green"
                 app:cardCornerRadius="10dp"
                 app:cardPreventCornerOverlap="true"
@@ -494,15 +492,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:orientation="vertical"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:orientation="vertical">
+                    android:layout_marginEnd="10dp">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rcylr_pettypelist"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp" />
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content" />
 
                     <!--> Add More Pet Types Button -->
 
@@ -513,9 +511,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcylr_added_pettype_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:visibility="gone" />
+                android:layout_height="match_parent" />
 
             <!--Add Clinic Address details-->
 

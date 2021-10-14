@@ -143,6 +143,16 @@
                 android:layout_margin="10dp"
                 />
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/tvNoRecords"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No records found"
+                android:textSize="16sp"
+                android:textColor="@color/color"
+                android:gravity="center"
+                android:visibility="gone"/>
 
 
         </LinearLayout>
@@ -182,17 +192,9 @@
         app:indicatorColor="@color/new_green_btn"
         app:indicatorName="LineSpinFadeLoaderIndicator" />
 
-    <TextView
-        android:id="@+id/tvNoRecords"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="No records found"
-        android:textColor="@color/color"
-        android:textSize="16sp"
-        android:visibility="gone" />
+
+
+
 
 
 </RelativeLayout>

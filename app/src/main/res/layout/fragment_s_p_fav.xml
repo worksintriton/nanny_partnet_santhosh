@@ -23,11 +23,11 @@
                 android:id="@+id/txt_no_records"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_marginTop="20dp"
                 android:text="@string/norecordsfound"
                 android:textColor="@color/color"
                 android:textSize="16sp"
+                android:layout_centerInParent="true"
                 android:visibility="gone" />
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/refresh_layout"

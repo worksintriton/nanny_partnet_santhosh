@@ -12,7 +12,7 @@
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@drawable/img_circle"
+        android:background="@drawable/img_circle_blue"
         android:visibility="visible">
 
         <ImageView

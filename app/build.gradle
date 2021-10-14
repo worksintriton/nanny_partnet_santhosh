@@ -5,11 +5,11 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.salveo.mysalveopartners"
+        applicationId "com.trition.nannypartners"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 2
-        versionName "2.0"
+        versionCode 4
+        versionName "4.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -68,7 +68,7 @@ dependencies {
     /*Glide*/
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     /*Toasty*/
-    implementation 'com.github.GrenderG:Toasty:1.4.2'
+    implementation 'com.github.GrenderG:Toasty:1.5.0'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
@@ -131,6 +131,11 @@ dependencies {
     implementation 'com.etebarian:meow-bottom-navigation-java:1.2.0'
 
 
+    implementation 'me.zhanghai.android.materialprogressbar:library:1.6.1'
+
+
+
+
 
 
 
@@ -149,8 +154,5 @@ dependencies {
 
 
 }
-//// Add the following line:
-//apply plugin: 'com.google.gms.google-services'  // Google Services plugin
-
 // Apply the Crashlytics Gradle plugin
 apply plugin: 'com.google.firebase.crashlytics'

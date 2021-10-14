@@ -200,7 +200,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/grey_shop_selector"
+                android:src="@drawable/shop_selector"
                 tools:ignore="ContentDescription" />
         </RelativeLayout>
 
@@ -254,7 +254,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/futuramediumbt"
-                android:text="@string/community"
+                android:text="@string/profile"
                 android:textColor="@color/text_color"
                 android:textSize="10sp"
                 tools:ignore="HardcodedText" />
@@ -264,7 +264,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/grey_community"
+                android:src="@drawable/community_fill"
                 tools:ignore="ContentDescription" />
         </RelativeLayout>
 

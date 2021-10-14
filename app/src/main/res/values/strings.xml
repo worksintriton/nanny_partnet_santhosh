@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">MySalveo Partners</string>
+    <string name="app_name">Nanny Partners</string>
     <string name="verify_otp">Verify OTP</string>
     <string name="emailorphonenumber">Phone Number</string>
     <string name="new_here">New here ?</string>
@@ -217,7 +217,7 @@
     <string name="saved_address">Saved Address</string>
 
     <string name="accept">Accept</string>
-    <string name="pet_details">Family Details</string>
+    <string name="pet_details">Pet Details</string>
     <string name="pet_name_details">Name</string>
     <string name="pet_type_details">Type</string>
     <string name="breed">Breed</string>
@@ -401,6 +401,8 @@
 
     <string name="service_details">Service Details</string>
 
+    <string name="subservice_details">SubService Details</string>
+
     <string name="Discount">Discount</string>
 
 
@@ -583,14 +585,27 @@
     <string name="cash">Cash</string>
     <string name="make_payment">Make Payment</string>
     <string name="choose__payment_method">Payment Method</string>
-
-    <!--> Salveo -->
-
-    <string name="Consultation">Consultation</string>
-    <string name="Diagnostics">Diagnostics</string>
-    <string name="Profile">Profile</string>
-    <string name="patient_name">Patient Name</string>
-    <string name="patient_details">Patient Details</string>
-    <string name="relation">Relation Type</string>
-
+    <string name="shop_name">Shop Name</string>
+    <string name="book_later">Book Later</string>
+    <string name="sub_service">Subservice</string>
+    <string name="pet_grooming">Pet Grooming</string>
+    <string name="servicelocation">Service Location</string>
+    <string name="check_service">Check Service</string>
+    <string name="address_sample">225/1.Duraisamy Nagar Main Road, Saminathapuram, Pallapatti, Salem-636 009.</string>
+    <string name="available_coupons">AVAILABLE OFFERS</string>
+    <string name="get_flat_inr_30_using_amazon_pay">Get flat INR 30/- using Amazon Pay</string>
+    <string name="aplicable_on_amazon_pay_transcations_above_inr_99">Aplicable on Amazon pay transcations above INR 99</string>
+    <string name="more">MORE</string>
+    <string name="unavailable_coupons">UNAVAILABLE OFFERS</string>
+    <string name="get_flat_inr_30_using_swiggy">Get flat INR 30/- using Swiggy</string>
+    <string name="aplicable_on_swiggy_above_inr_99">Aplicable on Swiggy transcations above INR 99</string>
+    <string name="top_services">Top Services</string>
+    <string name="subservices">Subservices</string>
+    <string name="reject">Reject</string>
+    <string name="selected_time">Selected Time</string>
+    <string name="back_to_appointment">Back to Appointment</string>
+    <string name="spname">Service Name</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="start">Start Service</string>
+    <string name="invoice">View Invoice</string>
 </resources>

@@ -50,6 +50,17 @@
                 android:layout_height="match_parent">
 
                 <ImageView
+                    android:id="@+id/img_map"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/location"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
                     android:id="@+id/img_videocall"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -135,6 +146,8 @@
                     android:orientation="horizontal">
 
 
+
+
                     <Button
                         android:id="@+id/btn_cancel"
                         android:layout_width="110dp"
@@ -146,8 +159,7 @@
                         android:text="@string/cancel"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
-                        tools:ignore="ButtonStyle,TouchTargetSizeCheck" />
-
+                        tools:ignore="ButtonStyle" />
                     <Button
                         android:id="@+id/btn_complete"
                         android:layout_width="110dp"
@@ -160,7 +172,7 @@
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="12sp"
-                        tools:ignore="ButtonStyle,TouchTargetSizeCheck" />
+                        tools:ignore="ButtonStyle" />
 
                 </LinearLayout>
 
@@ -271,7 +283,7 @@
                 <TextView
                     android:layout_width="@dimen/width_appoitmentdetails"
                     android:layout_height="wrap_content"
-                    android:text="@string/relation"
+                    android:text="@string/pet_type_details"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -285,14 +297,12 @@
                     android:textSize="14sp" />
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
-                android:orientation="horizontal"
-                android:visibility="gone">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="@dimen/width_appoitmentdetails"
@@ -345,7 +355,7 @@
                 <TextView
                     android:layout_width="@dimen/width_appoitmentdetails"
                     android:layout_height="wrap_content"
-                    android:text="Height"
+                    android:text="@string/colour"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -413,7 +423,7 @@
                 <TextView
                     android:layout_width="@dimen/width_appoitmentdetails"
                     android:layout_height="wrap_content"
-                    android:text="Medical Information"
+                    android:text="@string/vaccinated_details"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -425,15 +435,13 @@
                     android:textSize="14sp" />
 
             </LinearLayout>
-
             <LinearLayout
-                android:id="@+id/ll_petlastvacinateddate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:id="@+id/ll_petlastvacinateddate">
 
                 <TextView
                     android:id="@+id/txt_lbl_petlastvaccinated"

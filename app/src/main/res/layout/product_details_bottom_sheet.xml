@@ -223,7 +223,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="20dp"
-                    android:background="@color/blue">
+                    android:background="@drawable/new_solid_bgm">
 
                     <TextView
                         android:id="@+id/txt_prod_related"
