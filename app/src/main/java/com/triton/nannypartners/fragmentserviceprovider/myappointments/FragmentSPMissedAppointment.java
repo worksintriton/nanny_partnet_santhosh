@@ -173,7 +173,7 @@ public class FragmentSPMissedAppointment extends Fragment implements View.OnClic
 
                        } else{
                            txt_no_records.setVisibility(View.VISIBLE);
-                           txt_no_records.setText(getResources().getString(R.string.no_missed_appointments_sp));
+                           txt_no_records.setText("No Missed Appointment");
                            rv_missedappointment.setVisibility(View.GONE);
                            btn_load_more.setVisibility(View.GONE);
                            btn_filter.setVisibility(View.GONE);
@@ -198,7 +198,7 @@ public class FragmentSPMissedAppointment extends Fragment implements View.OnClic
     @SuppressLint("LogNotTimber")
     private SPAppointmentRequest spAppointmentRequest() {
         SPAppointmentRequest spAppointmentRequest = new SPAppointmentRequest();
-        spAppointmentRequest.setSp_id(userid);
+        spAppointmentRequest.setUser_id(userid);
         Log.w(TAG,"spMissedAppointmentRequest"+ "--->" + new Gson().toJson(spAppointmentRequest));
         return spAppointmentRequest;
     }

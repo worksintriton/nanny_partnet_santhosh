@@ -176,7 +176,7 @@ public class FragmentSPCompletedAppointment extends Fragment implements View.OnC
                                btn_load_more.setVisibility(View.GONE);
                                btn_filter.setVisibility(View.GONE);
                                txt_no_records.setVisibility(View.VISIBLE);
-                               txt_no_records.setText(getResources().getString(R.string.no_completed_appointments_sp));
+                               txt_no_records.setText("No Completed Appointment");
 
 
                        }
@@ -201,7 +201,7 @@ public class FragmentSPCompletedAppointment extends Fragment implements View.OnC
     @SuppressLint("LogNotTimber")
     private SPAppointmentRequest spAppointmentRequest() {
         SPAppointmentRequest spAppointmentRequest = new SPAppointmentRequest();
-        spAppointmentRequest.setSp_id(userid);
+        spAppointmentRequest.setUser_id(userid);
         Log.w(TAG,"spAppointmentRequest"+ "--->" + new Gson().toJson(spAppointmentRequest));
         return spAppointmentRequest;
     }
