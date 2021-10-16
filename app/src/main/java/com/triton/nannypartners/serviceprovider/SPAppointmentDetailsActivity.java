@@ -22,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.triton.nannypartners.R;
 import com.triton.nannypartners.activity.NotificationActivity;
@@ -59,9 +60,11 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
 
     private  String TAG = "SPAppointmentDetailsActivity";
 
+
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.avi_indicator)
     AVLoadingIndicatorView avi_indicator;
+
 
 
 
@@ -77,71 +80,53 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
     @BindView(R.id.txt_serv_name)
     TextView txt_serv_name;
 
-
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.txt_serv_cost)
     TextView txt_serv_cost;
-
 
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.btn_cancel)
     Button btn_cancel;
 
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.btn_complete)
-    Button btn_complete;
+    @BindView(R.id.btn_start_stop)
+    Button btn_start_stop;
 
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.img_petimg)
-    ImageView img_petimg;
+    @BindView(R.id.btn_viewinvoice)
+    Button btn_viewinvoice;
 
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.txt_pet_name)
-    TextView txt_pet_name;
+    @BindView(R.id.txt_servname)
+    TextView txt_servname;
 
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.img_map)
-    ImageView img_map;
+    @BindView(R.id.txt_hrs)
+    TextView txt_hrs;
 
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.txt_pet_type)
-    TextView txt_pet_type;
+    @BindView(R.id.txt_datetimeslot)
+    TextView txt_datetimeslot;
 
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.txt_breed)
-    TextView txt_breed;
+    @BindView(R.id.txt_service_cost)
+    TextView txt_service_cost;
 
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.txt_gender)
-    TextView txt_gender;
+    @BindView(R.id.txt_appointment_status)
+    TextView txt_appointment_status;
 
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.txt_color)
-    TextView txt_color;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.txt_weight)
-    TextView txt_weight;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.txt_age)
-    TextView txt_age;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.txt_vaccinated)
-    TextView txt_vaccinated;
+    @BindView(R.id.txt_appointment_date)
+    TextView txt_appointment_date;
 
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.txt_order_date)
     TextView txt_order_date;
 
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.txt_order)
+    @BindView(R.id.txt_order_id)
     TextView txt_order_id;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.txt_payment_method)
-    TextView txt_payment_method;
 
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.txt_order_cost)
@@ -152,87 +137,39 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
     TextView txt_address;
 
     @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.txt_appointment_date)
-    TextView txt_appointment_date;
-
-    String appointment_id;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.img_videocall)
-    ImageView img_videocall;
-
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.ll_petlastvacinateddate)
-    LinearLayout ll_petlastvacinateddate;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.txt_petlastvaccinatedage)
-    TextView txt_petlastvaccinatedage;
-
-    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.scrollablContent)
     ScrollView scrollablContent;
+
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.include_petlover_footer)
+    View include_petlover_footer;
+
+    BottomNavigationView bottom_navigation_view;
 
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.include_petlover_header)
     View include_petlover_header;
 
-    private String fromactivity;
-    private String spid;
-    private String appointmentid;
-    private String userid;
-    private String bookedat;
-    private boolean isVaildDate;
+
+
+    String appointment_id;
     String appoinment_status;
     String start_appointment_status;
     private Dialog dialog;
+    private String bookedat;
+    private String startappointmentstatus;
+    private boolean isVaildDate;
+    private String appointmentfor;
+    private String spid;
+    private String userid;
+    private String from;
+    private String userrate;
+    Dialog alertDialog;
+    private String appointmentid;
     private List<PetNewAppointmentDetailsResponse.DataBean.PetIdBean.PetImgBean> pet_image;
     private String petAgeandMonth;
 
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.include_doctor_footer)
-    View include_doctor_footer;
-
-    /* Bottom Navigation */
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.rl_home)
-    RelativeLayout rl_home;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.rl_service)
-    RelativeLayout rl_service;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.rl_shop)
-    RelativeLayout rl_shop;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.title_shop)
-    TextView title_shop;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.img_shop)
-    ImageView img_shop;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.rl_comn)
-    RelativeLayout rl_comn;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.title_community)
-    TextView title_community;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.img_community)
-    ImageView img_community;
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.rl_homes)
-    RelativeLayout rl_homes;
-
-
+    private String concatenatedStarNames = "";
 
 
     @SuppressLint({"LongLogTag", "LogNotTimber"})
@@ -243,27 +180,21 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
         ButterKnife.bind(this);
 
 
-        ll_petlastvacinateddate.setVisibility(View.GONE);
-//        scrollablContent.setVisibility(View.GONE);
+        scrollablContent.setVisibility(View.GONE);
+
 
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             appointment_id = extras.getString("appointment_id");
-            fromactivity = extras.getString("fromactivity");
-            bookedat = extras.getString("bookedat");
 
-            Log.w(TAG, "fromactivity : " + fromactivity);
+            from = extras.getString("fromactivity");
+
+            Log.w(TAG,"appointment_id : "+appointment_id+" from : "+from);
+
         }
-        if (fromactivity != null) {
-            if(fromactivity.equalsIgnoreCase("SPCompletedAppointmentAdapter") || fromactivity.equalsIgnoreCase("SPMissedAppointmentAdapter")){
-                btn_cancel.setVisibility(View.GONE);
-                btn_complete.setVisibility(View.GONE);
-            }else{
-                btn_cancel.setVisibility(View.VISIBLE);
-                btn_complete.setVisibility(View.VISIBLE);
-            }
-        }
+
+
 
         ImageView img_back = include_petlover_header.findViewById(R.id.img_back);
         ImageView img_sos = include_petlover_header.findViewById(R.id.img_sos);
@@ -272,67 +203,77 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
         ImageView img_profile = include_petlover_header.findViewById(R.id.img_profile);
         TextView toolbar_title = include_petlover_header.findViewById(R.id.toolbar_title);
         toolbar_title.setText(getResources().getString(R.string.appointment));
-
-        img_back.setOnClickListener(v -> onBackPressed());
-
-
         img_sos.setVisibility(View.GONE);
         img_cart.setVisibility(View.GONE);
 
-        img_notification.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), NotificationActivity.class)));
-        img_profile.setOnClickListener(view -> {
-            Intent intent = new Intent(new Intent(getApplicationContext(), SPProfileScreenActivity.class));
-            intent.putExtra("appointment_id",appointment_id);
-            intent.putExtra("fromactivity",fromactivity);
-            intent.putExtra("bookedat",bookedat);
-            intent.putExtra("from",TAG);
-            startActivity(intent);
-        });
 
 
-       // bottom_navigation_view.getMenu().findItem(R.id.home).setChecked(true);
-        /*home*/
-        title_shop.setTextColor(getResources().getColor(R.color.darker_grey_new,getTheme()));
-        img_shop.setImageResource(R.drawable.grey_shop);
-        title_community.setTextColor(getResources().getColor(R.color.darker_grey_new,getTheme()));
-        img_community.setImageResource(R.drawable.grey_community);
-
-        rl_home.setOnClickListener(this);
-        rl_shop.setOnClickListener(this);
-        rl_comn.setOnClickListener(this);
-        rl_homes.setOnClickListener(this);
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm aa", Locale.getDefault());
-        String currentDateandTime = sdf.format(new Date());
-
-        if(bookedat != null){
-            compareDatesandTime(currentDateandTime,bookedat);
-        }
-
-
-
-        if(isVaildDate){
-            btn_cancel.setVisibility(View.VISIBLE);
-        }else{
-            btn_cancel.setVisibility(View.GONE);
-        }
-
-
-        img_map.setOnClickListener(new View.OnClickListener() {
+        img_notification.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                        Uri.parse("http://maps.google.com/maps?saddr=11.671,78.139&daddr=13.032535002809718, 77.58409496921645"));
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), NotificationActivity.class));
+            }
+        });
+        img_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SPProfileScreenActivity.class);
+                intent.putExtra("fromactivity",TAG);
+                intent.putExtra("appointment_id",appointment_id);
+                intent.putExtra("bookedat",bookedat);
+                intent.putExtra("startappointmentstatus",startappointmentstatus);
+                intent.putExtra("appointmentfor",appointmentfor);
+                intent.putExtra("userrate",userrate);
+                intent.putExtra("from",from);
                 startActivity(intent);
             }
         });
 
-//
-//        if (new ConnectionDetector(SPAppointmentDetailsActivity.this).isNetworkAvailable(SPAppointmentDetailsActivity.this)) {
-//            spAppointmentDetailsResponse();
-//        }
-//
+        img_back.setOnClickListener(v -> onBackPressed());
+
+
+
+
+        btn_cancel.setVisibility(View.GONE);
+
+
+
+        if(from != null){
+            if(from.equalsIgnoreCase("SPNewAppointmentAdapter")){
+
+                btn_cancel.setVisibility(View.VISIBLE);
+
+                btn_start_stop.setVisibility(View.VISIBLE);
+
+                btn_viewinvoice.setVisibility(View.GONE);
+
+
+            }
+            else if(from.equalsIgnoreCase("SPMissedAppointmentAdapter")){
+
+                btn_cancel.setVisibility(View.GONE);
+
+                btn_start_stop.setVisibility(View.GONE);
+
+                btn_viewinvoice.setVisibility(View.GONE);
+
+
+            }
+            else if(from.equalsIgnoreCase("SPCompletedAppointmentAdapter")) {
+
+                btn_cancel.setVisibility(View.GONE);
+
+                btn_start_stop.setVisibility(View.GONE);
+
+                btn_viewinvoice.setVisibility(View.VISIBLE);
+
+            }
+
+        }
+
+        if (new ConnectionDetector(SPAppointmentDetailsActivity.this).isNetworkAvailable(SPAppointmentDetailsActivity.this)) {
+            spAppointmentDetailsResponse();
+        }
 
     }
 
@@ -358,7 +299,7 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
                     if (200 == response.body().getCode()) {
                         scrollablContent.setVisibility(View.VISIBLE);
 
-                        String vaccinated, addr, usrname;
+                        String vaccinated, addr;
 
                         String usr_image = "";
                         if (response.body().getData() != null) {
@@ -366,72 +307,47 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
                             appointmentid = response.body().getData().getAppointment_UID();
                             userid = response.body().getData().getUser_id().get_id();
 
-                            if(response.body().getData().getBooking_date_time() != null){
-                                txt_appointment_date.setText(response.body().getData().getBooking_date_time());
-                            }
+                            String img_user = response.body().getData().getSp_id().getProfile_img();
 
-                            usrname = response.body().getData().getSp_business_info().get(0).getBussiness_name();
-                            Log.w(TAG,"usrname : "+usrname);
+                            String usrname = response.body().getData().getSp_id().getFirst_name();
+
+                            String serv_name = response.body().getData().getService_name();
+
+                            String service_amount = response.body().getData().getService_amount();
 
                             String servname = response.body().getData().getService_name();
 
-                            String servcost = response.body().getData().getService_amount();
+                            String hrs = response.body().getData().getHrs();
 
-                            String pet_name = response.body().getData().getPet_id().getPet_name();
+                            String datetimeslot = response.body().getData().getBooking_time();
 
-                            pet_image = response.body().getData().getPet_id().getPet_img();
+                            String service_cost = response.body().getData().getService_amount();
 
-                            String pet_type = response.body().getData().getPet_id().getPet_type();
+                            String appointment_status = response.body().getData().getAppoinment_status();
 
-                            String breed = response.body().getData().getPet_id().getPet_breed();
-
-                            String gender = response.body().getData().getPet_id().getPet_gender();
-
-                            String colour = response.body().getData().getPet_id().getPet_color();
-
-                            String weight = String.valueOf(response.body().getData().getPet_id().getPet_weight());
-                            String pet_dob = response.body().getData().getPet_id().getPet_dob();
-
-                            Log.w(TAG, "pet_dob "+pet_dob);
-                      /*      if(pet_dob != null&&!pet_dob.isEmpty()){
-                                String[] separated = pet_dob.split("-");
-                                String day = separated[0];
-                                String month = separated[1];
-                                String year = separated[2];
-                                Log.w(TAG,"day : "+day+" month: "+month+" year : "+year);
-
-                                getAge(Integer.parseInt(year),Integer.parseInt(month),Integer.parseInt(day));
-                            }*/
-                            if (response.body().getData().getPet_id().isVaccinated()) {
-                                vaccinated = "Yes";
-                                ll_petlastvacinateddate.setVisibility(View.VISIBLE);
-                                if (response.body().getData().getPet_id().getLast_vaccination_date() != null) {
-                                    txt_petlastvaccinatedage.setText(response.body().getData().getPet_id().getLast_vaccination_date());
-                                }
-
-                            } else {
-                                ll_petlastvacinateddate.setVisibility(View.GONE);
-                                vaccinated = "No";
-                            }
+                            String appointment_date = response.body().getData().getDisplay_date();
 
                             String order_date = response.body().getData().getDate_and_time();
 
-                            String orderid = response.body().getData().getAppointment_UID();
 
-                            String payment_method = response.body().getData().getPayment_method();
+                            String orderid = response.body().getData().getAppointment_UID();
 
                             String order_cost = response.body().getData().getService_amount();
 
                             addr = response.body().getData().getSp_business_info().get(0).getSp_loc();
 
-
                             appoinment_status = response.body().getData().getAppoinment_status();
 
                             start_appointment_status = response.body().getData().getStart_appointment_status();
 
-                            setView(usrname, usr_image, servname, servcost, pet_name, pet_type, breed
+                            List<SPAppointmentDetailsResponse.DataBean.SpBusinessInfoBean> Address = response.body().getData().getSp_business_info();
+                            for (int i = 0; i < Address.size(); i++) {
+                                usr_image = Address.get(i).getThumbnail_image();
 
-                                    , gender, colour, weight, order_date, orderid, payment_method, order_cost, vaccinated, addr,pet_dob);
+                            }
+                            setView(img_user, usrname, serv_name ,service_amount ,servname, hrs,datetimeslot,service_cost,appointment_status,appointment_date,order_date,orderid,order_cost,addr);
+
+
                         }
                     }else{
                         scrollablContent.setVisibility(View.GONE);
@@ -458,25 +374,25 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
     private AppointmentDetailsRequest appointmentDetailsRequest() {
 
         AppointmentDetailsRequest appointmentDetailsRequest = new AppointmentDetailsRequest();
-        appointmentDetailsRequest.setApppointment_id(appointment_id);
+        appointmentDetailsRequest.setAppointment_id(appointment_id);
         Log.w(TAG, "appointmentDetailsRequest" + "--->" + new Gson().toJson(appointmentDetailsRequest));
         return appointmentDetailsRequest;
     }
 
+
     @SuppressLint({"SetTextI18n", "LongLogTag", "LogNotTimber"})
-    private void setView(String usrname, String usr_image, String servname, String servcost, String pet_name, String pet_type, String breed, String gender, String colour, String weight, String order_date, String orderid, String payment_method, String order_cost, String vaccinated, String addr, String pet_dob) {
+    private void setView(String img_user, String usrname, String serv_name, String service_amount, String servname, String hrs, String datetimeslot, String service_cost, String appointment_status, String appointment_date, String order_date, String orderid, String order_cost, String addr) {
 
 
-        if(usr_image != null && !usr_image.isEmpty()){
-
+        if(img_user!= null && !img_user.isEmpty()){
             Glide.with(SPAppointmentDetailsActivity.this)
-                    .load(usr_image)
-                    .into(img_user);
+                    .load(img_user)
+                    .into(this.img_user);
 
         }else{
             Glide.with(SPAppointmentDetailsActivity.this)
                     .load(APIClient.PROFILE_IMAGE_URL)
-                    .into(img_user);
+                    .into(this.img_user);
         }
 
 
@@ -484,117 +400,105 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
 
             txt_usrname.setText(usrname);
         }
+        else{
+            txt_usrname.setText("");
+        }
+
+        if(serv_name != null && !serv_name.isEmpty()){
+
+            txt_serv_name.setText(serv_name);
+        }else{
+            txt_serv_name.setText("");
+        }
+
+
+        if(service_amount != null && !service_amount.isEmpty()){
+
+            txt_serv_cost.setText("\u20B9 "+service_amount);
+        }else{
+            txt_serv_cost.setText("");
+        }
 
         if(servname != null && !servname.isEmpty()){
 
-            txt_serv_name.setText(servname);
-        }
-
-        if(servcost != null && !servcost.isEmpty()){
-
-            txt_serv_cost.setText(servcost);
-        }
-
-
-        if(pet_image != null && pet_image.size()>0){
-            String petimage = null;
-            for(int i=0;i<pet_image.size();i++){
-                petimage = pet_image.get(i).getPet_img();
-            }
-
-            Glide.with(SPAppointmentDetailsActivity.this)
-                    .load(petimage)
-                    .into(img_petimg);
+            txt_servname.setText(servname);
         }else{
-            Glide.with(SPAppointmentDetailsActivity.this)
-                    .load(APIClient.PROFILE_IMAGE_URL)
-                    .into(img_petimg);
+            txt_servname.setText("");
         }
 
 
+        if(hrs != null && !hrs.isEmpty()){
 
-
-        if(pet_name != null && !pet_name.isEmpty()){
-
-            txt_pet_name.setText(pet_name);
+            txt_hrs.setText(hrs);
+        }else{
+            txt_hrs.setText("");
         }
 
-        if(pet_type != null && !pet_type.isEmpty()){
+        if(datetimeslot != null && !datetimeslot.isEmpty()){
 
-            txt_pet_type.setText(pet_type);
+            txt_datetimeslot.setText(datetimeslot);
+        }else{
+            txt_datetimeslot.setText("");
         }
 
-        if(breed != null && !breed.isEmpty()){
+        if(service_cost != null && !service_cost.isEmpty()){
 
-            txt_breed.setText(breed);
+            txt_service_cost.setText(service_cost);
+        }else{
+            txt_service_cost.setText("");
         }
 
-        if(gender != null && !gender.isEmpty()){
+        if(appointment_status != null && !appointment_status.isEmpty()){
 
-            txt_gender.setText(gender);
+            txt_appointment_status.setText(appointment_status);
+        }else{
+            txt_appointment_status.setText("");
         }
 
-        if(colour != null && !colour.isEmpty()){
+        if(appointment_date != null && !appointment_date.isEmpty()){
 
-            txt_color.setText(colour);
+            txt_appointment_date.setText(appointment_date);
+        }else{
+            txt_appointment_date.setText("");
         }
-
-        if(weight != null && !weight.isEmpty()){
-
-            txt_weight.setText(weight);
-        }
-
-        if(pet_dob != null && !pet_dob.isEmpty()){
-
-            txt_age.setText(pet_dob);
-        }
-
-        txt_vaccinated.setText(vaccinated);
 
         if(order_date != null && !order_date.isEmpty()){
+
             txt_order_date.setText(order_date);
+        }else{
+            txt_order_date.setText("");
         }
+
 
         if(orderid != null && !orderid.isEmpty()){
+
             txt_order_id.setText(orderid);
         }
-
-        if(payment_method != null && !payment_method.isEmpty()) {
-
-            txt_payment_method.setText(payment_method);
-
+        else{
+            txt_order_id.setText("");
         }
 
         if(order_cost != null && !order_cost.isEmpty()){
+
             txt_order_cost.setText("\u20B9 "+order_cost);
-            txt_serv_cost.setText("\u20B9 "+order_cost);
+
+        }
+        else{
+            txt_order_cost.setText("");
         }
 
         if(addr != null && !addr.isEmpty()){
 
             txt_address.setText(addr);
         }
-
-
-        img_videocall.setOnClickListener(v -> {
-            Log.w(TAG,"Start_appointment_status : "+start_appointment_status);
-            if(start_appointment_status != null && start_appointment_status.equalsIgnoreCase("Not Started")){
-                Toasty.warning(SPAppointmentDetailsActivity.this,"Doctor is yet to start the Appointment. Please wait for the doctor to initiate the Appointment", Toast.LENGTH_SHORT, true).show();
-            }else {
-                Intent i = new Intent(SPAppointmentDetailsActivity.this, VideoCallPetLoverActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                i.putExtra("id", appointment_id);
-                Log.w(TAG, "ID-->" + appointment_id);
-                startActivity(i);
-            }
-
-
-        });
+        else{
+            txt_address.setText("");
+        }
 
         btn_cancel.setOnClickListener(v -> showStatusAlert(appointment_id));
 
-        btn_complete.setOnClickListener(v -> showStatusAlertCompleteAppointment(appointment_id));
-
     }
+
 
     @SuppressLint("SetTextI18n")
     private void showStatusAlert(String id) {

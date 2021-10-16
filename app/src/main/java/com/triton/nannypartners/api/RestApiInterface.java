@@ -397,7 +397,7 @@ public interface RestApiInterface {
     Call<PetNewAppointmentDetailsResponse> petNewAppointDetailResponseCall(@Header("Content-Type") String type, @Body PetNewAppointmentDetailsRequest petNewAppointmentDetailsRequest);
 
     /* SP Appointment Details*/
-    @POST("sp_appointments/mobile/fetch_appointment_id")
+    @POST("sp_appointments/getlist_id")
     Call<SPAppointmentDetailsResponse> spAppointmentDetailsResponse(@Header("Content-Type") String type, @Body AppointmentDetailsRequest appointmentDetailsRequest);
 
 
