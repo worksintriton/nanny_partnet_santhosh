@@ -44,7 +44,6 @@ public class ServiceProviderRegisterFormCreateRequest implements Serializable {
     private String sp_loc;
     private double sp_long;
     private String user_id;
-    private String _id;
     /**
      * bus_certif : http://54.193.18.54:3000/api/uploads/1634205831306.jpg
      */
@@ -193,13 +192,6 @@ public class ServiceProviderRegisterFormCreateRequest implements Serializable {
 
     public void setUser_id(String user_id) {
         this.user_id = user_id;
-    }
-    public String get_id() {
-        return _id;
-    }
-
-    public void set_id(String _id) {
-        this._id = _id;
     }
 
     public List<BusCertifBean> getBus_certif() {
