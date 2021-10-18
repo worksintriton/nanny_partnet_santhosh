@@ -45,7 +45,7 @@ public class SPMissedAppointmentAdapter extends  RecyclerView.Adapter<RecyclerVi
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_doctor_missed_appointment, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_sp_custmissed_appointment, parent, false);
         return new ViewHolderOne(view);
     }
 
@@ -105,10 +105,12 @@ public class SPMissedAppointmentAdapter extends  RecyclerView.Adapter<RecyclerVi
             holder.txt_appointment_status.setText("");
         }
 
+/*
         if(missedAppointmentResponseList.get(position).getBooking_at() != null){
             holder.txt_bookedon.setText("Booked for :"+" "+missedAppointmentResponseList.get(position).getBooking_at());
 
         }
+*/
 
 
         if (missedAppointmentResponseList.get(position).getImage_url() != null && !missedAppointmentResponseList.get(position).getImage_url().isEmpty()) {

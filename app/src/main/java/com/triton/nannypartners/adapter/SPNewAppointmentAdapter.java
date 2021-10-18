@@ -119,10 +119,10 @@ public class SPNewAppointmentAdapter extends  RecyclerView.Adapter<RecyclerView.
             holder.txt_appointment_status.setText("");
         }
 
-        if(newAppointmentResponseList.get(position).getBooking_at() != null){
+/*        if(newAppointmentResponseList.get(position).getBooking_at() != null){
             holder.txt_bookedon.setText("Booked for :"+" "+newAppointmentResponseList.get(position).getBooking_at());
 
-        }
+        }*/
 
 
         if (newAppointmentResponseList.get(position).getImage_url() != null && !newAppointmentResponseList.get(position).getImage_url().isEmpty()) {
