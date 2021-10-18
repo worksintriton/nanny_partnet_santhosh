@@ -1164,6 +1164,7 @@ public class PetAppointmentDetailsActivity extends AppCompatActivity implements 
                         String vaccinated, addr, usrname;
                         String usr_image = "";
                         if (response.body().getData() != null) {
+/*
 
                             spid = response.body().getData().getSp_id().get_id();
                             appointmentid = response.body().getData().getAppointment_UID();
@@ -1188,7 +1189,8 @@ public class PetAppointmentDetailsActivity extends AppCompatActivity implements 
                                 txt_age.setText("");
                             }
 
-                           /* if(pet_dob != null){
+                           */
+/* if(pet_dob != null){
                                 String[] separated = pet_dob.split("-");
                                 String day = separated[0];
                                 String month = separated[1];
@@ -1196,7 +1198,8 @@ public class PetAppointmentDetailsActivity extends AppCompatActivity implements 
                                 Log.w(TAG,"day : "+day+" month: "+month+" year : "+year);
 
                                 getAge(Integer.parseInt(year),Integer.parseInt(month),Integer.parseInt(day));
-                            }*/
+                            }*//*
+
 
                             if (response.body().getData().getPet_id().isVaccinated()) {
                                 vaccinated = "Yes";
@@ -1225,6 +1228,7 @@ public class PetAppointmentDetailsActivity extends AppCompatActivity implements 
 
                             }
                             setView(usrname, usr_image, servname, pet_name, pet_type, breed, gender, colour, weight, order_date, orderid, payment_method, order_cost, vaccinated, addr);
+*/
 
 
                         }
@@ -1247,7 +1251,7 @@ public class PetAppointmentDetailsActivity extends AppCompatActivity implements 
     private AppointmentDetailsRequest appointmentDetailsRequest() {
 
         AppointmentDetailsRequest appointmentDetailsRequest = new AppointmentDetailsRequest();
-        appointmentDetailsRequest.setApppointment_id(appointment_id);
+        appointmentDetailsRequest.setAppointment_id(appointment_id);
         Log.w(TAG, "appointmentDetailsRequest" + "--->" + new Gson().toJson(appointmentDetailsRequest));
         return appointmentDetailsRequest;
     }

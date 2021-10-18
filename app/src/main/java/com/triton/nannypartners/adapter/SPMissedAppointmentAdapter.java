@@ -59,39 +59,73 @@ public class SPMissedAppointmentAdapter extends  RecyclerView.Adapter<RecyclerVi
     @SuppressLint("SetTextI18n")
     private void initLayoutOne(ViewHolderOne holder, final int position) {
 
-        Log.w(TAG,"Pet name-->"+missedAppointmentResponseList.get(position).getPet_id().getPet_name());
 
-        currentItem = missedAppointmentResponseList.get(position);
-        if(missedAppointmentResponseList.get(position).getPet_id().getPet_name() != null) {
-            holder.txt_petname.setText(missedAppointmentResponseList.get(position).getPet_id().getPet_name());
-        }
-        if(missedAppointmentResponseList.get(position).getPet_id().getPet_type() != null) {
-            holder.txt_pettype.setText(missedAppointmentResponseList.get(position).getPet_id().getPet_type());
-        }
-        if(missedAppointmentResponseList.get(position).getMissed_at() != null) {
-            holder.txt_missed_date.setText("Missed on:" + " " + missedAppointmentResponseList.get(position).getMissed_at());
+
+        if(missedAppointmentResponseList.get(position).getUser_name() != null) {
+            holder.txt_servname.setText(missedAppointmentResponseList.get(position).getUser_name());
         }
 
-        holder.txt_lbl_type.setText("Service Name");
-        if(missedAppointmentResponseList.get(position).getService_name() != null){
-            holder.txt_type.setText(missedAppointmentResponseList.get(position).getService_name());
+        else {
+
+            holder.txt_servname.setText("");
         }
-        if(missedAppointmentResponseList.get(position).getService_amount() != null){
-            holder.txt_service_cost.setText("\u20B9 "+missedAppointmentResponseList.get(position).getService_amount());
+
+        if(missedAppointmentResponseList.get(position).getService_hrs() != null) {
+            holder.txt_hrs.setText(missedAppointmentResponseList.get(position).getService_hrs());
         }
-        if (missedAppointmentResponseList.get(position).getPet_id().getPet_img() != null && !missedAppointmentResponseList.get(position).getPet_id().getPet_img().isEmpty()) {
+
+        else {
+
+            holder.txt_hrs.setText("");
+        }
+
+        if(missedAppointmentResponseList.get(position).getBooking_time() != null){
+            holder.txt_datetimeslot.setText("\u20B9 "+missedAppointmentResponseList.get(position).getBooking_time());
+        }
+        else {
+
+            holder.txt_datetimeslot.setText("");
+        }
+
+
+        if(missedAppointmentResponseList.get(position).getBooking_cost() != null){
+            holder.txt_service_cost.setText("\u20B9 "+missedAppointmentResponseList.get(position).getBooking_cost());
+        }
+
+        else {
+
+            holder.txt_service_cost.setText("");
+        }
+
+        if(missedAppointmentResponseList.get(position).getStatus() != null){
+            holder.txt_appointment_status.setText(" "+missedAppointmentResponseList.get(position).getStatus());
+
+        }
+        else {
+            holder.txt_appointment_status.setText("");
+        }
+
+        if(missedAppointmentResponseList.get(position).getBooking_at() != null){
+            holder.txt_bookedon.setText("Booked for :"+" "+missedAppointmentResponseList.get(position).getBooking_at());
+
+        }
+
+
+        if (missedAppointmentResponseList.get(position).getImage_url() != null && !missedAppointmentResponseList.get(position).getImage_url().isEmpty()) {
 
             Glide.with(context)
-                    .load(missedAppointmentResponseList.get(position).getPet_id().getPet_img())
-                    .into(holder.img_pet_imge);
+                    .load(missedAppointmentResponseList.get(position).getImage_url())
+                    .into(holder.img_clinic_imge);
 
         }
         else{
             Glide.with(context)
                     .load(APIClient.PROFILE_IMAGE_URL)
-                    .into(holder.img_pet_imge);
+                    .into(holder.img_clinic_imge);
 
         }
+
+
         holder.ll_new.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,32 +154,27 @@ public class SPMissedAppointmentAdapter extends  RecyclerView.Adapter<RecyclerVi
     }
 
     static class ViewHolderOne extends RecyclerView.ViewHolder {
-        public TextView txt_petname,txt_pettype,txt_type,txt_service_cost,txt_missed_date,txt_lbl_type;
-        public ImageView img_pet_imge,img_emergency_appointment;
-        public Button btn_cancel,btn_complete;
-        public LinearLayout ll_new;
+
+        public TextView txt_servname,txt_datetimeslot,txt_hrs,txt_appointment_status,txt_clinicname,txt_petname,txt_type,txt_service_cost,txt_bookedon,txt_lbl_doctorname,txt_doctorname;
+        public ImageView img_clinic_imge,img_emergency_appointment,img_videocall;
+        public Button btn_cancel;
+        LinearLayout ll_new;
 
 
         public ViewHolderOne(View itemView) {
             super(itemView);
-            img_pet_imge = itemView.findViewById(R.id.img_pet_imge);
-            txt_petname = itemView.findViewById(R.id.txt_petname);
-            txt_pettype = itemView.findViewById(R.id.txt_pettype);
-            txt_lbl_type = itemView.findViewById(R.id.txt_lbl_type);
-            txt_type = itemView.findViewById(R.id.txt_type);
+            img_clinic_imge = itemView.findViewById(R.id.img_clinic_imge);
+            txt_servname = itemView.findViewById(R.id.txt_custname);
+            txt_hrs = itemView.findViewById(R.id.txt_hrs);
+            txt_datetimeslot = itemView.findViewById(R.id.txt_datetimeslot);
             txt_service_cost = itemView.findViewById(R.id.txt_service_cost);
-            txt_missed_date = itemView.findViewById(R.id.txt_missed_date);
+            txt_appointment_status = itemView.findViewById(R.id.txt_appointment_status);
+            txt_bookedon = itemView.findViewById(R.id.txt_bookedon);
             btn_cancel = itemView.findViewById(R.id.btn_cancel);
-            btn_complete = itemView.findViewById(R.id.btn_complete);
             ll_new = itemView.findViewById(R.id.ll_new);
 
-            img_emergency_appointment = itemView.findViewById(R.id.img_emergency_appointment);
-            img_emergency_appointment.setVisibility(View.GONE);
-
-
-
-
         }
+
 
 
 

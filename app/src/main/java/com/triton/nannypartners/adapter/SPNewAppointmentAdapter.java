@@ -59,7 +59,7 @@ public class SPNewAppointmentAdapter extends  RecyclerView.Adapter<RecyclerView.
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_doctor_new_appointment, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_sp_new_custappointment, parent, false);
         return new ViewHolderOne(view);
     }
 
@@ -73,76 +73,76 @@ public class SPNewAppointmentAdapter extends  RecyclerView.Adapter<RecyclerView.
     @SuppressLint({"SetTextI18n", "LogNotTimber"})
     private void initLayoutOne(ViewHolderOne holder, final int position) {
 
-        Log.w(TAG,"Pet name-->"+newAppointmentResponseList.get(position).getPet_id().getPet_name());
-
         currentItem = newAppointmentResponseList.get(position);
-        if(newAppointmentResponseList.get(position).getPet_id().getPet_name() != null) {
-            holder.txt_petname.setText(newAppointmentResponseList.get(position).getPet_id().getPet_name());
-        }
-        if(newAppointmentResponseList.get(position).getPet_id().getPet_type() != null) {
-            holder.txt_pettype.setText(newAppointmentResponseList.get(position).getPet_id().getPet_type());
-        }
-        holder.txt_lbl_type.setText("Service Name");
-        if(newAppointmentResponseList.get(position).getService_name() != null){
-            holder.txt_type.setText(newAppointmentResponseList.get(position).getService_name());
-        }
-        if(newAppointmentResponseList.get(position).getService_amount() != null){
-            holder.txt_service_cost.setText("\u20B9 "+newAppointmentResponseList.get(position).getService_amount());
+
+        if(newAppointmentResponseList.get(position).getUser_name() != null) {
+            holder.txt_servname.setText(newAppointmentResponseList.get(position).getUser_name());
         }
 
-        if(newAppointmentResponseList.get(position).getBooking_date_time() != null){
-            holder.txt_bookedon.setText("Booked on:"+" "+newAppointmentResponseList.get(position).getBooking_date_time());
+        else {
 
+            holder.txt_servname.setText("");
         }
 
-        Log.w(TAG,"Pet_img : "+newAppointmentResponseList.get(position).getPet_id().getPet_img());
+        if(newAppointmentResponseList.get(position).getService_hrs() != null) {
+            holder.txt_hrs.setText(newAppointmentResponseList.get(position).getService_hrs());
+        }
 
-           if (newAppointmentResponseList.get(position).getPet_id().getPet_img() != null && !newAppointmentResponseList.get(position).getPet_id().getPet_img().isEmpty()) {
+        else {
 
-                Glide.with(context)
-                        .load(newAppointmentResponseList.get(position).getPet_id().getPet_img())
-                        .into(holder.img_pet_imge);
+            holder.txt_hrs.setText("");
+        }
 
-            }
-           else{
-                Glide.with(context)
-                        .load(APIClient.PROFILE_IMAGE_URL)
-                        .into(holder.img_pet_imge);
+        if(newAppointmentResponseList.get(position).getBooking_time() != null){
+            holder.txt_datetimeslot.setText("\u20B9 "+newAppointmentResponseList.get(position).getBooking_time());
+        }
+        else {
 
-            }
-
-        if(newAppointmentResponseList.get(position).getAppointment_types() != null && newAppointmentResponseList.get(position).getAppointment_types().equalsIgnoreCase("Emergency")){
-            holder.img_emergency_appointment.setVisibility(View.VISIBLE);
-        }else{
-            holder.img_emergency_appointment.setVisibility(View.GONE);
-
+            holder.txt_datetimeslot.setText("");
         }
 
 
-        holder.btn_complete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if(newAppointmentResponseList.get(position).getBooking_cost() != null){
+            holder.txt_service_cost.setText("\u20B9 "+newAppointmentResponseList.get(position).getBooking_cost());
+        }
 
-                onAppointmentComplete.onAppointmentComplete(newAppointmentResponseList.get(position).get_id());
+        else {
 
-            }
-        });
+            holder.txt_service_cost.setText("");
+        }
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm aa", Locale.getDefault());
-        String currentDateandTime = sdf.format(new Date());
-        String bookingDateandTime = newAppointmentResponseList.get(position).getBooking_date_time();
-        compareDatesandTime(currentDateandTime,bookingDateandTime);
+        if(newAppointmentResponseList.get(position).getStatus() != null){
+            holder.txt_appointment_status.setText(" "+newAppointmentResponseList.get(position).getStatus());
 
-        if(isVaildDate){
-            holder.btn_cancel.setVisibility(View.VISIBLE);
-        }else{
-            holder.btn_cancel.setVisibility(View.GONE);
+        }
+        else {
+            holder.txt_appointment_status.setText("");
+        }
+
+        if(newAppointmentResponseList.get(position).getBooking_at() != null){
+            holder.txt_bookedon.setText("Booked for :"+" "+newAppointmentResponseList.get(position).getBooking_at());
+
+        }
+
+
+        if (newAppointmentResponseList.get(position).getImage_url() != null && !newAppointmentResponseList.get(position).getImage_url().isEmpty()) {
+
+            Glide.with(context)
+                    .load(newAppointmentResponseList.get(position).getImage_url())
+                    .into(holder.img_clinic_imge);
+
+        }
+        else{
+            Glide.with(context)
+                    .load(APIClient.PROFILE_IMAGE_URL)
+                    .into(holder.img_clinic_imge);
+
         }
 
         holder.btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onAppointmentCancel.onAppointmentCancel(newAppointmentResponseList.get(position).get_id(),newAppointmentResponseList.get(position).getAppointment_types(),newAppointmentResponseList.get(position).getUser_id().get_id(),newAppointmentResponseList.get(position).getSp_id(),newAppointmentResponseList.get(position).getAppointment_UID(),"");
+                onAppointmentCancel.onAppointmentCancel(newAppointmentResponseList.get(position).get_id(),"",newAppointmentResponseList.get(position).getUser_id(),newAppointmentResponseList.get(position).getSp_id(),newAppointmentResponseList.get(position).getAppointment_id(),"");
 
             }
         });
@@ -152,7 +152,6 @@ public class SPNewAppointmentAdapter extends  RecyclerView.Adapter<RecyclerView.
             public void onClick(View v) {
                     Intent i = new Intent(context, SPAppointmentDetailsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     i.putExtra("appointment_id",newAppointmentResponseList.get(position).get_id());
-                    i.putExtra("bookedat",newAppointmentResponseList.get(position).getBooking_date_time());
                     i.putExtra("fromactivity",TAG);
                     context.startActivity(i);
 
@@ -178,31 +177,24 @@ public class SPNewAppointmentAdapter extends  RecyclerView.Adapter<RecyclerView.
     }
 
     static class ViewHolderOne extends RecyclerView.ViewHolder {
-        public TextView txt_petname,txt_pettype,txt_type,txt_service_cost,txt_bookedon,txt_lbl_type;
-        public ImageView img_pet_imge,img_emergency_appointment,img_videocall;
-        public Button btn_cancel,btn_complete;
-        public LinearLayout ll_new;
 
+        public TextView txt_servname,txt_datetimeslot,txt_hrs,txt_appointment_status,txt_clinicname,txt_petname,txt_type,txt_service_cost,txt_bookedon,txt_lbl_doctorname,txt_doctorname;
+        public ImageView img_clinic_imge,img_emergency_appointment,img_videocall;
+        public Button btn_cancel;
+        LinearLayout ll_new;
 
 
         public ViewHolderOne(View itemView) {
             super(itemView);
-            img_pet_imge = itemView.findViewById(R.id.img_pet_imge);
-            txt_petname = itemView.findViewById(R.id.txt_petname);
-            txt_pettype = itemView.findViewById(R.id.txt_pettype);
-            txt_lbl_type = itemView.findViewById(R.id.txt_lbl_type);
-            txt_type = itemView.findViewById(R.id.txt_type);
+            img_clinic_imge = itemView.findViewById(R.id.img_clinic_imge);
+            txt_servname = itemView.findViewById(R.id.txt_custname);
+            txt_hrs = itemView.findViewById(R.id.txt_hrs);
+            txt_datetimeslot = itemView.findViewById(R.id.txt_datetimeslot);
             txt_service_cost = itemView.findViewById(R.id.txt_service_cost);
+            txt_appointment_status = itemView.findViewById(R.id.txt_appointment_status);
             txt_bookedon = itemView.findViewById(R.id.txt_bookedon);
             btn_cancel = itemView.findViewById(R.id.btn_cancel);
-            btn_complete = itemView.findViewById(R.id.btn_complete);
             ll_new = itemView.findViewById(R.id.ll_new);
-            img_emergency_appointment = itemView.findViewById(R.id.img_emergency_appointment);
-            img_videocall = itemView.findViewById(R.id.img_videocall);
-            img_emergency_appointment.setVisibility(View.GONE);
-            img_videocall.setVisibility(View.GONE);
-
-
 
         }
 

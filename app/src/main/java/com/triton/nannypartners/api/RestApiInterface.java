@@ -356,16 +356,24 @@ public interface RestApiInterface {
     Call<SPCreateAppointmentResponse> SPCreateAppointmentResponseCall(@Header("Content-Type") String type, @Body SPCreateAppointmentRequest spCreateAppointmentRequest);
 
     /*SP New Appointment*/
-    @POST("sp_appointments/mobile/sp_getlist/newapp")
+    @POST("sp_appointments/sp/newapp")
     Call<SPAppointmentResponse> spNewAppointmentResponseCall(@Header("Content-Type") String type, @Body SPAppointmentRequest spAppointmentRequest);
 
     /*SP Completed Appointment*/
-    @POST("sp_appointments/mobile/sp_getlist/comapp")
+    @POST("sp_appointments/sp/comapp")
     Call<SPAppointmentResponse> spCompletedAppointmentResponseCall(@Header("Content-Type") String type, @Body SPAppointmentRequest spAppointmentRequest);
 
     /*SP Missed Appointment*/
-    @POST("sp_appointments/mobile/sp_getlist/missapp")
+    @POST("sp_appointments/sp/missapp")
     Call<SPAppointmentResponse> spMissedAppointmentResponseCall(@Header("Content-Type") String type, @Body SPAppointmentRequest spAppointmentRequest);
+
+    /*SP edit start Appointment*/
+    @POST("sp_appointments/editappointment")
+    Call<StartAppointmentStatusResponse> spStartAppointmentResponseCall(@Header("Content-Type") String type, @Body StartAppointmentStatusRequest startAppointmentStatusRequest);
+
+    /*SP edit stop Appointment*/
+    @POST("sp_appointments/editappointment")
+    Call<EndAppointmentStatusResponse> spStopAppointmentResponseCall(@Header("Content-Type") String type, @Body EndAppointmentStatusRequest endAppointmentStatusRequest);
 
     /*Update Appointment Status complete*/
     @POST("sp_appointments/edit")
@@ -397,7 +405,7 @@ public interface RestApiInterface {
     Call<PetNewAppointmentDetailsResponse> petNewAppointDetailResponseCall(@Header("Content-Type") String type, @Body PetNewAppointmentDetailsRequest petNewAppointmentDetailsRequest);
 
     /* SP Appointment Details*/
-    @POST("sp_appointments/mobile/fetch_appointment_id")
+    @POST("sp_appointments/getlist_id")
     Call<SPAppointmentDetailsResponse> spAppointmentDetailsResponse(@Header("Content-Type") String type, @Body AppointmentDetailsRequest appointmentDetailsRequest);
 
 

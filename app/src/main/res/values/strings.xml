@@ -608,4 +608,5 @@
     <string name="customer_name">Customer Name</string>
     <string name="start">Start Service</string>
     <string name="invoice">View Invoice</string>
+    <string name="stop">Stop</string>
 </resources>

@@ -4,16 +4,16 @@ public class AppointmentDetailsRequest {
 
 
     /**
-     * apppointment_id : 5ffd60ce2e664657f3ec180c
+     * Appointment_id : 61680377988d1d35aa95b007
      */
 
-    private String apppointment_id;
+    private String Appointment_id;
 
-    public String getApppointment_id() {
-        return apppointment_id;
+    public String getAppointment_id() {
+        return Appointment_id;
     }
 
-    public void setApppointment_id(String apppointment_id) {
-        this.apppointment_id = apppointment_id;
+    public void setAppointment_id(String Appointment_id) {
+        this.Appointment_id = Appointment_id;
     }
 }

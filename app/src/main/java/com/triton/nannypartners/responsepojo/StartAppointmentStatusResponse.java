@@ -2,13 +2,13 @@ package com.triton.nannypartners.responsepojo;
 
 import java.util.List;
 
-public class SPAppointmentDetailsResponse {
+public class StartAppointmentStatusResponse {
 
 
     /**
      * Status : Success
-     * Message : Appointment Details
-     * Data : {"sp_attched":[],"sp_business_info":[{"bus_service_list":[{"amount":100,"time_slots":"60 mins","bus_service_list":" Pet Training"},{"amount":100,"time_slots":"60 mins","bus_service_list":"Pet daycare"},{"amount":200,"time_slots":"60 mins","bus_service_list":"Vet Care 2"},{"amount":100,"time_slots":"60 mins","bus_service_list":"Pet daycare 1"},{"amount":200,"time_slots":"60 mins","bus_service_list":"Pet daycare 2"}],"bus_spec_list":[{"bus_spec_list":"Kennel Cut"},{"bus_spec_list":"Teddy Bear Trim"},{"bus_spec_list":"Breed Trims"},{"bus_spec_list":"Full Coat / Show Trims"}],"bus_service_gall":[{"bus_service_gall":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb152608175750"}],"bus_certif":[{"bus_certif":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb15certificate.pdf"}],"_id":"6127891a4f7e5d1561c63783","user_id":"61275eccdc2406057b5aeb15","bus_user_name":"Sample","bus_user_email":"","bussiness_name":"Abc nanny service ","bus_user_phone":"2342342344","bus_profile":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb152608175858","bus_proof":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb15certificate.pdf","date_and_time":"26-08-2021 05:59 PM","mobile_type":"IOS","profile_status":true,"profile_verification_status":"Verified","thumbnail_image":"","sp_loc":"5-38A, 2nd Main Rd, Ram Nagar, Karnam Street, Karunabigai Colony, Velachery, Chennai, Tamil Nadu 600042, India","sp_lat":12.983360290527344,"sp_long":80.22343632290122,"city_name":"Chennai","delete_status":false,"calender_status":true,"comments":0,"rating":5,"updatedAt":"2021-08-26T12:37:43.458Z","createdAt":"2021-08-26T12:29:14.243Z","__v":0}],"_id":"61680377988d1d35aa95b007","sp_id":{"_id":"61275eccdc2406057b5aeb15","first_name":"Sample","last_name":"Test","user_email":"","user_phone":"2342342344","date_of_reg":"26-08-2021 02:58 PM","user_type":2,"ref_code":"","my_ref_code":"U1IIZ1V","user_status":"complete","otp":123456,"profile_img":"","user_email_verification":false,"fb_token":"","device_id":"","device_type":"","mobile_type":"IOS","delete_status":false,"updatedAt":"2021-10-16T14:09:17.022Z","createdAt":"2021-08-26T09:28:44.727Z","__v":0},"appointment_UID":"SP-1634206583206","booking_date":"14-10-2021","booking_time":"3:46 PM","booking_date_time":"14-10-2021 3:46 PM","user_id":{"_id":"6163d60a489ccc3d894683d2","first_name":"Maddy","last_name":"Sam","user_email":"maddykrish@gmail.com","user_phone":"9999999998","date_of_reg":"11/10/2021 11:43 AM","user_type":1,"ref_code":"","my_ref_code":"VMNWKAB","user_status":"complete","otp":123456,"profile_img":"","user_email_verification":false,"fb_token":"","device_id":"","device_type":"","mobile_type":"Android","delete_status":false,"updatedAt":"2021-10-11T08:30:56.207Z","createdAt":"2021-10-11T06:13:30.236Z","__v":0},"pet_id":"","additional_info":"","appoinment_status":"Incomplete","start_appointment_status":"Not Started","end_appointment_status":"Not End","sp_feedback":"","sp_rate":"","user_feedback":"","user_rate":"0","display_date":"2021-10-14 15:46:00","server_date_time":"","payment_id":"","payment_method":"Online","service_name":"Sub Service 2","service_amount":"300","service_time":"3:46 PM","completed_at":"","missed_at":"","mobile_type":"Android","delete_status":false,"date_and_time":"14-10-2021 03:46 PM","hrs":"1","total_hours":"","additional_hours":"","addition_amount":"","addition_payment_method":"","addition_payment_status":"","total_paid_amount":"","start_otp":"843049","end_otp":"689077","updatedAt":"2021-10-14T10:16:23.234Z","createdAt":"2021-10-14T10:16:23.218Z","__v":0}
+     * Message : Appointment Updated
+     * Data : {"sp_attched":[],"sp_business_info":[{"bus_service_list":[{"amount":100,"time_slots":"60 mins","bus_service_list":" Pet Training"},{"amount":100,"time_slots":"60 mins","bus_service_list":"Pet daycare"},{"amount":200,"time_slots":"60 mins","bus_service_list":"Vet Care 2"},{"amount":100,"time_slots":"60 mins","bus_service_list":"Pet daycare 1"},{"amount":200,"time_slots":"60 mins","bus_service_list":"Pet daycare 2"}],"bus_spec_list":[{"bus_spec_list":"Kennel Cut"},{"bus_spec_list":"Teddy Bear Trim"},{"bus_spec_list":"Breed Trims"},{"bus_spec_list":"Full Coat / Show Trims"}],"bus_service_gall":[{"bus_service_gall":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb152608175750"}],"bus_certif":[{"bus_certif":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb15certificate.pdf"}],"_id":"6127891a4f7e5d1561c63783","user_id":"61275eccdc2406057b5aeb15","bus_user_name":"Sample","bus_user_email":"","bussiness_name":"Abc nanny service ","bus_user_phone":"2342342344","bus_profile":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb152608175858","bus_proof":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb15certificate.pdf","date_and_time":"26-08-2021 05:59 PM","mobile_type":"IOS","profile_status":true,"profile_verification_status":"Verified","thumbnail_image":"","sp_loc":"5-38A, 2nd Main Rd, Ram Nagar, Karnam Street, Karunabigai Colony, Velachery, Chennai, Tamil Nadu 600042, India","sp_lat":12.983360290527344,"sp_long":80.22343632290122,"city_name":"Chennai","delete_status":false,"calender_status":true,"comments":0,"rating":5,"updatedAt":"2021-08-26T12:37:43.458Z","createdAt":"2021-08-26T12:29:14.243Z","__v":0}],"_id":"616b1d179e7b943a38ec088e","sp_id":"61275eccdc2406057b5aeb15","appointment_UID":"SP-1634409751733","booking_date":"17-10-2021","booking_time":"12:12 AM","booking_date_time":"17-10-2021 12:12 AM","user_id":"6163d60a489ccc3d894683d2","pet_id":"","additional_info":"","appoinment_status":"Incomplete","start_appointment_status":"18-10-2021 08:11 AM","end_appointment_status":"Not End","sp_feedback":"","sp_rate":"","user_feedback":"","user_rate":"0","display_date":"2021-10-17 00:12:00","server_date_time":"","payment_id":"","payment_method":"Online","service_name":"Sub Service 2","service_amount":"300","service_time":"12:12 AM","completed_at":"","missed_at":"","mobile_type":"Android","delete_status":false,"date_and_time":"17-10-2021 12:12 AM","hrs":"1","total_hours":"","additional_hours":"","addition_amount":"","addition_payment_method":"","addition_payment_status":"","total_paid_amount":"","start_otp":"834921","end_otp":"535128","updatedAt":"2021-10-18T02:41:29.306Z","createdAt":"2021-10-16T18:42:31.740Z","__v":0}
      * Code : 200
      */
 
@@ -17,34 +17,34 @@ public class SPAppointmentDetailsResponse {
     /**
      * sp_attched : []
      * sp_business_info : [{"bus_service_list":[{"amount":100,"time_slots":"60 mins","bus_service_list":" Pet Training"},{"amount":100,"time_slots":"60 mins","bus_service_list":"Pet daycare"},{"amount":200,"time_slots":"60 mins","bus_service_list":"Vet Care 2"},{"amount":100,"time_slots":"60 mins","bus_service_list":"Pet daycare 1"},{"amount":200,"time_slots":"60 mins","bus_service_list":"Pet daycare 2"}],"bus_spec_list":[{"bus_spec_list":"Kennel Cut"},{"bus_spec_list":"Teddy Bear Trim"},{"bus_spec_list":"Breed Trims"},{"bus_spec_list":"Full Coat / Show Trims"}],"bus_service_gall":[{"bus_service_gall":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb152608175750"}],"bus_certif":[{"bus_certif":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb15certificate.pdf"}],"_id":"6127891a4f7e5d1561c63783","user_id":"61275eccdc2406057b5aeb15","bus_user_name":"Sample","bus_user_email":"","bussiness_name":"Abc nanny service ","bus_user_phone":"2342342344","bus_profile":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb152608175858","bus_proof":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb15certificate.pdf","date_and_time":"26-08-2021 05:59 PM","mobile_type":"IOS","profile_status":true,"profile_verification_status":"Verified","thumbnail_image":"","sp_loc":"5-38A, 2nd Main Rd, Ram Nagar, Karnam Street, Karunabigai Colony, Velachery, Chennai, Tamil Nadu 600042, India","sp_lat":12.983360290527344,"sp_long":80.22343632290122,"city_name":"Chennai","delete_status":false,"calender_status":true,"comments":0,"rating":5,"updatedAt":"2021-08-26T12:37:43.458Z","createdAt":"2021-08-26T12:29:14.243Z","__v":0}]
-     * _id : 61680377988d1d35aa95b007
-     * sp_id : {"_id":"61275eccdc2406057b5aeb15","first_name":"Sample","last_name":"Test","user_email":"","user_phone":"2342342344","date_of_reg":"26-08-2021 02:58 PM","user_type":2,"ref_code":"","my_ref_code":"U1IIZ1V","user_status":"complete","otp":123456,"profile_img":"","user_email_verification":false,"fb_token":"","device_id":"","device_type":"","mobile_type":"IOS","delete_status":false,"updatedAt":"2021-10-16T14:09:17.022Z","createdAt":"2021-08-26T09:28:44.727Z","__v":0}
-     * appointment_UID : SP-1634206583206
-     * booking_date : 14-10-2021
-     * booking_time : 3:46 PM
-     * booking_date_time : 14-10-2021 3:46 PM
-     * user_id : {"_id":"6163d60a489ccc3d894683d2","first_name":"Maddy","last_name":"Sam","user_email":"maddykrish@gmail.com","user_phone":"9999999998","date_of_reg":"11/10/2021 11:43 AM","user_type":1,"ref_code":"","my_ref_code":"VMNWKAB","user_status":"complete","otp":123456,"profile_img":"","user_email_verification":false,"fb_token":"","device_id":"","device_type":"","mobile_type":"Android","delete_status":false,"updatedAt":"2021-10-11T08:30:56.207Z","createdAt":"2021-10-11T06:13:30.236Z","__v":0}
+     * _id : 616b1d179e7b943a38ec088e
+     * sp_id : 61275eccdc2406057b5aeb15
+     * appointment_UID : SP-1634409751733
+     * booking_date : 17-10-2021
+     * booking_time : 12:12 AM
+     * booking_date_time : 17-10-2021 12:12 AM
+     * user_id : 6163d60a489ccc3d894683d2
      * pet_id :
      * additional_info :
      * appoinment_status : Incomplete
-     * start_appointment_status : Not Started
+     * start_appointment_status : 18-10-2021 08:11 AM
      * end_appointment_status : Not End
      * sp_feedback :
      * sp_rate :
      * user_feedback :
      * user_rate : 0
-     * display_date : 2021-10-14 15:46:00
+     * display_date : 2021-10-17 00:12:00
      * server_date_time :
      * payment_id :
      * payment_method : Online
      * service_name : Sub Service 2
      * service_amount : 300
-     * service_time : 3:46 PM
+     * service_time : 12:12 AM
      * completed_at :
      * missed_at :
      * mobile_type : Android
      * delete_status : false
-     * date_and_time : 14-10-2021 03:46 PM
+     * date_and_time : 17-10-2021 12:12 AM
      * hrs : 1
      * total_hours :
      * additional_hours :
@@ -52,10 +52,10 @@ public class SPAppointmentDetailsResponse {
      * addition_payment_method :
      * addition_payment_status :
      * total_paid_amount :
-     * start_otp : 843049
-     * end_otp : 689077
-     * updatedAt : 2021-10-14T10:16:23.234Z
-     * createdAt : 2021-10-14T10:16:23.218Z
+     * start_otp : 834921
+     * end_otp : 535128
+     * updatedAt : 2021-10-18T02:41:29.306Z
+     * createdAt : 2021-10-16T18:42:31.740Z
      * __v : 0
      */
 
@@ -96,60 +96,12 @@ public class SPAppointmentDetailsResponse {
 
     public static class DataBean {
         private String _id;
-        /**
-         * _id : 61275eccdc2406057b5aeb15
-         * first_name : Sample
-         * last_name : Test
-         * user_email :
-         * user_phone : 2342342344
-         * date_of_reg : 26-08-2021 02:58 PM
-         * user_type : 2
-         * ref_code :
-         * my_ref_code : U1IIZ1V
-         * user_status : complete
-         * otp : 123456
-         * profile_img :
-         * user_email_verification : false
-         * fb_token :
-         * device_id :
-         * device_type :
-         * mobile_type : IOS
-         * delete_status : false
-         * updatedAt : 2021-10-16T14:09:17.022Z
-         * createdAt : 2021-08-26T09:28:44.727Z
-         * __v : 0
-         */
-
-        private SpIdBean sp_id;
+        private String sp_id;
         private String appointment_UID;
         private String booking_date;
         private String booking_time;
         private String booking_date_time;
-        /**
-         * _id : 6163d60a489ccc3d894683d2
-         * first_name : Maddy
-         * last_name : Sam
-         * user_email : maddykrish@gmail.com
-         * user_phone : 9999999998
-         * date_of_reg : 11/10/2021 11:43 AM
-         * user_type : 1
-         * ref_code :
-         * my_ref_code : VMNWKAB
-         * user_status : complete
-         * otp : 123456
-         * profile_img :
-         * user_email_verification : false
-         * fb_token :
-         * device_id :
-         * device_type :
-         * mobile_type : Android
-         * delete_status : false
-         * updatedAt : 2021-10-11T08:30:56.207Z
-         * createdAt : 2021-10-11T06:13:30.236Z
-         * __v : 0
-         */
-
-        private UserIdBean user_id;
+        private String user_id;
         private String pet_id;
         private String additional_info;
         private String appoinment_status;
@@ -225,11 +177,11 @@ public class SPAppointmentDetailsResponse {
             this._id = _id;
         }
 
-        public SpIdBean getSp_id() {
+        public String getSp_id() {
             return sp_id;
         }
 
-        public void setSp_id(SpIdBean sp_id) {
+        public void setSp_id(String sp_id) {
             this.sp_id = sp_id;
         }
 
@@ -265,11 +217,11 @@ public class SPAppointmentDetailsResponse {
             this.booking_date_time = booking_date_time;
         }
 
-        public UserIdBean getUser_id() {
+        public String getUser_id() {
             return user_id;
         }
 
-        public void setUser_id(UserIdBean user_id) {
+        public void setUser_id(String user_id) {
             this.user_id = user_id;
         }
 
@@ -551,390 +503,6 @@ public class SPAppointmentDetailsResponse {
 
         public void setSp_business_info(List<SpBusinessInfoBean> sp_business_info) {
             this.sp_business_info = sp_business_info;
-        }
-
-        public static class SpIdBean {
-            private String _id;
-            private String first_name;
-            private String last_name;
-            private String user_email;
-            private String user_phone;
-            private String date_of_reg;
-            private int user_type;
-            private String ref_code;
-            private String my_ref_code;
-            private String user_status;
-            private int otp;
-            private String profile_img;
-            private boolean user_email_verification;
-            private String fb_token;
-            private String device_id;
-            private String device_type;
-            private String mobile_type;
-            private boolean delete_status;
-            private String updatedAt;
-            private String createdAt;
-            private int __v;
-
-            public String get_id() {
-                return _id;
-            }
-
-            public void set_id(String _id) {
-                this._id = _id;
-            }
-
-            public String getFirst_name() {
-                return first_name;
-            }
-
-            public void setFirst_name(String first_name) {
-                this.first_name = first_name;
-            }
-
-            public String getLast_name() {
-                return last_name;
-            }
-
-            public void setLast_name(String last_name) {
-                this.last_name = last_name;
-            }
-
-            public String getUser_email() {
-                return user_email;
-            }
-
-            public void setUser_email(String user_email) {
-                this.user_email = user_email;
-            }
-
-            public String getUser_phone() {
-                return user_phone;
-            }
-
-            public void setUser_phone(String user_phone) {
-                this.user_phone = user_phone;
-            }
-
-            public String getDate_of_reg() {
-                return date_of_reg;
-            }
-
-            public void setDate_of_reg(String date_of_reg) {
-                this.date_of_reg = date_of_reg;
-            }
-
-            public int getUser_type() {
-                return user_type;
-            }
-
-            public void setUser_type(int user_type) {
-                this.user_type = user_type;
-            }
-
-            public String getRef_code() {
-                return ref_code;
-            }
-
-            public void setRef_code(String ref_code) {
-                this.ref_code = ref_code;
-            }
-
-            public String getMy_ref_code() {
-                return my_ref_code;
-            }
-
-            public void setMy_ref_code(String my_ref_code) {
-                this.my_ref_code = my_ref_code;
-            }
-
-            public String getUser_status() {
-                return user_status;
-            }
-
-            public void setUser_status(String user_status) {
-                this.user_status = user_status;
-            }
-
-            public int getOtp() {
-                return otp;
-            }
-
-            public void setOtp(int otp) {
-                this.otp = otp;
-            }
-
-            public String getProfile_img() {
-                return profile_img;
-            }
-
-            public void setProfile_img(String profile_img) {
-                this.profile_img = profile_img;
-            }
-
-            public boolean isUser_email_verification() {
-                return user_email_verification;
-            }
-
-            public void setUser_email_verification(boolean user_email_verification) {
-                this.user_email_verification = user_email_verification;
-            }
-
-            public String getFb_token() {
-                return fb_token;
-            }
-
-            public void setFb_token(String fb_token) {
-                this.fb_token = fb_token;
-            }
-
-            public String getDevice_id() {
-                return device_id;
-            }
-
-            public void setDevice_id(String device_id) {
-                this.device_id = device_id;
-            }
-
-            public String getDevice_type() {
-                return device_type;
-            }
-
-            public void setDevice_type(String device_type) {
-                this.device_type = device_type;
-            }
-
-            public String getMobile_type() {
-                return mobile_type;
-            }
-
-            public void setMobile_type(String mobile_type) {
-                this.mobile_type = mobile_type;
-            }
-
-            public boolean isDelete_status() {
-                return delete_status;
-            }
-
-            public void setDelete_status(boolean delete_status) {
-                this.delete_status = delete_status;
-            }
-
-            public String getUpdatedAt() {
-                return updatedAt;
-            }
-
-            public void setUpdatedAt(String updatedAt) {
-                this.updatedAt = updatedAt;
-            }
-
-            public String getCreatedAt() {
-                return createdAt;
-            }
-
-            public void setCreatedAt(String createdAt) {
-                this.createdAt = createdAt;
-            }
-
-            public int get__v() {
-                return __v;
-            }
-
-            public void set__v(int __v) {
-                this.__v = __v;
-            }
-        }
-
-        public static class UserIdBean {
-            private String _id;
-            private String first_name;
-            private String last_name;
-            private String user_email;
-            private String user_phone;
-            private String date_of_reg;
-            private int user_type;
-            private String ref_code;
-            private String my_ref_code;
-            private String user_status;
-            private int otp;
-            private String profile_img;
-            private boolean user_email_verification;
-            private String fb_token;
-            private String device_id;
-            private String device_type;
-            private String mobile_type;
-            private boolean delete_status;
-            private String updatedAt;
-            private String createdAt;
-            private int __v;
-
-            public String get_id() {
-                return _id;
-            }
-
-            public void set_id(String _id) {
-                this._id = _id;
-            }
-
-            public String getFirst_name() {
-                return first_name;
-            }
-
-            public void setFirst_name(String first_name) {
-                this.first_name = first_name;
-            }
-
-            public String getLast_name() {
-                return last_name;
-            }
-
-            public void setLast_name(String last_name) {
-                this.last_name = last_name;
-            }
-
-            public String getUser_email() {
-                return user_email;
-            }
-
-            public void setUser_email(String user_email) {
-                this.user_email = user_email;
-            }
-
-            public String getUser_phone() {
-                return user_phone;
-            }
-
-            public void setUser_phone(String user_phone) {
-                this.user_phone = user_phone;
-            }
-
-            public String getDate_of_reg() {
-                return date_of_reg;
-            }
-
-            public void setDate_of_reg(String date_of_reg) {
-                this.date_of_reg = date_of_reg;
-            }
-
-            public int getUser_type() {
-                return user_type;
-            }
-
-            public void setUser_type(int user_type) {
-                this.user_type = user_type;
-            }
-
-            public String getRef_code() {
-                return ref_code;
-            }
-
-            public void setRef_code(String ref_code) {
-                this.ref_code = ref_code;
-            }
-
-            public String getMy_ref_code() {
-                return my_ref_code;
-            }
-
-            public void setMy_ref_code(String my_ref_code) {
-                this.my_ref_code = my_ref_code;
-            }
-
-            public String getUser_status() {
-                return user_status;
-            }
-
-            public void setUser_status(String user_status) {
-                this.user_status = user_status;
-            }
-
-            public int getOtp() {
-                return otp;
-            }
-
-            public void setOtp(int otp) {
-                this.otp = otp;
-            }
-
-            public String getProfile_img() {
-                return profile_img;
-            }
-
-            public void setProfile_img(String profile_img) {
-                this.profile_img = profile_img;
-            }
-
-            public boolean isUser_email_verification() {
-                return user_email_verification;
-            }
-
-            public void setUser_email_verification(boolean user_email_verification) {
-                this.user_email_verification = user_email_verification;
-            }
-
-            public String getFb_token() {
-                return fb_token;
-            }
-
-            public void setFb_token(String fb_token) {
-                this.fb_token = fb_token;
-            }
-
-            public String getDevice_id() {
-                return device_id;
-            }
-
-            public void setDevice_id(String device_id) {
-                this.device_id = device_id;
-            }
-
-            public String getDevice_type() {
-                return device_type;
-            }
-
-            public void setDevice_type(String device_type) {
-                this.device_type = device_type;
-            }
-
-            public String getMobile_type() {
-                return mobile_type;
-            }
-
-            public void setMobile_type(String mobile_type) {
-                this.mobile_type = mobile_type;
-            }
-
-            public boolean isDelete_status() {
-                return delete_status;
-            }
-
-            public void setDelete_status(boolean delete_status) {
-                this.delete_status = delete_status;
-            }
-
-            public String getUpdatedAt() {
-                return updatedAt;
-            }
-
-            public void setUpdatedAt(String updatedAt) {
-                this.updatedAt = updatedAt;
-            }
-
-            public String getCreatedAt() {
-                return createdAt;
-            }
-
-            public void setCreatedAt(String createdAt) {
-                this.createdAt = createdAt;
-            }
-
-            public int get__v() {
-                return __v;
-            }
-
-            public void set__v(int __v) {
-                this.__v = __v;
-            }
         }
 
         public static class SpBusinessInfoBean {
