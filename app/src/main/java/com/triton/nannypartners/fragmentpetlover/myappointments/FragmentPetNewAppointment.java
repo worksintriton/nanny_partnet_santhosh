@@ -131,6 +131,20 @@ public class FragmentPetNewAppointment extends Fragment implements OnAppointment
         if (new ConnectionDetector(getActivity()).isNetworkAvailable(getActivity())) {
             petNewAppointmentResponseCall();
         }
+
+        final Handler handler = new Handler();
+        Runnable myRunnable = new Runnable() {
+            public void run() {
+                // do something
+                petNewAppointmentResponseCall();
+
+            }
+        };
+        handler.postDelayed(myRunnable,30000);
+        handler.removeCallbacks(myRunnable);
+
+/*
+
         final Handler handler = new Handler();
         Timer timer = new Timer();
         TimerTask doAsynchronousTask = new TimerTask() {
@@ -147,9 +161,11 @@ public class FragmentPetNewAppointment extends Fragment implements OnAppointment
                         }
                     }
                 });
+
             }
         };
         timer.schedule(doAsynchronousTask, 0, 30000);//you can put 30000(30 secs)
+*/
 
 
         refresh_layout.setOnRefreshListener(
