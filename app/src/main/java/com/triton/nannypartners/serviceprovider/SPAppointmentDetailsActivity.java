@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -32,12 +33,16 @@ import com.triton.nannypartners.petlover.VideoCallPetLoverActivity;
 import com.triton.nannypartners.requestpojo.AppoinmentCancelledRequest;
 import com.triton.nannypartners.requestpojo.AppoinmentCompleteRequest;
 import com.triton.nannypartners.requestpojo.AppointmentDetailsRequest;
+import com.triton.nannypartners.requestpojo.EndAppointmentStatusRequest;
 import com.triton.nannypartners.requestpojo.SPNotificationSendRequest;
+import com.triton.nannypartners.requestpojo.StartAppointmentStatusRequest;
 import com.triton.nannypartners.responsepojo.AppoinmentCancelledResponse;
 import com.triton.nannypartners.responsepojo.AppoinmentCompleteResponse;
+import com.triton.nannypartners.responsepojo.EndAppointmentStatusResponse;
 import com.triton.nannypartners.responsepojo.NotificationSendResponse;
 import com.triton.nannypartners.responsepojo.PetNewAppointmentDetailsResponse;
 import com.triton.nannypartners.responsepojo.SPAppointmentDetailsResponse;
+import com.triton.nannypartners.responsepojo.StartAppointmentStatusResponse;
 import com.triton.nannypartners.utils.ConnectionDetector;
 import com.triton.nannypartners.utils.RestUtils;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -97,6 +102,10 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
     Button btn_viewinvoice;
 
     @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.btn_stop)
+    Button btn_stop;
+
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.txt_servname)
     TextView txt_servname;
 
@@ -137,6 +146,10 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
     TextView txt_address;
 
     @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.txt_serv_timer)
+    TextView txt_serv_timer;
+
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.scrollablContent)
     ScrollView scrollablContent;
 
@@ -154,7 +167,8 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
 
     String appointment_id;
     String appoinment_status;
-    String start_appointment_status;
+    String start_appointment_status="";
+    String end_appointment_status="";
     private Dialog dialog;
     private String bookedat;
     private String startappointmentstatus;
@@ -170,6 +184,8 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
     private String petAgeandMonth;
 
     private String concatenatedStarNames = "";
+    private String start_otp = "";
+    private String end_otp = "";
 
 
     @SuppressLint({"LongLogTag", "LogNotTimber"})
@@ -243,10 +259,11 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
 
                 btn_cancel.setVisibility(View.VISIBLE);
 
-                btn_start_stop.setVisibility(View.VISIBLE);
+                btn_start_stop.setVisibility(View.GONE);
 
                 btn_viewinvoice.setVisibility(View.GONE);
 
+                btn_stop.setVisibility(View.GONE);
 
             }
             else if(from.equalsIgnoreCase("SPMissedAppointmentAdapter")){
@@ -257,6 +274,7 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
 
                 btn_viewinvoice.setVisibility(View.GONE);
 
+                btn_stop.setVisibility(View.GONE);
 
             }
             else if(from.equalsIgnoreCase("SPCompletedAppointmentAdapter")) {
@@ -266,6 +284,8 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
                 btn_start_stop.setVisibility(View.GONE);
 
                 btn_viewinvoice.setVisibility(View.VISIBLE);
+
+                btn_stop.setVisibility(View.GONE);
 
             }
 
@@ -339,6 +359,12 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
                             appoinment_status = response.body().getData().getAppoinment_status();
 
                             start_appointment_status = response.body().getData().getStart_appointment_status();
+
+                            end_appointment_status = response.body().getData().getEnd_appointment_status();
+
+                            start_otp = response.body().getData().getStart_otp();
+
+                            end_otp = response.body().getData().getEnd_otp();
 
                             List<SPAppointmentDetailsResponse.DataBean.SpBusinessInfoBean> Address = response.body().getData().getSp_business_info();
                             for (int i = 0; i < Address.size(); i++) {
@@ -495,7 +521,28 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
             txt_address.setText("");
         }
 
+        if(start_appointment_status != null && !start_appointment_status.isEmpty()&&start_appointment_status.equals("Not Started")){
+
+            btn_start_stop.setVisibility(View.VISIBLE);
+
+        }
+        else if(end_appointment_status != null && !end_appointment_status.isEmpty()&&start_appointment_status.equals("Not End")){
+
+            btn_stop.setVisibility(View.VISIBLE);
+
+            txt_serv_timer.setVisibility(View.VISIBLE);
+
+        }
+
         btn_cancel.setOnClickListener(v -> showStatusAlert(appointment_id));
+
+        btn_start_stop.setOnClickListener(this);
+
+        btn_stop.setOnClickListener(this);
+
+        btn_viewinvoice.setOnClickListener(this);
+
+
 
     }
 
@@ -854,8 +901,186 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
                 callDirections("3");
                 break;
 
+            case R.id.btn_start_stop:
+
+                otpValidation("start",appointment_id);
+
+                break;
+
+            case R.id.btn_stop:
+
+                otpValidation("stop",appointment_id);
+
+                break;
+
+            case R.id.btn_viewinvoice:
+
+                break;
 
         }
 
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void otpValidation(String mode,String appointment_id) {
+
+        try {
+
+            dialog = new Dialog(SPAppointmentDetailsActivity.this);
+            dialog.setContentView(R.layout.alert_otp_layout);
+            EditText edt_pin_entry = dialog.findViewById(R.id.edt_pin_entry);
+
+            Button btn_back_to_appointment = dialog.findViewById(R.id.btn_back_to_appointment);
+
+
+            btn_back_to_appointment.setOnClickListener(view -> {
+                dialog.dismiss();
+
+                if(edt_pin_entry.getText().toString().length()==6){
+
+
+                    if(mode.equals("start")&&start_otp!=null&&start_otp.equals(edt_pin_entry.getText().toString())){
+
+                        appoinmentStartResponseCall(appointment_id);
+
+                    }
+                    else if(mode.equals("stop")&&end_otp!=null&&end_otp.equals(edt_pin_entry.getText().toString())){
+
+                        appoinmentStopResponseCall(appointment_id);
+
+                    }
+
+                    else {
+
+                        Toasty.warning(getApplicationContext(), "Please Enter Valid OTP", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+
+                    Toasty.warning(getApplicationContext(), "Please Enter Valid OTP", Toast.LENGTH_SHORT).show();
+                }
+
+
+            });
+            btn_back_to_appointment.setOnClickListener(view -> dialog.dismiss());
+            Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+
+        } catch (WindowManager.BadTokenException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @SuppressLint({"LongLogTag", "LogNotTimber"})
+    private void appoinmentStartResponseCall(String id) {
+        avi_indicator.setVisibility(View.VISIBLE);
+        avi_indicator.smoothToShow();
+        RestApiInterface apiInterface = APIClient.getClient().create(RestApiInterface.class);
+        Call<StartAppointmentStatusResponse> call = apiInterface.spStartAppointmentResponseCall(RestUtils.getContentType(), StartAppointmentStatusRequest(id));
+        Log.w(TAG,"StartAppointmentStatusResponse url  :%s"+" "+ call.request().url().toString());
+
+        call.enqueue(new Callback<StartAppointmentStatusResponse>() {
+            @SuppressLint("LogNotTimber")
+            @Override
+            public void onResponse(@NonNull Call<StartAppointmentStatusResponse> call, @NonNull Response<StartAppointmentStatusResponse> response) {
+
+                Log.w(TAG,"StartAppointmentStatusResponse"+ "--->" + new Gson().toJson(response.body()));
+
+                avi_indicator.smoothToHide();
+
+                if (response.body() != null) {
+                    if(response.body().getCode() == 200){
+
+                    }
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<StartAppointmentStatusResponse> call, @NonNull Throwable t) {
+
+                avi_indicator.smoothToHide();
+                Log.w(TAG,"StartAppointmentStatusResponseflr"+"--->" + t.getMessage());
+            }
+        });
+
+    }
+
+    @SuppressLint({"LongLogTag", "LogNotTimber"})
+    private StartAppointmentStatusRequest StartAppointmentStatusRequest(String id) {
+
+        /**
+         * _id : 616b1d179e7b943a38ec088e
+         * start_appointment_status : 18-10-2021 08:11 AM
+         */
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm aa", Locale.getDefault());
+        String currentDateandTime = sdf.format(new Date());
+
+        StartAppointmentStatusRequest StartAppointmentStatusRequest = new StartAppointmentStatusRequest();
+        StartAppointmentStatusRequest.set_id(id);
+        StartAppointmentStatusRequest.setStart_appointment_status(currentDateandTime);
+        Log.w(TAG,"StartAppointmentStatusRequest"+ "--->" + new Gson().toJson(StartAppointmentStatusRequest));
+        return StartAppointmentStatusRequest;
+    }
+
+    @SuppressLint({"LongLogTag", "LogNotTimber"})
+    private void appoinmentStopResponseCall(String id) {
+        avi_indicator.setVisibility(View.VISIBLE);
+        avi_indicator.smoothToShow();
+        RestApiInterface apiInterface = APIClient.getClient().create(RestApiInterface.class);
+        Call<EndAppointmentStatusResponse> call = apiInterface.spStopAppointmentResponseCall(RestUtils.getContentType(), EndAppointmentStatusRequest(id));
+        Log.w(TAG,"EndAppointmentStatusResponse url  :%s"+" "+ call.request().url().toString());
+
+        call.enqueue(new Callback<EndAppointmentStatusResponse>() {
+            @SuppressLint("LogNotTimber")
+            @Override
+            public void onResponse(@NonNull Call<EndAppointmentStatusResponse> call, @NonNull Response<EndAppointmentStatusResponse> response) {
+
+                Log.w(TAG,"EndAppointmentStatusResponse"+ "--->" + new Gson().toJson(response.body()));
+
+                avi_indicator.smoothToHide();
+
+                if (response.body() != null) {
+                    if(response.body().getCode() == 200){
+
+                    }
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<EndAppointmentStatusResponse> call, @NonNull Throwable t) {
+
+                avi_indicator.smoothToHide();
+                Log.w(TAG,"EndAppointmentStatusResponseflr"+"--->" + t.getMessage());
+            }
+        });
+
+    }
+
+    @SuppressLint({"LongLogTag", "LogNotTimber"})
+    private EndAppointmentStatusRequest EndAppointmentStatusRequest(String id) {
+
+        /**
+         * _id : 616b1d179e7b943a38ec088e
+         * end_appointment_status : 18-10-2021 08:20 AM
+         */
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm aa", Locale.getDefault());
+        String currentDateandTime = sdf.format(new Date());
+
+        EndAppointmentStatusRequest EndAppointmentStatusRequest = new EndAppointmentStatusRequest();
+        EndAppointmentStatusRequest.set_id(id);
+        EndAppointmentStatusRequest.setEnd_appointment_status(currentDateandTime);
+        Log.w(TAG,"EndAppointmentStatusRequest"+ "--->" + new Gson().toJson(EndAppointmentStatusRequest));
+        return EndAppointmentStatusRequest;
     }
 }

@@ -58,7 +58,7 @@
 
 
             <com.triton.nannypartners.appUtils.PinEntryEditText
-                android:id="@+id/txt_pin_entry"
+                android:id="@+id/edt_pin_entry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

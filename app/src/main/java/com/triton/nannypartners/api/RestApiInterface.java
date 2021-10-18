@@ -367,6 +367,14 @@ public interface RestApiInterface {
     @POST("sp_appointments/sp/missapp")
     Call<SPAppointmentResponse> spMissedAppointmentResponseCall(@Header("Content-Type") String type, @Body SPAppointmentRequest spAppointmentRequest);
 
+    /*SP edit start Appointment*/
+    @POST("sp_appointments/editappointment")
+    Call<StartAppointmentStatusResponse> spStartAppointmentResponseCall(@Header("Content-Type") String type, @Body StartAppointmentStatusRequest startAppointmentStatusRequest);
+
+    /*SP edit stop Appointment*/
+    @POST("sp_appointments/editappointment")
+    Call<EndAppointmentStatusResponse> spStopAppointmentResponseCall(@Header("Content-Type") String type, @Body EndAppointmentStatusRequest endAppointmentStatusRequest);
+
     /*Update Appointment Status complete*/
     @POST("sp_appointments/edit")
     Call<AppoinmentCompleteResponse> spappoinmentCompleteResponseCall(@Header("Content-Type") String type, @Body AppoinmentCompleteRequest appoinmentCompleteRequest);
