@@ -10,7 +10,7 @@ public class ServiceProviderRegisterFormCreateRequest implements Serializable {
      * bus_profile : http://54.193.18.54:3000/api/uploads/1634205803590.jpg
      * bus_proof : http://54.193.18.54:3000/api/uploads/1634205820909.jpg
      * bus_service_gall : [{"bus_service_gall":"http://54.193.18.54:3000/api/uploads/1634205785736.jpg"}]
-     * bus_service_list : [{"service_name":"Vet care","subsericelist":[{"sub_service_title":"Vat care1"},{"sub_service_title":"Vat care2"}]}]
+     * bus_service_list : [{"service_name":"Vet care","subsericelist":[{"sub_service_title":"Vat care1"},{"sub_service_title":"Vat care2"},{"sub_service_title":"Vat care3"}]}]
      * bus_spec_list : [{"bus_spec_list":"Kennel Cut"}]
      * bus_user_email : iddineshkumar@gmail.com
      * bus_user_name : DINESH

@@ -293,8 +293,6 @@ public interface RestApiInterface {
     Call<FilterDoctorResponse> filterDoctorResponseCall(@Header("Content-Type") String type, @Body FilterDoctorRequest filterDoctorRequest);
 
 
-
-
     /*Service Provider*/
 
     /*service provider services list*/
@@ -355,6 +353,26 @@ public interface RestApiInterface {
     @POST("sp_appointments/mobile/create")
     Call<SPCreateAppointmentResponse> SPCreateAppointmentResponseCall(@Header("Content-Type") String type, @Body SPCreateAppointmentRequest spCreateAppointmentRequest);
 
+    /*Fetch Request Service*/
+    @POST("service_waiting/fetch_request")
+    Call<FetchServiceProviderResponse> fetchRequestResponseCall(@Header("Content-Type") String type, @Body FetchServiceProviderRequest fetchServiceProviderRequest);
+
+    /*SP Time Exist*/
+    @POST("service_waiting/time_exist")
+    Call<SPTimeExistResponse> timeExistResponseCall(@Header("Content-Type") String type, @Body SPTimeExistRequest spTimeExistRequest);
+
+    /*SP Reject Exist*/
+    @POST("service_waiting/reject_request")
+    Call<SPRejectResponse> SPrejectResponseCall(@Header("Content-Type") String type, @Body SPRejectRequest spRejectRequest);
+
+    /*SP Accept Request*/
+    @POST("service_waiting/accept_request")
+    Call<SPAcceptResponse> SPacceptResponseCall(@Header("Content-Type") String type, @Body SPAcceptRequest spAcceptRequest );
+
+
+
+
+
     /*SP New Appointment*/
     @POST("sp_appointments/sp/newapp")
     Call<SPAppointmentResponse> spNewAppointmentResponseCall(@Header("Content-Type") String type, @Body SPAppointmentRequest spAppointmentRequest);
@@ -375,6 +393,7 @@ public interface RestApiInterface {
     @POST("sp_appointments/editappointment")
     Call<EndAppointmentStatusResponse> spStopAppointmentResponseCall(@Header("Content-Type") String type, @Body EndAppointmentStatusRequest endAppointmentStatusRequest);
 
+
     /*Update Appointment Status complete*/
     @POST("sp_appointments/edit")
     Call<AppoinmentCompleteResponse> spappoinmentCompleteResponseCall(@Header("Content-Type") String type, @Body AppoinmentCompleteRequest appoinmentCompleteRequest);
@@ -382,6 +401,7 @@ public interface RestApiInterface {
     /*Update Appointment Status cancel*/
     @POST("sp_appointments/edit")
     Call<AppoinmentCancelledResponse> spappoinmentCancelledResponseCall(@Header("Content-Type") String type, @Body AppoinmentCancelledRequest appoinmentCancelledRequest);
+
 
 
 
