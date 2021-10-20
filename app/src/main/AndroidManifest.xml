@@ -1020,7 +1020,8 @@
             android:value="rzp_test_zioohqmxDjJJtd" />
 
         <!-- Mention the service name here -->
-        <service android:name=".service.NewService"/>
+        <service android:name=".service.NewService"
+            />
 
     </application>
 

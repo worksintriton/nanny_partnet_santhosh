@@ -10,6 +10,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,7 +35,11 @@ import com.triton.nannypartners.responsepojo.SPTimeExistResponse;
 import com.triton.nannypartners.sessionmanager.SessionManager;
 import com.triton.nannypartners.utils.RestUtils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
@@ -139,12 +144,16 @@ public class NewService extends Service {
                 Log.w(TAG,"FetchServiceProviderResponse" + new Gson().toJson(response.body()));
                 if (response.body() != null) {
                     if (200 == response.body().getCode()) {
-                        Toasty.success(getApplicationContext(),response.body().getMessage(), Toast.LENGTH_SHORT, true).show();
                         if(response.body().getData()!=null){
 
                             FetchServiceProviderResponse.DataBean dataBean = response.body().getData();
 
-                            showPopupayout(dataBean);
+                            if(dataBean.get_id()!=null&&!dataBean.get_id().isEmpty()){
+
+                                showPopupayout(dataBean);
+                            }
+
+
                         }
 
 
@@ -172,8 +181,8 @@ public class NewService extends Service {
 
       /*  *
          * sp_id : 6164232765d9a57d7fc957545
-
-*/
+         *
+      */
         FetchServiceProviderRequest FetchServiceProviderRequest = new FetchServiceProviderRequest();
         FetchServiceProviderRequest.setSp_id(userid);
         Log.w(TAG,"FetchServiceProviderRequest "+ new Gson().toJson(FetchServiceProviderRequest));
@@ -281,12 +290,36 @@ public class NewService extends Service {
 
         String end_time = dataBean.getEnd_time();
 
-        if(start_time != null&&end_time!=null) {
+        Log.w(TAG,"end_time :" +end_time);
+
+/*
+        if(end_time!=null) {
+
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = null;
+            try {
+                date = inputFormat.parse(end_time);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            String formattedDate = outputFormat.format(date);
+
+            Log.w(TAG,"formattedDate :" +formattedDate);
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
+            String currentDateandTime = sdf.format(new Date());
+
+            String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
+            String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+
+            Log.w(TAG,"currentTime :" +currentTime);
 
 
-        }
+        }*/
 
-        timer = new CountDownTimer(6000, 1000) {
+        timer = new CountDownTimer(20000, 1000) {
             @SuppressLint({"DefaultLocale", "SetTextI18n"})
             @Override
             public void onTick(long millisUntilFinished) {
@@ -315,6 +348,7 @@ public class NewService extends Service {
         timer.start();
 
         AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
         alertDialog.show();
 
         btn_accept.setOnClickListener(new View.OnClickListener() {
@@ -361,7 +395,6 @@ public class NewService extends Service {
 
                             SPTimeExistResponse.DataBean dataBean = response.body().getData();
 
-                            showTimeExistAlertPopupayout(dataBean);
 
                         }
 
@@ -498,6 +531,7 @@ public class NewService extends Service {
 
 
         AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
         alertDialog.show();
 
         btn_back_to_appointment.setOnClickListener(new View.OnClickListener() {
@@ -581,6 +615,7 @@ public class NewService extends Service {
 
 
         AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
         alertDialog.show();
 
         btn_back_to_appointment.setOnClickListener(new View.OnClickListener() {
