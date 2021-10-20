@@ -29,6 +29,28 @@
             android:textSize="16sp"
             android:visibility="visible" />
 
+        <RelativeLayout
+            android:id="@+id/rl_root"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_rounded_corner"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/txt_timer_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/futuralightbt"
+                android:gravity="center"
+                android:text="@string/change"
+                android:textColor="@color/missed_red_color"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

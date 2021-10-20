@@ -5,7 +5,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.triton.nanny"
+        applicationId "com.trition.nannypartners"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 4
@@ -132,6 +132,16 @@ dependencies {
 
 
     implementation 'me.zhanghai.android.materialprogressbar:library:1.6.1'
+
+    // This library is used for crop image feature
+    implementation 'com.github.CanHub:Android-Image-Cropper:3.1.1'
+
+
+
+
+
+
+
 
 
 

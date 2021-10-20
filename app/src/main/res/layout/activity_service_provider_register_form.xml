@@ -147,23 +147,23 @@
                         android:orientation="horizontal"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/layout_bg"
-                        android:layout_marginBottom="10dp">
+                        android:layout_marginBottom="10dp"
+                        android:visibility="gone">
 
                         <EditText
                             android:id="@+id/edt_addmore_service"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@null"
                             android:fontFamily="@font/futuramediumbt"
                             android:hint="@string/add_more"
-                            android:padding="15dp"
-                            android:textColorHint="@color/dark_gray"
-                            android:textSize="14sp"
-                            tools:ignore="Autofill,LabelFor"
                             android:inputType="text"
                             android:maxLength="60"
                             android:maxLines="1"
-                            android:background="@null"
-                            />
+                            android:padding="15dp"
+                            android:textColorHint="@color/dark_gray"
+                            android:textSize="14sp"
+                            tools:ignore="Autofill,LabelFor" />
 
                         <Button
                             android:id="@+id/btn_add_service"
@@ -209,6 +209,7 @@
                 android:text="@string/specialization"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cdvw_specialization"
                 android:layout_width="match_parent"
@@ -222,16 +223,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp">
+                    android:layout_marginEnd="10dp"
+                    android:orientation="vertical">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rcylr_sp_specializationlist"
                         android:layout_width="match_parent"
-                        android:layout_marginTop="10dp"
                         android:layout_height="wrap_content"
-                        />
+                        android:layout_marginTop="10dp" />
 
                     <TextView
                         android:id="@+id/txt_no_records_specialization"
@@ -242,32 +242,30 @@
                         android:text="@string/norecordsfound"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:visibility="gone"
-                        />
+                        android:visibility="gone" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:background="@drawable/layout_bg"
-                        android:layout_marginBottom="10dp">
+                        android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/edt_specialization_ifany"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@null"
                             android:fontFamily="@font/futuramediumbt"
                             android:hint="@string/specialization_ifany"
-                            android:padding="15dp"
-                            android:textColorHint="@color/dark_gray"
-                            android:textSize="14sp"
-                            tools:ignore="Autofill,LabelFor"
                             android:inputType="text"
                             android:maxLength="60"
                             android:maxLines="1"
-                            android:background="@null"
-                            />
+                            android:padding="15dp"
+                            android:textColorHint="@color/dark_gray"
+                            android:textSize="14sp"
+                            tools:ignore="Autofill,LabelFor" />
 
                         <Button
                             android:id="@+id/btn_add_specialization"
@@ -290,8 +288,6 @@
                             tools:ignore="RelativeOverlap" />
 
 
-
-
                     </RelativeLayout>
 
 
@@ -299,6 +295,7 @@
 
 
             </androidx.cardview.widget.CardView>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcylr_sp_specializationstaticlist"
                 android:layout_width="match_parent"
