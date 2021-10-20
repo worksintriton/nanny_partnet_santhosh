@@ -20,6 +20,7 @@ import com.triton.nannypartners.api.RestApiInterface;
 import com.triton.nannypartners.requestpojo.AppointmentDetailsRequest;
 import com.triton.nannypartners.responsepojo.PetNewAppointmentDetailsResponse;
 import com.triton.nannypartners.responsepojo.SPAppointmentDetailsResponse;
+import com.triton.nannypartners.utils.ConnectionDetector;
 import com.triton.nannypartners.utils.RestUtils;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -183,6 +184,11 @@ public class InvoiceViewActivity extends AppCompatActivity {
 
 
         img_back.setOnClickListener(v -> onBackPressed());
+
+        if (new ConnectionDetector(InvoiceViewActivity.this).isNetworkAvailable(InvoiceViewActivity.this)) {
+            spAppointmentDetailsResponse();
+        }
+
 
 
     }

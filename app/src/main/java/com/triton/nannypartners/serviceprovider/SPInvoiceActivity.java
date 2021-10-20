@@ -19,13 +19,19 @@ import com.google.gson.Gson;
 import com.triton.nannypartners.R;
 import com.triton.nannypartners.api.APIClient;
 import com.triton.nannypartners.api.RestApiInterface;
+import com.triton.nannypartners.requestpojo.AppoinmentCompleteRequest;
 import com.triton.nannypartners.requestpojo.AppointmentDetailsRequest;
+import com.triton.nannypartners.responsepojo.AppoinmentCompleteResponse;
 import com.triton.nannypartners.responsepojo.PetNewAppointmentDetailsResponse;
 import com.triton.nannypartners.responsepojo.SPAppointmentDetailsResponse;
+import com.triton.nannypartners.utils.ConnectionDetector;
 import com.triton.nannypartners.utils.RestUtils;
 import com.wang.avi.AVLoadingIndicatorView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import retrofit2.Call;
@@ -183,8 +189,12 @@ public class SPInvoiceActivity extends AppCompatActivity {
         img_notification.setVisibility(View.GONE);
 
 
-
         img_back.setOnClickListener(v -> onBackPressed());
+
+        if (new ConnectionDetector(SPInvoiceActivity.this).isNetworkAvailable(SPInvoiceActivity.this)) {
+            spAppointmentDetailsResponse();
+        }
+
 
 
     }
@@ -434,6 +444,62 @@ public class SPInvoiceActivity extends AppCompatActivity {
 
 
     }
+
+    @SuppressLint({"LongLogTag", "LogNotTimber"})
+    private void appoinmentCompleteResponseCall(String id) {
+        avi_indicator.setVisibility(View.VISIBLE);
+        avi_indicator.smoothToShow();
+        RestApiInterface apiInterface = APIClient.getClient().create(RestApiInterface.class);
+        Call<AppoinmentCompleteResponse> call = apiInterface.spappoinmentCompleteResponseCall(RestUtils.getContentType(), appoinmentCompleteRequest(id));
+        Log.w(TAG,"AppoinmentCompleteResponse url  :%s"+" "+ call.request().url().toString());
+
+        call.enqueue(new Callback<AppoinmentCompleteResponse>() {
+            @SuppressLint("LogNotTimber")
+            @Override
+            public void onResponse(@NonNull Call<AppoinmentCompleteResponse> call, @NonNull Response<AppoinmentCompleteResponse> response) {
+
+                Log.w(TAG,"AppoinmentCompleteResponse"+ "--->" + new Gson().toJson(response.body()));
+
+                avi_indicator.smoothToHide();
+
+                if (response.body() != null) {
+                    if(response.body().getCode() == 200){
+                        startActivity(new Intent(getApplicationContext(), ServiceProviderDashboardActivity.class));
+                    }
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<AppoinmentCompleteResponse> call, @NonNull Throwable t) {
+
+                avi_indicator.smoothToHide();
+                Log.w(TAG,"AppoinmentCompleteResponseflr"+"--->" + t.getMessage());
+            }
+        });
+
+    }
+    @SuppressLint({"LongLogTag", "LogNotTimber"})
+    private AppoinmentCompleteRequest appoinmentCompleteRequest(String id) {
+        /*
+         * _id : 5fc639ea72fc42044bfa1683
+         * completed_at : 23-10-2000 10 : 00 AM
+         * appoinment_status : Completed
+         */
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm aa", Locale.getDefault());
+        String currentDateandTime = sdf.format(new Date());
+
+        AppoinmentCompleteRequest appoinmentCompleteRequest = new AppoinmentCompleteRequest();
+        appoinmentCompleteRequest.set_id(id);
+        appoinmentCompleteRequest.setCompleted_at(currentDateandTime);
+        appoinmentCompleteRequest.setAppoinment_status("Completed");
+        Log.w(TAG,"appoinmentCompleteRequest"+ "--->" + new Gson().toJson(appoinmentCompleteRequest));
+        return appoinmentCompleteRequest;
+    }
+
 
 
 
