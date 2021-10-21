@@ -937,7 +937,7 @@ public class ServiceProviderDashboardActivity  extends ServiceProviderNavigation
         super.onStart();
         // starting the service
         Log.w(TAG, "lifecycle : onStart : " );
-       /* SessionManager session = new SessionManager(getApplicationContext());
+        SessionManager session = new SessionManager(getApplicationContext());
         HashMap<String, String> user = session.getProfileDetails();
         userid = user.get(SessionManager.KEY_ID);
 
@@ -948,7 +948,7 @@ public class ServiceProviderDashboardActivity  extends ServiceProviderNavigation
             {
                 fetchRequestResponseCall();
             }
-        }, delay, period);*/
+        }, delay, period);
     }
 
     @Override
@@ -956,34 +956,34 @@ public class ServiceProviderDashboardActivity  extends ServiceProviderNavigation
         super.onPause();
         // stopping the service
         Log.w(TAG, "lifecycle : onPause : " );
-        //timers.cancel();
+        timers.cancel();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Log.w(TAG, "lifecycle : OnResume");
-        /*timers.scheduleAtFixedRate(new TimerTask()
+        timers.scheduleAtFixedRate(new TimerTask()
         {
             public void run()
             {
                 fetchRequestResponseCall();
             }
-        }, delay, period);*/
+        }, delay, period);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.w(TAG, "lifecycle : onDestroy");
-        //timers.cancel();
+      timers.cancel();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         Log.w(TAG, "lifecycle : onStop");
-        //timers.cancel();
+        timers.cancel();
     }
 
         @SuppressLint("LongLogTag")
@@ -1003,6 +1003,8 @@ public class ServiceProviderDashboardActivity  extends ServiceProviderNavigation
                             FetchServiceProviderResponse.DataBean dataBean = response.body().getData();
 
                             if(dataBean.get_id()!=null&&!dataBean.get_id().isEmpty()){
+
+                                timers.cancel();
 
                                 showPopupayout(dataBean);
                             }
@@ -1173,12 +1175,12 @@ public class ServiceProviderDashboardActivity  extends ServiceProviderNavigation
 
         }*/
 
-        timer = new CountDownTimer(20000, 1000) {
+        timer = new CountDownTimer(40000, 1000) {
             @SuppressLint({"DefaultLocale", "SetTextI18n"})
             @Override
             public void onTick(long millisUntilFinished) {
                 rl_root.setVisibility(View.VISIBLE);
-                txt_timer_count.setText(getResources().getString(R.string.resendotp)+" " + String.format("%02d : %02d ",
+                txt_timer_count.setText(" " + String.format("%02d : %02d ",
                         TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
                                 TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
@@ -1195,6 +1197,8 @@ public class ServiceProviderDashboardActivity  extends ServiceProviderNavigation
 
                     timeExistResponseCall(dataBean.get_id());
                 }
+
+                dialog.dismiss();
 
 
             }
@@ -1391,6 +1395,16 @@ public class ServiceProviderDashboardActivity  extends ServiceProviderNavigation
             public void onClick(View v) {
 
                 alertDialog.dismiss();
+
+                timers.scheduleAtFixedRate(new TimerTask()
+                {
+                    public void run()
+                    {
+                        fetchRequestResponseCall();
+                    }
+                }, delay, period);
+
+
             }
         });
 
@@ -1474,6 +1488,14 @@ public class ServiceProviderDashboardActivity  extends ServiceProviderNavigation
             public void onClick(View v) {
 
                 alertDialog.dismiss();
+
+                timers.scheduleAtFixedRate(new TimerTask()
+                {
+                    public void run()
+                    {
+                        fetchRequestResponseCall();
+                    }
+                }, delay, period);
             }
         });
 
