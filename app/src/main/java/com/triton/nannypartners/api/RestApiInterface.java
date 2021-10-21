@@ -177,6 +177,22 @@ public interface RestApiInterface {
     @POST("service_provider/mobile/service_cat")
     Call<ServiceCatResponse> ServiceCatResponseCall(@Header("Content-Type") String type, @Body ServiceCatRequest serviceCatRequest);
 
+    /*Sub Service list*/
+    @POST("sp_sub_services/subservice_by_id1")
+    Call<SubServiceCatResponse> SubServiceCatResponseCall(@Header("Content-Type") String type, @Body SubServiceCatRequest subServiceCatRequest);
+
+    /*Sub Service update*/
+    @POST("sub_service_storage/update")
+    Call<SuccessResponse> SubServiceUpdateResponseCall(@Header("Content-Type") String type, @Body SubServiceUpdateRequest subServiceUpdateRequest);
+
+    /*Services list*/
+    @POST("sub_service_storage/fetch_service_data")
+    Call<FetchServiceDataResponse> fetchServiceDataResponseCall(@Header("Content-Type") String type, @Body FetchServiceDataRequest fetchServiceDataRequest);
+
+    /*Remove service*/
+    @POST("sub_service_storage/remove_service")
+    Call<SuccessResponse> removeServiceRepsonseCall(@Header("Content-Type") String type, @Body ServiceDeleteRequest serviceDeleteRequest);
+
     /*Service Details*/
     @POST("service_provider/mobile/sp_fetch_by_id")
     Call<SPDetailsRepsonse> SPDetailsRepsonseCall(@Header("Content-Type") String type, @Body SPDetailsRequest spDetailsRequest);

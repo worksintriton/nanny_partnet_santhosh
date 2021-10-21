@@ -15,7 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.triton.nannypartners.R;
 import com.triton.nannypartners.interfaces.SPSpecialzationChckedListener;
-import com.triton.nannypartners.responsepojo.SPServiceListResponse;
+import com.triton.nannypartners.requestpojo.ServiceProviderRegisterFormCreateRequest;
+import com.triton.nannypartners.responsepojo.ServiceListResponse;
 import com.triton.nannypartners.responsepojo.ServiceProviderRegisterFormCreateResponse;
 
 import java.util.List;
@@ -25,13 +26,13 @@ public class SPSpecialzationListEditAdapter extends  RecyclerView.Adapter<Recycl
 
     private  String TAG = "SPSpecialzationListEditAdapter";
     private Context mcontext;
-    private List<SPServiceListResponse.DataBean.SpecializationBean> spSpecialzationList;
-    SPServiceListResponse.DataBean.SpecializationBean currentItem;
-    private SPSpecialzationChckedListener spSpecialzationChckedListener;
+    private List<ServiceListResponse.DataBean.SpecializationBean> spSpecialzationList;
     private List<ServiceProviderRegisterFormCreateResponse.DataBean.BusSpecListBean> spSpecialzationListEdit;
+    ServiceListResponse.DataBean.SpecializationBean currentItem;
+    private SPSpecialzationChckedListener spSpecialzationChckedListener;
 
 
-    public SPSpecialzationListEditAdapter(Context context, List<SPServiceListResponse.DataBean.SpecializationBean> spSpecialzationList,List<ServiceProviderRegisterFormCreateResponse.DataBean.BusSpecListBean> spSpecialzationListEdit, SPSpecialzationChckedListener spSpecialzationChckedListener) {
+    public SPSpecialzationListEditAdapter(Context context, List<ServiceListResponse.DataBean.SpecializationBean> spSpecialzationList,List<ServiceProviderRegisterFormCreateResponse.DataBean.BusSpecListBean> spSpecialzationListEdit, SPSpecialzationChckedListener spSpecialzationChckedListener) {
         this.spSpecialzationList = spSpecialzationList;
         this.spSpecialzationListEdit = spSpecialzationListEdit;
         this.mcontext = context;

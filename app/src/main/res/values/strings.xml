@@ -11,6 +11,10 @@
     <string name="email">Email</string>
     <string name="phone">Phone</string>
     <string name="characters">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="choose_service_type">Choose service type</string>
+    <string name="choose_sub_service_type">Choose sub service type</string>
+    <string name="deletemsgservice">Are you sure you want to delete this service details?</string>
+
 
     <string name="usertypes">usertypes</string>
     <string name="verification">Verification</string>

@@ -23,9 +23,9 @@ import com.triton.nannypartners.serviceprovider.ChooseSubServiceTypeActivity;
 import java.util.List;
 
 
-public class ServiceDetailsAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>  {
+public class ServiceDetailsEditAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
-    private  String TAG = "ServiceDetailsAdapter";
+    private  String TAG = "ServiceDetailsEditAdapter";
     private Context context;
     List<FetchServiceDataResponse.DataBean> spServiceList;
 
@@ -34,7 +34,7 @@ public class ServiceDetailsAdapter extends  RecyclerView.Adapter<RecyclerView.Vi
     ServiceDeleteListener serviceDeleteListener;
     private String concatenatedStarNames = "";
 
-    public ServiceDetailsAdapter(Context context, List<FetchServiceDataResponse.DataBean> spServiceList, ServiceDeleteListener serviceDeleteListener) {
+    public ServiceDetailsEditAdapter(Context context, List<FetchServiceDataResponse.DataBean> spServiceList, ServiceDeleteListener serviceDeleteListener) {
         this.context = context;
         this.spServiceList = spServiceList;
         this.serviceDeleteListener = serviceDeleteListener;
