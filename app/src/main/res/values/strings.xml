@@ -612,4 +612,8 @@
     <string name="start">Start Service</string>
     <string name="invoice">View Invoice</string>
     <string name="stop">Stop</string>
+    <string name="sno">S.No</string>
+    <string name="dated">Service Title</string>
+    <string name="added">Hours</string>
+    <string name="image_description">Image</string>
 </resources>

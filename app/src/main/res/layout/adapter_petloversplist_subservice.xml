@@ -17,7 +17,7 @@
             android:id="@+id/img_petservice"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/images_avatar"
+            android:background="@drawable/app_logo"
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription" />
 

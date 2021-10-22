@@ -21,6 +21,12 @@
         <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/fragment_shop_vendor.xml" value="0.12360688956433637" />
         <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/menu/popup_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/menu/popup_menus.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/activity_view_spinvoice.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/adapter_petlover_services.xml" value="0.14375" />
+        <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/adapter_petloversplist.xml" value="0.14375" />
+        <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/adapter_petloversplist_subservice.xml" value="0.14375" />
+        <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/alert_sp_accept_reject_appointment.xml" value="0.4" />
+        <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/sliding_image_banner_new.xml" value="0.14375" />
         <entry key="..\:/Workspace/Petfolio_Clone_Nann_Partners/app/src/main/res/layout/activity_add_my_address.xml" value="0.2" />
         <entry key="..\:/Workspace/Petfolio_Clone_Nann_Partners/app/src/main/res/layout/activity_add_my_address_spactivity.xml" value="0.275" />
         <entry key="..\:/Workspace/Petfolio_Clone_Nann_Partners/app/src/main/res/layout/activity_custspappointment_details.xml" value="0.275" />
@@ -90,7 +96,7 @@
       <item index="0" class="java.lang.String" itemvalue="android.annotation.SuppressLint" />
     </list>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
