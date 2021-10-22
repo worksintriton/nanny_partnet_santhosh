@@ -21,7 +21,6 @@ import java.util.List;
 public class EditServiceImageListAdapter extends RecyclerView.Adapter<EditServiceImageListAdapter.AddImageListHolder> {
     private String TAG = "EditServiceImageListAdapter";
     Context context;
-
     private List<ServiceProviderRegisterFormCreateResponse.DataBean.BusServiceGallBean> bus_service_gall_list_edit;
 
     private List<ServiceProviderRegisterFormCreateRequest.BusServiceGallBean> bus_service_gall_list;

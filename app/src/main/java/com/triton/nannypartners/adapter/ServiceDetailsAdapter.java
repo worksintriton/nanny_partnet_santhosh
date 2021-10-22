@@ -3,41 +3,41 @@ package com.triton.nannypartners.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.triton.nannypartners.R;
-import com.triton.nannypartners.interfaces.ServiceDeleteListener;
-import com.triton.nannypartners.requestpojo.FetchServiceDataResponse;
-import com.triton.nannypartners.serviceprovider.ChooseSubServiceTypeActivity;
+import com.triton.nannypartners.doctor.shop.DoctorListOfProductsSeeMoreActivity;
+import com.triton.nannypartners.interfaces.SPServiceCheckedListener;
+import com.triton.nannypartners.petlover.ListOfProductsSeeMoreActivity;
+import com.triton.nannypartners.responsepojo.ServiceListResponse;
+import com.triton.nannypartners.responsepojo.ShopDashboardResponse;
+import com.triton.nannypartners.serviceprovider.shop.SPListOfProductsSeeMoreActivity;
 
 import java.util.List;
 
 
-public class ServiceDetailsAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>  {
+public class ServiceDetailsAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder> implements SPServiceCheckedListener {
 
     private  String TAG = "ServiceDetailsAdapter";
     private Context context;
-    List<FetchServiceDataResponse.DataBean> spServiceList;
+    private List<ServiceListResponse.DataBean.ServiceListBean> spServiceList;
 
-    FetchServiceDataResponse.DataBean currentItem;
+    ServiceListResponse.DataBean.ServiceListBean currentItem;
     String fromactivity;
-    ServiceDeleteListener serviceDeleteListener;
-    private String concatenatedStarNames = "";
+    SPServiceCheckedListener spServiceCheckedListener;
 
-    public ServiceDetailsAdapter(Context context, List<FetchServiceDataResponse.DataBean> spServiceList, ServiceDeleteListener serviceDeleteListener) {
+    public ServiceDetailsAdapter(Context context, List<ServiceListResponse.DataBean.ServiceListBean> spServiceList, SPServiceCheckedListener spServiceCheckedListener) {
         this.context = context;
         this.spServiceList = spServiceList;
-        this.serviceDeleteListener = serviceDeleteListener;
+        this.spServiceCheckedListener = spServiceCheckedListener;
 
     }
 
@@ -57,63 +57,18 @@ public class ServiceDetailsAdapter extends  RecyclerView.Adapter<RecyclerView.Vi
     private void initLayoutOne(ViewHolderOne holder, final int position) {
 
         currentItem = spServiceList.get(position);
-        if(spServiceList != null && spServiceList.size()>0){
+        if(spServiceList.get(position).getSub_service_list() != null && spServiceList.get(position).getSub_service_list().size()>0){
             holder.txt_servicename.setVisibility(View.VISIBLE);
-            holder.txt_subservicename.setVisibility(View.VISIBLE);
+            holder.rv_subservices_list.setVisibility(View.VISIBLE);
             holder.txt_servicename.setText(currentItem.getService_name());
-
-            if(spServiceList.get(position).getSubsericelist() != null){
-                concatenatedStarNames = "";
-                for (int i = 0; i < spServiceList.get(position).getSubsericelist().size(); i++) {
-                    if(spServiceList.get(position).getSubsericelist().get(i).isIsservice()){
-                        concatenatedStarNames += spServiceList.get(position).getSubsericelist().get(i).getTitle();
-                        if (i < spServiceList.get(position).getSubsericelist().size() - 1) concatenatedStarNames += ", ";
-                        holder.txt_subservicename.setText(concatenatedStarNames);
-                        Log.w(TAG," concatenatedStarNames : "+concatenatedStarNames);
-                    }
-
-                }
-
-
-            }
         }else{
             holder.txt_servicename.setVisibility(View.GONE);
-            holder.txt_subservicename.setVisibility(View.GONE);
+            holder.rv_subservices_list.setVisibility(View.GONE);
         }
-
-        holder.img_settings.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                //Creating the instance of PopupMenu
-                PopupMenu popup = new PopupMenu(context, v);
-                //Inflating the Popup using xml file
-                popup.getMenuInflater().inflate(R.menu.popup_menus, popup.getMenu());
-
-                //registering popup with OnMenuItemClickListener
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    public boolean onMenuItemClick(MenuItem item) {
-                        String titleName = String.valueOf(item.getTitle());
-                        if(titleName != null && titleName.equalsIgnoreCase("Edit")){
-                                Intent i = new Intent(context, ChooseSubServiceTypeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                i.putExtra("ServiceId", spServiceList.get(position).getSubsericelist().get(0).getService_id());
-                                i.putExtra("ServiceName", spServiceList.get(position).getService_name());
-                                i.putExtra("fromactivity", TAG);
-                                context.startActivity(i);
-
-
-                        }
-                        else if(titleName != null && titleName.equalsIgnoreCase("Delete")){
-                            serviceDeleteListener.serviceDeleteListener(spServiceList.get(position).getService_name());
-                        }
-                        return true;
-                    }
-                });
-
-                popup.show();//showing popup menu
-            }
-        });
-
+        holder.rv_subservices_list.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        holder.rv_subservices_list.setItemAnimator(new DefaultItemAnimator());
+        SubServiceDetailsAdapter subServiceDetailsAdapter  = new SubServiceDetailsAdapter(context,spServiceList.get(position).getSub_service_list(),fromactivity,this,spServiceList);
+        holder.rv_subservices_list.setAdapter(subServiceDetailsAdapter);
     }
 
     @Override
@@ -127,20 +82,32 @@ public class ServiceDetailsAdapter extends  RecyclerView.Adapter<RecyclerView.Vi
         return position;
     }
 
+    @Override
+    public void onItemSPServiceCheck(int position, String specValue, boolean isChbxChecked,String servicename) {
+        spServiceCheckedListener.onItemSPServiceCheck(position,specValue,isChbxChecked,servicename);
+    }
 
+    @Override
+    public void onItemSPServiceUnCheck(int position, String specValue, boolean isChbxChecked,String servicename) {
+        spServiceCheckedListener.onItemSPServiceUnCheck(position,specValue,isChbxChecked,servicename);
+    }
 
     public class ViewHolderOne extends RecyclerView.ViewHolder {
-        public TextView txt_servicename,txt_subservicename;
-        public ImageView img_settings;
+        public TextView txt_servicename;
+        RecyclerView rv_subservices_list;
 
 
         public ViewHolderOne(View itemView) {
             super(itemView);
 
             txt_servicename = itemView.findViewById(R.id.txt_servicename);
-            txt_subservicename = itemView.findViewById(R.id.txt_subservicename);
-            img_settings = itemView.findViewById(R.id.img_settings);
+            rv_subservices_list = itemView.findViewById(R.id.rv_subservices_list);
 
+         /*   if(product_details.get(getAdapterPosition()).getProduct_list() != null && product_details.get(getAdapterPosition()).getProduct_list().size()>0) {
+                Intent intent = new Intent(context, DoctorListOfProductsSeeMoreActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("cat_id", product_details.get(getAdapterPosition()).getCat_id());
+                context.startActivity(intent);
+            }*/
 
 
 

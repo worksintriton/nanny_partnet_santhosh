@@ -1198,10 +1198,7 @@ public class ServiceProviderDashboardActivity  extends ServiceProviderNavigation
                     timeExistResponseCall(dataBean.get_id());
                 }
 
-                if(dialog != null){
-                    dialog.dismiss();
-                }
-
+                dialog.dismiss();
 
 
             }

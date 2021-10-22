@@ -94,43 +94,16 @@
             </RelativeLayout>
 
             <!--Add your service-->
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="10dp"
-                tools:ignore="UseCompoundDrawables">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/futuramediumbt"
-                    android:text="@string/addyourservices"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:gravity="center_vertical"
-                    />
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end">
-                    <ImageView
-                        android:id="@+id/img_add_new_service"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:contentDescription="@string/image"
-                        app:srcCompat="@drawable/addaddr"
-                        />
-                </RelativeLayout>
-
-
-
-            </LinearLayout>
-
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/futuramediumbt"
+                android:padding="2dp"
+                android:text="@string/addyourservices"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
             <androidx.cardview.widget.CardView
                 android:id="@+id/cdvw_service"
                 android:layout_width="match_parent"
@@ -152,9 +125,8 @@
                         android:id="@+id/rcylr_sp_servicelist"
                         android:layout_width="match_parent"
                         android:layout_marginTop="10dp"
-                        android:layout_height="180dp"
+                        android:layout_height="140dp"
                         android:scrollbars="vertical"
-                        android:layout_marginBottom="20dp"
                        />
 
                     <TextView
@@ -167,7 +139,6 @@
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:visibility="gone"
-                        android:layout_marginBottom="10dp"
                        />
 
                     <RelativeLayout
@@ -238,6 +209,7 @@
                 android:text="@string/specialization"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cdvw_specialization"
                 android:layout_width="match_parent"
@@ -251,16 +223,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp">
+                    android:layout_marginEnd="10dp"
+                    android:orientation="vertical">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rcylr_sp_specializationlist"
                         android:layout_width="match_parent"
-                        android:layout_marginTop="10dp"
                         android:layout_height="wrap_content"
-                        />
+                        android:layout_marginTop="10dp" />
 
                     <TextView
                         android:id="@+id/txt_no_records_specialization"
@@ -271,17 +242,15 @@
                         android:text="@string/norecordsfound"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:visibility="gone"
-                        />
+                        android:visibility="gone" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/layout_bg"
                         android:layout_marginBottom="10dp"
-                        android:visibility="gone">
+                        android:background="@drawable/layout_bg"
+                        android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/edt_specialization_ifany"
@@ -319,8 +288,6 @@
                             tools:ignore="RelativeOverlap" />
 
 
-
-
                     </RelativeLayout>
 
 
@@ -328,6 +295,7 @@
 
 
             </androidx.cardview.widget.CardView>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcylr_sp_specializationstaticlist"
                 android:layout_width="match_parent"

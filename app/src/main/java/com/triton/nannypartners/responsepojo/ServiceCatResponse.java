@@ -67,16 +67,6 @@ public class ServiceCatResponse {
         private String title;
         private String sub_title;
 
-        private boolean isSelected ;
-        public boolean isSelected() {
-            return isSelected;
-        }
-
-        public void setSelected(boolean selected) {
-            isSelected = selected;
-        }
-
-
 
         public String get_id() {
             return _id;

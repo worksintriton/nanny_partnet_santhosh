@@ -5,13 +5,12 @@ import java.util.List;
 
 public class ServiceProviderRegisterFormCreateRequest implements Serializable {
 
-
     /**
      * bus_certif : [{"bus_certif":"http://54.193.18.54:3000/api/uploads/1634205831306.jpg"}]
      * bus_profile : http://54.193.18.54:3000/api/uploads/1634205803590.jpg
      * bus_proof : http://54.193.18.54:3000/api/uploads/1634205820909.jpg
      * bus_service_gall : [{"bus_service_gall":"http://54.193.18.54:3000/api/uploads/1634205785736.jpg"}]
-     * bus_service_list : [{"service_name":"Pet Grooming","subsericelist":[{"_id":"6164231b65d9a57d7fc9575e","isservice":false,"service_id":"5ff7f5171c72093650a13a14","title":"Sub Service 1"},{"_id":"6164232765d9a57d7fc9575f","isservice":true,"service_id":"5ff7f5171c72093650a13a14","title":"Sub Service 2"}]},{"service_name":" Pet Training","subsericelist":[{"_id":"6164232d65d9a57d7fc95760","isservice":true,"service_id":"5ff815d4414b1052a09bb2b1","title":"Sub Service 2"}]}]
+     * bus_service_list : [{"service_name":"Vet care","subsericelist":[{"sub_service_title":"Vat care1"},{"sub_service_title":"Vat care2"},{"sub_service_title":"Vat care3"}]}]
      * bus_spec_list : [{"bus_spec_list":"Kennel Cut"}]
      * bus_user_email : iddineshkumar@gmail.com
      * bus_user_name : DINESH
@@ -45,16 +44,6 @@ public class ServiceProviderRegisterFormCreateRequest implements Serializable {
     private String sp_loc;
     private double sp_long;
     private String user_id;
-    private String _id;
-
-    public String get_id() {
-        return _id;
-    }
-
-    public void set_id(String _id) {
-        this._id = _id;
-    }
-
     /**
      * bus_certif : http://54.193.18.54:3000/api/uploads/1634205831306.jpg
      */
@@ -66,11 +55,11 @@ public class ServiceProviderRegisterFormCreateRequest implements Serializable {
 
     private List<BusServiceGallBean> bus_service_gall;
     /**
-     * service_name : Pet Grooming
-     * subsericelist : [{"_id":"6164231b65d9a57d7fc9575e","isservice":false,"service_id":"5ff7f5171c72093650a13a14","title":"Sub Service 1"},{"_id":"6164232765d9a57d7fc9575f","isservice":true,"service_id":"5ff7f5171c72093650a13a14","title":"Sub Service 2"}]
+     * service_name : Vet care
+     * subsericelist : [{"sub_service_title":"Vat care1"},{"sub_service_title":"Vat care2"}]
      */
 
-    private List<FetchServiceDataResponse.DataBean> bus_service_list;
+    private List<BusServiceListBean> bus_service_list;
     /**
      * bus_spec_list : Kennel Cut
      */
@@ -221,11 +210,11 @@ public class ServiceProviderRegisterFormCreateRequest implements Serializable {
         this.bus_service_gall = bus_service_gall;
     }
 
-    public List<FetchServiceDataResponse.DataBean> getBus_service_list() {
+    public List<BusServiceListBean> getBus_service_list() {
         return bus_service_list;
     }
 
-    public void setBus_service_list(List<FetchServiceDataResponse.DataBean> bus_service_list) {
+    public void setBus_service_list(List<BusServiceListBean> bus_service_list) {
         this.bus_service_list = bus_service_list;
     }
 
@@ -237,7 +226,7 @@ public class ServiceProviderRegisterFormCreateRequest implements Serializable {
         this.bus_spec_list = bus_spec_list;
     }
 
-    public static class BusCertifBean implements Serializable {
+    public static class BusCertifBean implements  Serializable{
         private String bus_certif;
 
         public String getBus_certif() {
@@ -264,10 +253,7 @@ public class ServiceProviderRegisterFormCreateRequest implements Serializable {
     public static class BusServiceListBean implements Serializable {
         private String service_name;
         /**
-         * _id : 6164231b65d9a57d7fc9575e
-         * isservice : false
-         * service_id : 5ff7f5171c72093650a13a14
-         * title : Sub Service 1
+         * sub_service_title : Vat care1
          */
 
         private List<SubsericelistBean> subsericelist;
@@ -289,46 +275,19 @@ public class ServiceProviderRegisterFormCreateRequest implements Serializable {
         }
 
         public static class SubsericelistBean implements Serializable{
-            private String _id;
-            private boolean isservice;
-            private String service_id;
-            private String title;
+            private String sub_service_title;
 
-            public String get_id() {
-                return _id;
+            public String getSub_service_title() {
+                return sub_service_title;
             }
 
-            public void set_id(String _id) {
-                this._id = _id;
-            }
-
-            public boolean isIsservice() {
-                return isservice;
-            }
-
-            public void setIsservice(boolean isservice) {
-                this.isservice = isservice;
-            }
-
-            public String getService_id() {
-                return service_id;
-            }
-
-            public void setService_id(String service_id) {
-                this.service_id = service_id;
-            }
-
-            public String getTitle() {
-                return title;
-            }
-
-            public void setTitle(String title) {
-                this.title = title;
+            public void setSub_service_title(String sub_service_title) {
+                this.sub_service_title = sub_service_title;
             }
         }
     }
 
-    public static class BusSpecListBean implements Serializable {
+    public static class BusSpecListBean implements Serializable{
         private String bus_spec_list;
 
         public String getBus_spec_list() {
