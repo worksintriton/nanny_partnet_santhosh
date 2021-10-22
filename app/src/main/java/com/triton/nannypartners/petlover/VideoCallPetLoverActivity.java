@@ -13,8 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.triton.nannypartners.R;
 import com.triton.nannypartners.sessionmanager.SessionManager;
 
-
-
 import java.util.HashMap;
 
 import butterknife.BindView;
@@ -86,7 +84,7 @@ public class VideoCallPetLoverActivity extends AppCompatActivity  {
 
 
 
-       /* // Initialize default options for Jitsi Meet conferences.
+        /*// Initialize default options for Jitsi Meet conferences.
         URL serverURL;
         try {
             serverURL = new URL("https://meet.jit.si");
@@ -113,7 +111,7 @@ public class VideoCallPetLoverActivity extends AppCompatActivity  {
 
     }
 
-   /* @Override
+  /*  @Override
     public void requestPermissions(String[] strings, int i, PermissionListener permissionListener) {
 
     }
@@ -130,9 +128,9 @@ public class VideoCallPetLoverActivity extends AppCompatActivity  {
         JitsiMeetLogger.i("Conference terminated: " + data);
         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         finish();
-    }*/
+    }
 
-   /* @Override
+    @Override
     public void onConferenceWillJoin(Map<String, Object> data) {
         JitsiMeetLogger.i("Conference will join: " + data);
     }

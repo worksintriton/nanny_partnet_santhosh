@@ -3,16 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/drawable/user_type_bgm.xml" value="0.2703125" />
+        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/activity_manage_address.xml" value="0.25416666666666665" />
+        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/activity_petappointment_details.xml" value="0.14175724637681159" />
+        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/activity_service_provider_edit_form.xml" value="0.13541666666666666" />
         <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/activity_service_provider_register_form.xml" value="0.25416666666666665" />
+        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/activity_service_user_type.xml" value="0.25416666666666665" />
+        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/activity_sign_up.xml" value="0.25416666666666665" />
+        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/activity_sub_service_user_type.xml" value="0.25416666666666665" />
+        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/adapter_address_list.xml" value="0.14175724637681159" />
         <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/adapter_parent_servicelist.xml" value="0.25416666666666665" />
         <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/adapter_parent_subservlist.xml" value="0.25416666666666665" />
-        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/adapter_petlover_services.xml" value="0.24010416666666667" />
-        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/adapter_petloversplist.xml" value="0.11676798378926039" />
-        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/adapter_petloversplist_subservice.xml" value="0.24010416666666667" />
         <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/adapter_shop_productdetails.xml" value="0.25416666666666665" />
+        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/adapter_subservices_cardview.xml" value="0.25416666666666665" />
+        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/adapter_usertypes_cardview.xml" value="0.25416666666666665" />
         <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/alert_success_register.xml" value="0.12360688956433637" />
         <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/fragment_shop_vendor.xml" value="0.12360688956433637" />
-        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/layout/sliding_image_banner_new.xml" value="0.13020833333333334" />
+        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/menu/popup_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/TritonAppsGIt/nanny_partnet_santhosh/app/src/main/res/menu/popup_menus.xml" value="0.25416666666666665" />
         <entry key="..\:/Workspace/Petfolio_Clone_Nann_Partners/app/src/main/res/layout/activity_add_my_address.xml" value="0.2" />
         <entry key="..\:/Workspace/Petfolio_Clone_Nann_Partners/app/src/main/res/layout/activity_add_my_address_spactivity.xml" value="0.275" />
         <entry key="..\:/Workspace/Petfolio_Clone_Nann_Partners/app/src/main/res/layout/activity_custspappointment_details.xml" value="0.275" />
@@ -64,25 +72,16 @@
         <entry key="..\:/Workspace/Petfolio_Clone_Nann_Partners/app/src/main/res/layout/alert_sp_appointment_accept_success_layout.xml" value="0.275" />
         <entry key="..\:/Workspace/Petfolio_Clone_Nann_Partners/app/src/main/res/layout/alert_sp_appointment_reject_layout.xml" value="0.275" />
         <entry key="..\:/Workspace/Petfolio_Clone_Nann_Partners/app/src/main/res/layout/vendor_details_view_popup_layout.xml" value="0.275" />
-        <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/drawable/rectangular_corner_bg_lightgrey.xml" value="0.290625" />
-        <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/activity_petlover_choose_service.xml" value="0.27447916666666666" />
-        <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/activity_petlover_service_choose_payment_method.xml" value="0.27447916666666666" />
         <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/activity_service_provider_register_form.xml" value="0.2" />
         <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/activity_sp_appointment_details.xml" value="0.2" />
-        <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/activity_sp_invoice.xml" value="0.27447916666666666" />
-        <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/activity_verify_otp.xml" value="0.275" />
-        <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/activity_view_spinvoice.xml" value="0.27447916666666666" />
-        <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/adapter_petlover_dashboardproducts.xml" value="0.275" />
         <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/adapter_sp_custcompleted_appointment.xml" value="0.275" />
         <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/adapter_sp_custmissed_appointment.xml" value="0.275" />
         <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/adapter_sp_new_custappointment.xml" value="0.2" />
         <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/adapter_specialization_list.xml" value="0.275" />
-        <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/alert_approve_reject_layout.xml" value="0.275" />
         <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/alert_otp_layout.xml" value="0.2" />
-        <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/alert_sp_accept_reject_appointment.xml" value="0.3333333333333333" />
-        <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/alert_sp_appointment_accept_success_layout.xml" value="0.275" />
-        <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/alert_sp_appointment_reject_layout.xml" value="0.275" />
-        <entry key="..\:/Workspace/nanny_partnet_santhosh/app/src/main/res/layout/alert_sp_appointment_time_session_layout.xml" value="0.275" />
+        <entry key="..\:/nanny_partnet_santhosh/app/src/main/res/layout/activity_service_provider_edit_form.xml" value="0.25416666666666665" />
+        <entry key="..\:/nanny_partnet_santhosh/app/src/main/res/layout/activity_sub_service_user_type.xml" value="0.25416666666666665" />
+        <entry key="..\:/nanny_partnet_santhosh/app/src/main/res/menu/popup_menus.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

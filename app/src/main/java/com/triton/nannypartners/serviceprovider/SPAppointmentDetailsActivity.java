@@ -914,7 +914,7 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
                 break;
 
             case R.id.btn_viewinvoice:
-                startActivity(new Intent(SPAppointmentDetailsActivity.this,InvoiceViewActivity.class));
+
                 break;
 
         }
@@ -991,8 +991,6 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
 
                 if (response.body() != null) {
                     if(response.body().getCode() == 200){
-
-
 
                     }
 

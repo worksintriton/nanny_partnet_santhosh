@@ -74,7 +74,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/new_rounded_corner_btn"
                     android:fontFamily="@font/futuramediumbt"
-                    android:text="@string/back_to_login"
+                    android:text="@string/continues"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="18sp"

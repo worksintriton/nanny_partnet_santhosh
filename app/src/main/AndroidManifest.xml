@@ -22,7 +22,8 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- <uses-permission android:name="android.permission.RECEIVE_SMS" /> -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- <uses-permission android:name="android.permission.RECEIVE_SMS" /> -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
@@ -47,9 +48,7 @@
         tools:replace="android:allowBackup,icon,theme,label,name">
         <activity
             android:name=".serviceprovider.SPInvoiceActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustPan" >
+            android:exported="true">
 <!--        <intent-filter>-->
 <!--            <action android:name="android.intent.action.MAIN" />-->
 
@@ -57,13 +56,22 @@
 <!--        </intent-filter>-->
         </activity>
 
+
+        <activity android:name="com.canhub.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
+
+
         <activity
-            android:name=".serviceprovider.InvoiceViewActivity"
+            android:name=".serviceprovider.ChooseServiceTypeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name="com.canhub.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
+        <activity
+            android:name=".serviceprovider.ChooseSubServiceTypeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan" />
+
         <activity
             android:name=".serviceprovider.SPLoaderActivity"
             android:screenOrientation="portrait"
@@ -1018,11 +1026,6 @@
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_test_zioohqmxDjJJtd" />
-
-        <!-- Mention the service name here -->
-        <service android:name=".service.NewService"
-            />
-
     </application>
 
 </manifest>

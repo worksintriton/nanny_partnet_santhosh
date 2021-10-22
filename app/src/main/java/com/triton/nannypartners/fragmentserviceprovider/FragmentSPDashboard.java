@@ -27,7 +27,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.triton.nannypartners.R;
-import com.triton.nannypartners.activity.LoginActivity;
 import com.triton.nannypartners.api.APIClient;
 import com.triton.nannypartners.api.RestApiInterface;
 
@@ -278,7 +277,7 @@ public class FragmentSPDashboard extends Fragment  {
                 @Override
                 public void onClick(View view) {
                     if (new ConnectionDetector(getActivity()).isNetworkAvailable(getActivity())) {
-                        startActivity(new Intent(getContext(), LoginActivity.class));
+                        SPCheckStatusResponseCall();
                     }
                     dialog.dismiss();
 
@@ -312,7 +311,7 @@ public class FragmentSPDashboard extends Fragment  {
                 @Override
                 public void onClick(View view) {
                     if (new ConnectionDetector(getActivity()).isNetworkAvailable(getActivity())) {
-                        startActivity(new Intent(getContext(), LoginActivity.class));
+                        SPCheckStatusResponseCall();
                     }
                     dialog.dismiss();
 

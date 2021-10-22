@@ -3,7 +3,6 @@ package com.triton.nannypartners.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -14,30 +13,19 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.triton.nannypartners.R;
-import com.triton.nannypartners.activity.location.EditMyAddressActivity;
-import com.triton.nannypartners.activity.location.EditMyAddressDoctorActivity;
-import com.triton.nannypartners.doctor.shop.DoctorListOfProductsSeeMoreActivity;
-import com.triton.nannypartners.interfaces.SPServiceCheckedListener;
 import com.triton.nannypartners.interfaces.ServiceDeleteListener;
-import com.triton.nannypartners.petlover.ListOfProductsSeeMoreActivity;
 import com.triton.nannypartners.requestpojo.FetchServiceDataResponse;
-import com.triton.nannypartners.responsepojo.ServiceListResponse;
-import com.triton.nannypartners.responsepojo.ShopDashboardResponse;
 import com.triton.nannypartners.serviceprovider.ChooseSubServiceTypeActivity;
-import com.triton.nannypartners.serviceprovider.EditMyAddressSPActivity;
-import com.triton.nannypartners.serviceprovider.shop.SPListOfProductsSeeMoreActivity;
 
 import java.util.List;
 
 
-public class ServiceDetailsAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>  {
+public class ServiceDetailsEditAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
-    private  String TAG = "ServiceDetailsAdapter";
+    private  String TAG = "ServiceDetailsEditAdapter";
     private Context context;
     List<FetchServiceDataResponse.DataBean> spServiceList;
 
@@ -46,7 +34,7 @@ public class ServiceDetailsAdapter extends  RecyclerView.Adapter<RecyclerView.Vi
     ServiceDeleteListener serviceDeleteListener;
     private String concatenatedStarNames = "";
 
-    public ServiceDetailsAdapter(Context context, List<FetchServiceDataResponse.DataBean> spServiceList, ServiceDeleteListener serviceDeleteListener) {
+    public ServiceDetailsEditAdapter(Context context, List<FetchServiceDataResponse.DataBean> spServiceList, ServiceDeleteListener serviceDeleteListener) {
         this.context = context;
         this.spServiceList = spServiceList;
         this.serviceDeleteListener = serviceDeleteListener;

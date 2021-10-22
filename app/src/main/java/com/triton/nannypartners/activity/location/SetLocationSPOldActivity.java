@@ -46,6 +46,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.triton.nannypartners.R;
 import com.triton.nannypartners.api.API;
+import com.triton.nannypartners.requestpojo.ServiceProviderRegisterFormCreateRequest;
 import com.triton.nannypartners.responsepojo.GetAddressResultResponse;
 import com.triton.nannypartners.service.GPSTracker;
 import com.triton.nannypartners.serviceprovider.ServiceProviderEditFormActivity;
@@ -53,6 +54,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -123,6 +125,9 @@ public class SetLocationSPOldActivity extends FragmentActivity implements OnMapR
     private String fromactivity;
     private String placesearchactivity;
 
+    private ArrayList<ServiceProviderRegisterFormCreateRequest> serviceProviderRegisterFormCreateRequestArrayList;
+
+
 
     @SuppressLint("LogNotTimber")
     @Override
@@ -138,6 +143,8 @@ public class SetLocationSPOldActivity extends FragmentActivity implements OnMapR
             fromactivity = extras.getString("fromactivity");
             placesearchactivity = extras.getString("placesearchactivity");
             Log.w(TAG,"fromactivity if : "+fromactivity+"placesearchactivity : "+placesearchactivity);
+            serviceProviderRegisterFormCreateRequestArrayList = (ArrayList<ServiceProviderRegisterFormCreateRequest>) getIntent().getSerializableExtra("serviceProviderRegisterFormCreateRequestArrayList");
+            Log.w(TAG,"serviceProviderRegisterFormCreateRequestArrayList : "+new Gson().toJson(serviceProviderRegisterFormCreateRequestArrayList));
 
         }else{
             fromactivity  = TAG;
@@ -189,7 +196,9 @@ public class SetLocationSPOldActivity extends FragmentActivity implements OnMapR
                     intent.putExtra("address",AddressLine);
                     intent.putExtra("PostalCode",PostalCode);
                     intent.putExtra("fromactivity",fromactivity);
+                    intent.putExtra("serviceProviderRegisterFormCreateRequestArrayList",serviceProviderRegisterFormCreateRequestArrayList);
                     startActivity(intent);
+                    finish();
             }else{
                 Toasty.warning(SetLocationSPOldActivity.this,"Please select citynmae",Toasty.LENGTH_SHORT).show();
             }
@@ -619,7 +628,6 @@ public class SetLocationSPOldActivity extends FragmentActivity implements OnMapR
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(SetLocationSPOldActivity.this, ServiceProviderEditFormActivity.class));
         finish();
     }
 

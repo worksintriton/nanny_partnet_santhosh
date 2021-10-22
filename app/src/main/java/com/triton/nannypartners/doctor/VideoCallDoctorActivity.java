@@ -35,7 +35,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class VideoCallDoctorActivity extends AppCompatActivity implements View.OnClickListener {
+public class VideoCallDoctorActivity extends AppCompatActivity implements  View.OnClickListener {
 
     private String TAG = "VideoCallDoctorActivity";
 
@@ -139,12 +139,12 @@ public class VideoCallDoctorActivity extends AppCompatActivity implements View.O
                 .build();
         // Launch the new activity with the given options. The launch() method takes care
         // of creating the required Intent and passing the options.
-        JitsiMeetActivity.launch(this, options);
-*/
+        JitsiMeetActivity.launch(this, options);*/
+
 
     }
 
-   /* @Override
+  /*  @Override
     public void requestPermissions(String[] strings, int i, PermissionListener permissionListener) {
 
     }
