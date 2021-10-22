@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.facebook.react.modules.core.PermissionListener;
 import com.google.gson.Gson;
 import com.triton.nannypartners.R;
 import com.triton.nannypartners.api.APIClient;
@@ -26,17 +25,8 @@ import com.triton.nannypartners.utils.ConnectionDetector;
 import com.triton.nannypartners.utils.RestUtils;
 import com.wang.avi.AVLoadingIndicatorView;
 
-import org.jitsi.meet.sdk.JitsiMeet;
-import org.jitsi.meet.sdk.JitsiMeetActivity;
-import org.jitsi.meet.sdk.JitsiMeetActivityInterface;
-import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
-import org.jitsi.meet.sdk.JitsiMeetViewListener;
-import org.jitsi.meet.sdk.log.JitsiMeetLogger;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,7 +35,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class VideoCallDoctorActivity extends AppCompatActivity implements JitsiMeetActivityInterface, JitsiMeetViewListener, View.OnClickListener {
+public class VideoCallDoctorActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String TAG = "VideoCallDoctorActivity";
 
@@ -127,7 +117,7 @@ public class VideoCallDoctorActivity extends AppCompatActivity implements JitsiM
         btn_petownernoshow.setOnClickListener(this);
 
 
-        // Initialize default options for Jitsi Meet conferences.
+      /*  // Initialize default options for Jitsi Meet conferences.
         URL serverURL;
         try {
             serverURL = new URL("https://meet.jit.si");
@@ -150,11 +140,11 @@ public class VideoCallDoctorActivity extends AppCompatActivity implements JitsiM
         // Launch the new activity with the given options. The launch() method takes care
         // of creating the required Intent and passing the options.
         JitsiMeetActivity.launch(this, options);
-
+*/
 
     }
 
-    @Override
+   /* @Override
     public void requestPermissions(String[] strings, int i, PermissionListener permissionListener) {
 
     }
@@ -175,7 +165,7 @@ public class VideoCallDoctorActivity extends AppCompatActivity implements JitsiM
     @Override
     public void onConferenceWillJoin(Map<String, Object> data) {
         JitsiMeetLogger.i("Conference will join: " + data);
-    }
+    }*/
 
     @Override
     public void onBackPressed() {

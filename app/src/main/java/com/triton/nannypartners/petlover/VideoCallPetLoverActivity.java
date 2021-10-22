@@ -10,29 +10,18 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.facebook.react.modules.core.PermissionListener;
 import com.triton.nannypartners.R;
-import com.triton.nannypartners.activity.LoginActivity;
 import com.triton.nannypartners.sessionmanager.SessionManager;
 
 
-import org.jitsi.meet.sdk.JitsiMeet;
-import org.jitsi.meet.sdk.JitsiMeetActivity;
-import org.jitsi.meet.sdk.JitsiMeetActivityInterface;
-import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
-import org.jitsi.meet.sdk.JitsiMeetViewListener;
-import org.jitsi.meet.sdk.log.JitsiMeetLogger;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class VideoCallPetLoverActivity extends AppCompatActivity implements JitsiMeetActivityInterface, JitsiMeetViewListener {
+public class VideoCallPetLoverActivity extends AppCompatActivity  {
     private String TAG = "VideoCallPetLoverActivity";
     SessionManager session;
     String logintype = "",id = "",type = "";
@@ -97,7 +86,7 @@ public class VideoCallPetLoverActivity extends AppCompatActivity implements Jits
 
 
 
-        // Initialize default options for Jitsi Meet conferences.
+       /* // Initialize default options for Jitsi Meet conferences.
         URL serverURL;
         try {
             serverURL = new URL("https://meet.jit.si");
@@ -119,12 +108,12 @@ public class VideoCallPetLoverActivity extends AppCompatActivity implements Jits
                 .build();
         // Launch the new activity with the given options. The launch() method takes care
         // of creating the required Intent and passing the options.
-        JitsiMeetActivity.launch(this, options);
+        JitsiMeetActivity.launch(this, options);*/
 
 
     }
 
-    @Override
+   /* @Override
     public void requestPermissions(String[] strings, int i, PermissionListener permissionListener) {
 
     }
@@ -141,13 +130,13 @@ public class VideoCallPetLoverActivity extends AppCompatActivity implements Jits
         JitsiMeetLogger.i("Conference terminated: " + data);
         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         finish();
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void onConferenceWillJoin(Map<String, Object> data) {
         JitsiMeetLogger.i("Conference will join: " + data);
     }
-
+*/
     @Override
     public void onBackPressed() {
         super.onBackPressed();
