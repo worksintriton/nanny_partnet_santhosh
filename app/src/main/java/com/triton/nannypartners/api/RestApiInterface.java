@@ -410,6 +410,13 @@ public interface RestApiInterface {
     @POST("sp_appointments/editappointment")
     Call<EndAppointmentStatusResponse> spStopAppointmentResponseCall(@Header("Content-Type") String type, @Body EndAppointmentStatusRequest endAppointmentStatusRequest);
 
+    /*SP time calculation update*/
+    @POST("sp_appointments/time_calculation_update")
+    Call<SPAppointmentProcessCompleteResponse> timeCalResponseCall(@Header("Content-Type") String type, @Body TimeCalRequest timeCalRequest);
+
+    /*SP Raise Invoice*/
+    @POST("sp_appointments/payment_status_update")
+    Call<SPAppointmentProcessCompleteResponse> payStatusUpdateResponseCall(@Header("Content-Type") String type, @Body TimeCalRequest timeCalRequest);
 
     /*Update Appointment Status complete*/
     @POST("sp_appointments/edit")

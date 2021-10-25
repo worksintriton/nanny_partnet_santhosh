@@ -122,7 +122,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <TextView
+                        <Chronometer
+                            android:id="@+id/chronometer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_14sp"
+                            android:layout_alignParentEnd="true"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/futuramediumbt"
+                            android:maxLines="1"
+                            android:visibility="gone"/>
+
+                      <!--  <TextView
                             android:id="@+id/txt_serv_timer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -130,9 +141,9 @@
                             android:ellipsize="end"
                             android:fontFamily="@font/futuramediumbt"
                             android:maxLines="1"
-                            android:text="@string/service_cost"
+                            android:text="06.00"
                             android:textSize="14sp"
-                            android:visibility="gone" />
+                            android:visibility="gone" />-->
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -156,7 +167,7 @@
                         android:text="@string/start"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         tools:ignore="ButtonStyle" />
 
                     <Button
@@ -167,7 +178,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
                         android:layout_weight="1"
-                        android:background="@drawable/orange_background_button"
+                        android:background="@drawable/rounded_color_red"
                         android:fontFamily="@font/futuramediumbt"
                         android:text="@string/stop"
                         android:textAllCaps="false"
@@ -190,6 +201,7 @@
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="12sp"
+                        android:visibility="visible"
                         tools:ignore="ButtonStyle" />
 
                     <Button
@@ -205,6 +217,7 @@
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="12sp"
+                        android:visibility="gone"
                         tools:ignore="ButtonStyle" />
 
 
@@ -266,7 +279,7 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/futuramediumbt"
                         android:maxLines="1"
-                        android:text="@string/doctor_name"
+                        android:text="@string/serv_name"
                         android:textColor="@color/new_light_black"
                         android:textSize="14sp"
                         android:textStyle="normal" />
@@ -332,7 +345,7 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/futuramediumbt"
                         android:maxLines="1"
-                        android:text="@string/type"
+                        android:text="06.00 PM"
                         android:textColor="@color/new_light_black"
                         android:textSize="14sp" />
 

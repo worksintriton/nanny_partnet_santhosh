@@ -6,6 +6,8 @@ public class AppoinmentCompleteRequest {
      * _id : 5fc639ea72fc42044bfa1683
      * completed_at : 23-10-2000 10 : 00 AM
      * appoinment_status : Completed
+     * work_status : customer paid,
+     *addition_payment_status: Paid
      */
 
     private String _id;
@@ -15,6 +17,24 @@ public class AppoinmentCompleteRequest {
     private String doctor_comment;
     private String diagnosis;
     private String sub_diagnosis;
+    private String work_status;
+    private String addition_payment_status;
+
+    public String getWork_status() {
+        return work_status;
+    }
+
+    public void setWork_status(String work_status) {
+        this.work_status = work_status;
+    }
+
+    public String getAddition_payment_status() {
+        return addition_payment_status;
+    }
+
+    public void setAddition_payment_status(String addition_payment_status) {
+        this.addition_payment_status = addition_payment_status;
+    }
 
     public String getDoctor_comment() {
         return doctor_comment;

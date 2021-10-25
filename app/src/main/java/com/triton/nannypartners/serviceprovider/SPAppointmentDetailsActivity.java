@@ -7,10 +7,13 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -54,6 +57,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
@@ -145,9 +150,9 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
     @BindView(R.id.txt_address)
     TextView txt_address;
 
-    @SuppressLint("NonConstantResourceId")
+    /*@SuppressLint("NonConstantResourceId")
     @BindView(R.id.txt_serv_timer)
-    TextView txt_serv_timer;
+    TextView txt_serv_timer;*/
 
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.scrollablContent)
@@ -163,7 +168,9 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
     @BindView(R.id.include_petlover_header)
     View include_petlover_header;
 
-
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.chronometer)
+    Chronometer chronometer;
 
     String appointment_id;
     String appoinment_status;
@@ -186,7 +193,9 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
     private String concatenatedStarNames = "";
     private String start_otp = "";
     private String end_otp = "";
-
+    CountDownTimer timer;
+    private long pauseOffset;
+    private boolean running;
 
     @SuppressLint({"LongLogTag", "LogNotTimber"})
     @Override
@@ -366,6 +375,10 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
 
                             end_otp = response.body().getData().getEnd_otp();
 
+                            Log.w(TAG,"start_otp  "+ start_otp);
+
+                            Log.w(TAG,"end_otp  "+ end_otp);
+
                             List<SPAppointmentDetailsResponse.DataBean.SpBusinessInfoBean> Address = response.body().getData().getSp_business_info();
                             for (int i = 0; i < Address.size(); i++) {
                                 usr_image = Address.get(i).getThumbnail_image();
@@ -521,16 +534,44 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
             txt_address.setText("");
         }
 
-        if(start_appointment_status != null && !start_appointment_status.isEmpty()&&start_appointment_status.equals("Not Started")){
+        Log.w(TAG,"start_appointment_status  "+ start_appointment_status);
+
+        Log.w(TAG,"end_appointment_status  "+ end_appointment_status);
+
+        if(from!=null&&from.equals("SPNewAppointmentAdapter")&&start_appointment_status != null && !start_appointment_status.isEmpty()&&start_appointment_status.equals("Not Started")){
 
             btn_start_stop.setVisibility(View.VISIBLE);
 
+            btn_stop.setVisibility(View.GONE);
+
+            chronometer.setVisibility(View.GONE);
+
+            btn_cancel.setVisibility(View.GONE);
+
+
         }
-        else if(end_appointment_status != null && !end_appointment_status.isEmpty()&&start_appointment_status.equals("Not End")){
+        else if(from!=null&&from.equals("SPNewAppointmentAdapter")&&end_appointment_status != null && !end_appointment_status.isEmpty()&&start_appointment_status.equals("Not End")){
+
+            btn_start_stop.setVisibility(View.GONE);
+
+            btn_cancel.setVisibility(View.GONE);
 
             btn_stop.setVisibility(View.VISIBLE);
 
-            txt_serv_timer.setVisibility(View.VISIBLE);
+            chronometer.setVisibility(View.VISIBLE);
+
+            startChronometer();
+        }
+
+        else {
+
+            btn_start_stop.setVisibility(View.GONE);
+
+            btn_stop.setVisibility(View.GONE);
+
+            chronometer.setVisibility(View.GONE);
+
+            btn_cancel.setVisibility(View.GONE);
 
         }
 
@@ -934,35 +975,48 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
 
 
             btn_back_to_appointment.setOnClickListener(view -> {
-                dialog.dismiss();
+
 
                 if(edt_pin_entry.getText().toString().length()==6){
 
+                    Log.w(TAG,"mode "+ mode);
+
+                    Log.w(TAG,"length  "+ edt_pin_entry.getText().toString().length());
+
+                    Log.w(TAG,"start_otp  "+ start_otp);
+
+                    Log.w(TAG,"end_otp  "+ end_otp);
+
+                    Log.w(TAG,"appointment_id   "+ appointment_id);
 
                     if(mode.equals("start")&&start_otp!=null&&start_otp.equals(edt_pin_entry.getText().toString())){
 
                         appoinmentStartResponseCall(appointment_id);
-
+                        dialog.dismiss();
                     }
                     else if(mode.equals("stop")&&end_otp!=null&&end_otp.equals(edt_pin_entry.getText().toString())){
 
+                        /*timer.cancel();*/
                         appoinmentStopResponseCall(appointment_id);
-
+                        dialog.dismiss();
                     }
 
                     else {
 
                         Toasty.warning(getApplicationContext(), "Please Enter Valid OTP", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+
                     }
                 }
                 else {
 
                     Toasty.warning(getApplicationContext(), "Please Enter Valid OTP", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
                 }
 
 
             });
-            btn_back_to_appointment.setOnClickListener(view -> dialog.dismiss());
+
             Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             dialog.show();
 
@@ -991,6 +1045,10 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
 
                 if (response.body() != null) {
                     if(response.body().getCode() == 200){
+
+                        Toasty.success(getApplicationContext(),""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                        startTimer();
 
                     }
 
@@ -1048,6 +1106,18 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
                 if (response.body() != null) {
                     if(response.body().getCode() == 200){
 
+                        btn_start_stop.setVisibility(View.GONE);
+
+                        btn_cancel.setVisibility(View.GONE);
+
+                        btn_stop.setVisibility(View.GONE);
+
+                        resetChronometer();
+
+                        chronometer.setVisibility(View.GONE);
+
+                        Toasty.success(getApplicationContext(),""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
                     }
 
                 }
@@ -1083,4 +1153,51 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
         Log.w(TAG,"EndAppointmentStatusRequest"+ "--->" + new Gson().toJson(EndAppointmentStatusRequest));
         return EndAppointmentStatusRequest;
     }
+
+    private void startTimer() {
+
+        btn_start_stop.setVisibility(View.GONE);
+        btn_cancel.setVisibility(View.GONE);
+        chronometer.setVisibility(View.VISIBLE);
+        btn_stop.setVisibility(View.VISIBLE);
+
+        chronometer.setBase(SystemClock.elapsedRealtime());
+
+        startChronometer();
+
+        chronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometer) {
+               /* if ((SystemClock.elapsedRealtime() - chronometer.getBase()) >= 10000) {
+
+
+                }*/
+
+               // chronometer.setBase(SystemClock.elapsedRealtime());
+            }
+        });
+
+    }
+
+    public void startChronometer() {
+        if (!running) {
+           //chronometer.setBase(SystemClock.elapsedRealtime() - pauseOffset);
+            chronometer.start();
+            running = true;
+        }
+    }
+
+    public void pauseChronometer() {
+        if (running) {
+            chronometer.stop();
+           // pauseOffset = SystemClock.elapsedRealtime() - chronometer.getBase();
+            running = false;
+        }
+    }
+
+    public void resetChronometer() {
+        chronometer.setBase(SystemClock.elapsedRealtime());
+        pauseOffset = 0;
+    }
+
 }

@@ -201,7 +201,7 @@ public class FragmentSPCompletedAppointment extends Fragment implements View.OnC
     @SuppressLint("LogNotTimber")
     private SPAppointmentRequest spAppointmentRequest() {
         SPAppointmentRequest spAppointmentRequest = new SPAppointmentRequest();
-        spAppointmentRequest.setUser_id(userid);
+        spAppointmentRequest.setSp_id(userid);
         Log.w(TAG,"spAppointmentRequest"+ "--->" + new Gson().toJson(spAppointmentRequest));
         return spAppointmentRequest;
     }
