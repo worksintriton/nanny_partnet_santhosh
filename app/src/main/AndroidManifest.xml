@@ -22,8 +22,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- <uses-permission android:name="android.permission.RECEIVE_SMS" /> -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- <uses-permission android:name="android.permission.RECEIVE_SMS" /> -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
@@ -47,28 +46,29 @@
         tools:ignore="AllowBackup,UnusedAttribute"
         tools:replace="android:allowBackup,icon,theme,label,name">
         <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".serviceprovider.SPInvoiceActivity"
             android:exported="true"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustPan" >
-            <!--        <intent-filter>-->
-            <!--            <action android:name="android.intent.action.MAIN" />-->
+            android:windowSoftInputMode="adjustPan">
 
-            <!--            <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--        </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-
         <activity
             android:name=".serviceprovider.InvoiceViewActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
-
-
-        <activity android:name="com.canhub.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
-
-
+        <activity
+            android:name="com.canhub.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
         <activity
             android:name=".serviceprovider.ChooseServiceTypeActivity"
             android:screenOrientation="portrait"
@@ -79,7 +79,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
-
         <activity
             android:name=".serviceprovider.SPLoaderActivity"
             android:screenOrientation="portrait"
@@ -106,13 +105,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme"
             android:windowSoftInputMode="adjustPan">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".petlover.ShippingAddressEditActivity"
