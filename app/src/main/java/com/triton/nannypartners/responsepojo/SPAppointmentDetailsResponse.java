@@ -8,7 +8,7 @@ public class SPAppointmentDetailsResponse {
     /**
      * Status : Success
      * Message : Appointment Details
-     * Data : {"sp_attched":[],"sp_business_info":[{"bus_service_list":[{"amount":100,"time_slots":"60 mins","bus_service_list":" Pet Training"},{"amount":100,"time_slots":"60 mins","bus_service_list":"Pet daycare"},{"amount":200,"time_slots":"60 mins","bus_service_list":"Vet Care 2"},{"amount":100,"time_slots":"60 mins","bus_service_list":"Pet daycare 1"},{"amount":200,"time_slots":"60 mins","bus_service_list":"Pet daycare 2"}],"bus_spec_list":[{"bus_spec_list":"Kennel Cut"},{"bus_spec_list":"Teddy Bear Trim"},{"bus_spec_list":"Breed Trims"},{"bus_spec_list":"Full Coat / Show Trims"}],"bus_service_gall":[{"bus_service_gall":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb152608175750"}],"bus_certif":[{"bus_certif":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb15certificate.pdf"}],"_id":"6127891a4f7e5d1561c63783","user_id":"61275eccdc2406057b5aeb15","bus_user_name":"Sample","bus_user_email":"","bussiness_name":"Abc nanny service ","bus_user_phone":"2342342344","bus_profile":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb152608175858","bus_proof":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb15certificate.pdf","date_and_time":"26-08-2021 05:59 PM","mobile_type":"IOS","profile_status":true,"profile_verification_status":"Verified","thumbnail_image":"","sp_loc":"5-38A, 2nd Main Rd, Ram Nagar, Karnam Street, Karunabigai Colony, Velachery, Chennai, Tamil Nadu 600042, India","sp_lat":12.983360290527344,"sp_long":80.22343632290122,"city_name":"Chennai","delete_status":false,"calender_status":true,"comments":0,"rating":5,"updatedAt":"2021-08-26T12:37:43.458Z","createdAt":"2021-08-26T12:29:14.243Z","__v":0}],"_id":"61680377988d1d35aa95b007","sp_id":{"_id":"61275eccdc2406057b5aeb15","first_name":"Sample","last_name":"Test","user_email":"","user_phone":"2342342344","date_of_reg":"26-08-2021 02:58 PM","user_type":2,"ref_code":"","my_ref_code":"U1IIZ1V","user_status":"complete","otp":123456,"profile_img":"","user_email_verification":false,"fb_token":"","device_id":"","device_type":"","mobile_type":"IOS","delete_status":false,"updatedAt":"2021-10-16T14:09:17.022Z","createdAt":"2021-08-26T09:28:44.727Z","__v":0},"appointment_UID":"SP-1634206583206","booking_date":"14-10-2021","booking_time":"3:46 PM","booking_date_time":"14-10-2021 3:46 PM","user_id":{"_id":"6163d60a489ccc3d894683d2","first_name":"Maddy","last_name":"Sam","user_email":"maddykrish@gmail.com","user_phone":"9999999998","date_of_reg":"11/10/2021 11:43 AM","user_type":1,"ref_code":"","my_ref_code":"VMNWKAB","user_status":"complete","otp":123456,"profile_img":"","user_email_verification":false,"fb_token":"","device_id":"","device_type":"","mobile_type":"Android","delete_status":false,"updatedAt":"2021-10-11T08:30:56.207Z","createdAt":"2021-10-11T06:13:30.236Z","__v":0},"pet_id":"","additional_info":"","appoinment_status":"Incomplete","start_appointment_status":"Not Started","end_appointment_status":"Not End","sp_feedback":"","sp_rate":"","user_feedback":"","user_rate":"0","display_date":"2021-10-14 15:46:00","server_date_time":"","payment_id":"","payment_method":"Online","service_name":"Sub Service 2","service_amount":"300","service_time":"3:46 PM","completed_at":"","missed_at":"","mobile_type":"Android","delete_status":false,"date_and_time":"14-10-2021 03:46 PM","hrs":"1","total_hours":"","additional_hours":"","addition_amount":"","addition_payment_method":"","addition_payment_status":"","total_paid_amount":"","start_otp":"843049","end_otp":"689077","updatedAt":"2021-10-14T10:16:23.234Z","createdAt":"2021-10-14T10:16:23.218Z","__v":0}
+     * Data : {"sp_attched":[],"sp_business_info":[{"bus_service_list":[{"service_name":"Cleaning Services","subsericelist":[{"_id":"616feeb83d269556cda2bd99","isservice":true,"service_id":"616feca476f39652d97de5d2","title":"Plumber Services"},{"_id":"616feee93d269556cda2bd9a","isservice":false,"service_id":"616feca476f39652d97de5d2","title":"cleaning & spring"}]}],"bus_spec_list":[{"bus_spec_list":"Kennel Cut"},{"bus_spec_list":"Breed Trims"},{"bus_spec_list":"Teddy Bear Trim"},{"bus_spec_list":"Full Coat / Show Trims"}],"bus_service_gall":[{"bus_service_gall":"http://54.193.18.54:3000/api/uploads/1634908414324.jpg"}],"bus_certif":[{"bus_certif":"http://54.193.18.54:3000/api/uploads/1634908475186.pdf"}],"_id":"6172b93e8dd3e15b142de047","user_id":"6172b83d8dd3e15b142de045","bus_user_name":"Jai","bus_user_email":"jaiserv@gmail.com","bussiness_name":"Jai Service","bus_user_phone":"9999999999","bus_profile":"http://54.193.18.54:3000/api/uploads/1634908456637.pdf","bus_proof":"http://54.193.18.54:3000/api/uploads/1634908466319.pdf","date_and_time":"22/10/2021 06:44 PM","mobile_type":"Android","profile_status":true,"profile_verification_status":"Verified","thumbnail_image":"","sp_loc":"Salem 103, Vmr Theatre Back Side Rd, Shevapet, Salem, Tamil Nadu 636002, India","sp_lat":11.6617029,"sp_long":78.1375607,"city_name":"Salem","delete_status":false,"calender_status":true,"comments":0,"rating":5,"sp_info":"Good Service","updatedAt":"2021-10-22T13:15:45.715Z","createdAt":"2021-10-22T13:14:38.225Z","__v":0}],"_id":"6176af3b68260e0743634717","sp_id":{"_id":"6172b83d8dd3e15b142de045","first_name":"Jai","last_name":"Service","user_email":"jaiserv@gmail.com","user_phone":"9999999999","date_of_reg":"22/10/2021 06:40 PM","user_type":2,"ref_code":"","my_ref_code":"VZL7D0S","user_status":"complete","otp":123456,"profile_img":"","user_email_verification":false,"fb_token":"","device_id":"","device_type":"","mobile_type":"Android","delete_status":false,"updatedAt":"2021-10-22T13:10:34.520Z","createdAt":"2021-10-22T13:10:21.516Z","__v":0},"appointment_UID":"SP-1635168059133","booking_date":"25-10-2021","booking_time":"6:50 PM","booking_date_time":"25-10-2021 6:50 PM","user_id":{"_id":"6163d60a489ccc3d894683d2","first_name":"Maddy","last_name":"Sam","user_email":"maddykrish@gmail.com","user_phone":"9999999998","date_of_reg":"11/10/2021 11:43 AM","user_type":1,"ref_code":"","my_ref_code":"VMNWKAB","user_status":"complete","otp":123456,"profile_img":"","user_email_verification":false,"fb_token":"","device_id":"","device_type":"","mobile_type":"Android","delete_status":false,"updatedAt":"2021-10-25T13:25:51.868Z","createdAt":"2021-10-11T06:13:30.236Z","__v":0},"pet_id":"","additional_info":"","appoinment_status":"Incomplete","start_appointment_status":"Not Started","end_appointment_status":"Not End","sp_feedback":"","sp_rate":"","user_feedback":"","user_rate":"0","display_date":"2021-10-25 18:50:00","server_date_time":"","payment_id":"","payment_method":"Online","service_name":"Cleaning Services","service_amount":"100","service_time":"6:50 PM","completed_at":"","missed_at":"","mobile_type":"Android","delete_status":false,"date_and_time":"25-10-2021 06:50 PM","hrs":"1","total_hours":"","additional_hours":"","addition_amount":"","addition_payment_method":"","addition_payment_status":"","total_paid_amount":"","start_otp":"604499","end_otp":"947589","address_text":"P42W+MH Salem, Tamil Nadu, India","state":"Tamil Nadu","city":"Salem","pin_code":"636008","lat":"","lon":"","work_status":"Not Started","updatedAt":"2021-10-25T13:20:59.149Z","createdAt":"2021-10-25T13:20:59.142Z","__v":0}
      * Code : 200
      */
 
@@ -16,14 +16,14 @@ public class SPAppointmentDetailsResponse {
     private String Message;
     /**
      * sp_attched : []
-     * sp_business_info : [{"bus_service_list":[{"amount":100,"time_slots":"60 mins","bus_service_list":" Pet Training"},{"amount":100,"time_slots":"60 mins","bus_service_list":"Pet daycare"},{"amount":200,"time_slots":"60 mins","bus_service_list":"Vet Care 2"},{"amount":100,"time_slots":"60 mins","bus_service_list":"Pet daycare 1"},{"amount":200,"time_slots":"60 mins","bus_service_list":"Pet daycare 2"}],"bus_spec_list":[{"bus_spec_list":"Kennel Cut"},{"bus_spec_list":"Teddy Bear Trim"},{"bus_spec_list":"Breed Trims"},{"bus_spec_list":"Full Coat / Show Trims"}],"bus_service_gall":[{"bus_service_gall":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb152608175750"}],"bus_certif":[{"bus_certif":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb15certificate.pdf"}],"_id":"6127891a4f7e5d1561c63783","user_id":"61275eccdc2406057b5aeb15","bus_user_name":"Sample","bus_user_email":"","bussiness_name":"Abc nanny service ","bus_user_phone":"2342342344","bus_profile":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb152608175858","bus_proof":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb15certificate.pdf","date_and_time":"26-08-2021 05:59 PM","mobile_type":"IOS","profile_status":true,"profile_verification_status":"Verified","thumbnail_image":"","sp_loc":"5-38A, 2nd Main Rd, Ram Nagar, Karnam Street, Karunabigai Colony, Velachery, Chennai, Tamil Nadu 600042, India","sp_lat":12.983360290527344,"sp_long":80.22343632290122,"city_name":"Chennai","delete_status":false,"calender_status":true,"comments":0,"rating":5,"updatedAt":"2021-08-26T12:37:43.458Z","createdAt":"2021-08-26T12:29:14.243Z","__v":0}]
-     * _id : 61680377988d1d35aa95b007
-     * sp_id : {"_id":"61275eccdc2406057b5aeb15","first_name":"Sample","last_name":"Test","user_email":"","user_phone":"2342342344","date_of_reg":"26-08-2021 02:58 PM","user_type":2,"ref_code":"","my_ref_code":"U1IIZ1V","user_status":"complete","otp":123456,"profile_img":"","user_email_verification":false,"fb_token":"","device_id":"","device_type":"","mobile_type":"IOS","delete_status":false,"updatedAt":"2021-10-16T14:09:17.022Z","createdAt":"2021-08-26T09:28:44.727Z","__v":0}
-     * appointment_UID : SP-1634206583206
-     * booking_date : 14-10-2021
-     * booking_time : 3:46 PM
-     * booking_date_time : 14-10-2021 3:46 PM
-     * user_id : {"_id":"6163d60a489ccc3d894683d2","first_name":"Maddy","last_name":"Sam","user_email":"maddykrish@gmail.com","user_phone":"9999999998","date_of_reg":"11/10/2021 11:43 AM","user_type":1,"ref_code":"","my_ref_code":"VMNWKAB","user_status":"complete","otp":123456,"profile_img":"","user_email_verification":false,"fb_token":"","device_id":"","device_type":"","mobile_type":"Android","delete_status":false,"updatedAt":"2021-10-11T08:30:56.207Z","createdAt":"2021-10-11T06:13:30.236Z","__v":0}
+     * sp_business_info : [{"bus_service_list":[{"service_name":"Cleaning Services","subsericelist":[{"_id":"616feeb83d269556cda2bd99","isservice":true,"service_id":"616feca476f39652d97de5d2","title":"Plumber Services"},{"_id":"616feee93d269556cda2bd9a","isservice":false,"service_id":"616feca476f39652d97de5d2","title":"cleaning & spring"}]}],"bus_spec_list":[{"bus_spec_list":"Kennel Cut"},{"bus_spec_list":"Breed Trims"},{"bus_spec_list":"Teddy Bear Trim"},{"bus_spec_list":"Full Coat / Show Trims"}],"bus_service_gall":[{"bus_service_gall":"http://54.193.18.54:3000/api/uploads/1634908414324.jpg"}],"bus_certif":[{"bus_certif":"http://54.193.18.54:3000/api/uploads/1634908475186.pdf"}],"_id":"6172b93e8dd3e15b142de047","user_id":"6172b83d8dd3e15b142de045","bus_user_name":"Jai","bus_user_email":"jaiserv@gmail.com","bussiness_name":"Jai Service","bus_user_phone":"9999999999","bus_profile":"http://54.193.18.54:3000/api/uploads/1634908456637.pdf","bus_proof":"http://54.193.18.54:3000/api/uploads/1634908466319.pdf","date_and_time":"22/10/2021 06:44 PM","mobile_type":"Android","profile_status":true,"profile_verification_status":"Verified","thumbnail_image":"","sp_loc":"Salem 103, Vmr Theatre Back Side Rd, Shevapet, Salem, Tamil Nadu 636002, India","sp_lat":11.6617029,"sp_long":78.1375607,"city_name":"Salem","delete_status":false,"calender_status":true,"comments":0,"rating":5,"sp_info":"Good Service","updatedAt":"2021-10-22T13:15:45.715Z","createdAt":"2021-10-22T13:14:38.225Z","__v":0}]
+     * _id : 6176af3b68260e0743634717
+     * sp_id : {"_id":"6172b83d8dd3e15b142de045","first_name":"Jai","last_name":"Service","user_email":"jaiserv@gmail.com","user_phone":"9999999999","date_of_reg":"22/10/2021 06:40 PM","user_type":2,"ref_code":"","my_ref_code":"VZL7D0S","user_status":"complete","otp":123456,"profile_img":"","user_email_verification":false,"fb_token":"","device_id":"","device_type":"","mobile_type":"Android","delete_status":false,"updatedAt":"2021-10-22T13:10:34.520Z","createdAt":"2021-10-22T13:10:21.516Z","__v":0}
+     * appointment_UID : SP-1635168059133
+     * booking_date : 25-10-2021
+     * booking_time : 6:50 PM
+     * booking_date_time : 25-10-2021 6:50 PM
+     * user_id : {"_id":"6163d60a489ccc3d894683d2","first_name":"Maddy","last_name":"Sam","user_email":"maddykrish@gmail.com","user_phone":"9999999998","date_of_reg":"11/10/2021 11:43 AM","user_type":1,"ref_code":"","my_ref_code":"VMNWKAB","user_status":"complete","otp":123456,"profile_img":"","user_email_verification":false,"fb_token":"","device_id":"","device_type":"","mobile_type":"Android","delete_status":false,"updatedAt":"2021-10-25T13:25:51.868Z","createdAt":"2021-10-11T06:13:30.236Z","__v":0}
      * pet_id :
      * additional_info :
      * appoinment_status : Incomplete
@@ -33,18 +33,18 @@ public class SPAppointmentDetailsResponse {
      * sp_rate :
      * user_feedback :
      * user_rate : 0
-     * display_date : 2021-10-14 15:46:00
+     * display_date : 2021-10-25 18:50:00
      * server_date_time :
      * payment_id :
      * payment_method : Online
-     * service_name : Sub Service 2
-     * service_amount : 300
-     * service_time : 3:46 PM
+     * service_name : Cleaning Services
+     * service_amount : 100
+     * service_time : 6:50 PM
      * completed_at :
      * missed_at :
      * mobile_type : Android
      * delete_status : false
-     * date_and_time : 14-10-2021 03:46 PM
+     * date_and_time : 25-10-2021 06:50 PM
      * hrs : 1
      * total_hours :
      * additional_hours :
@@ -52,10 +52,17 @@ public class SPAppointmentDetailsResponse {
      * addition_payment_method :
      * addition_payment_status :
      * total_paid_amount :
-     * start_otp : 843049
-     * end_otp : 689077
-     * updatedAt : 2021-10-14T10:16:23.234Z
-     * createdAt : 2021-10-14T10:16:23.218Z
+     * start_otp : 604499
+     * end_otp : 947589
+     * address_text : P42W+MH Salem, Tamil Nadu, India
+     * state : Tamil Nadu
+     * city : Salem
+     * pin_code : 636008
+     * lat :
+     * lon :
+     * work_status : Not Started
+     * updatedAt : 2021-10-25T13:20:59.149Z
+     * createdAt : 2021-10-25T13:20:59.142Z
      * __v : 0
      */
 
@@ -97,15 +104,15 @@ public class SPAppointmentDetailsResponse {
     public static class DataBean {
         private String _id;
         /**
-         * _id : 61275eccdc2406057b5aeb15
-         * first_name : Sample
-         * last_name : Test
-         * user_email :
-         * user_phone : 2342342344
-         * date_of_reg : 26-08-2021 02:58 PM
+         * _id : 6172b83d8dd3e15b142de045
+         * first_name : Jai
+         * last_name : Service
+         * user_email : jaiserv@gmail.com
+         * user_phone : 9999999999
+         * date_of_reg : 22/10/2021 06:40 PM
          * user_type : 2
          * ref_code :
-         * my_ref_code : U1IIZ1V
+         * my_ref_code : VZL7D0S
          * user_status : complete
          * otp : 123456
          * profile_img :
@@ -113,10 +120,10 @@ public class SPAppointmentDetailsResponse {
          * fb_token :
          * device_id :
          * device_type :
-         * mobile_type : IOS
+         * mobile_type : Android
          * delete_status : false
-         * updatedAt : 2021-10-16T14:09:17.022Z
-         * createdAt : 2021-08-26T09:28:44.727Z
+         * updatedAt : 2021-10-22T13:10:34.520Z
+         * createdAt : 2021-10-22T13:10:21.516Z
          * __v : 0
          */
 
@@ -144,7 +151,7 @@ public class SPAppointmentDetailsResponse {
          * device_type :
          * mobile_type : Android
          * delete_status : false
-         * updatedAt : 2021-10-11T08:30:56.207Z
+         * updatedAt : 2021-10-25T13:25:51.868Z
          * createdAt : 2021-10-11T06:13:30.236Z
          * __v : 0
          */
@@ -180,38 +187,46 @@ public class SPAppointmentDetailsResponse {
         private String total_paid_amount;
         private String start_otp;
         private String end_otp;
+        private String address_text;
+        private String state;
+        private String city;
+        private String pin_code;
+        private String lat;
+        private String lon;
+        private String work_status;
         private String updatedAt;
         private String createdAt;
         private int __v;
         private List<?> sp_attched;
         /**
-         * bus_service_list : [{"amount":100,"time_slots":"60 mins","bus_service_list":" Pet Training"},{"amount":100,"time_slots":"60 mins","bus_service_list":"Pet daycare"},{"amount":200,"time_slots":"60 mins","bus_service_list":"Vet Care 2"},{"amount":100,"time_slots":"60 mins","bus_service_list":"Pet daycare 1"},{"amount":200,"time_slots":"60 mins","bus_service_list":"Pet daycare 2"}]
-         * bus_spec_list : [{"bus_spec_list":"Kennel Cut"},{"bus_spec_list":"Teddy Bear Trim"},{"bus_spec_list":"Breed Trims"},{"bus_spec_list":"Full Coat / Show Trims"}]
-         * bus_service_gall : [{"bus_service_gall":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb152608175750"}]
-         * bus_certif : [{"bus_certif":"http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb15certificate.pdf"}]
-         * _id : 6127891a4f7e5d1561c63783
-         * user_id : 61275eccdc2406057b5aeb15
-         * bus_user_name : Sample
-         * bus_user_email :
-         * bussiness_name : Abc nanny service
-         * bus_user_phone : 2342342344
-         * bus_profile : http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb152608175858
-         * bus_proof : http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb15certificate.pdf
-         * date_and_time : 26-08-2021 05:59 PM
-         * mobile_type : IOS
+         * bus_service_list : [{"service_name":"Cleaning Services","subsericelist":[{"_id":"616feeb83d269556cda2bd99","isservice":true,"service_id":"616feca476f39652d97de5d2","title":"Plumber Services"},{"_id":"616feee93d269556cda2bd9a","isservice":false,"service_id":"616feca476f39652d97de5d2","title":"cleaning & spring"}]}]
+         * bus_spec_list : [{"bus_spec_list":"Kennel Cut"},{"bus_spec_list":"Breed Trims"},{"bus_spec_list":"Teddy Bear Trim"},{"bus_spec_list":"Full Coat / Show Trims"}]
+         * bus_service_gall : [{"bus_service_gall":"http://54.193.18.54:3000/api/uploads/1634908414324.jpg"}]
+         * bus_certif : [{"bus_certif":"http://54.193.18.54:3000/api/uploads/1634908475186.pdf"}]
+         * _id : 6172b93e8dd3e15b142de047
+         * user_id : 6172b83d8dd3e15b142de045
+         * bus_user_name : Jai
+         * bus_user_email : jaiserv@gmail.com
+         * bussiness_name : Jai Service
+         * bus_user_phone : 9999999999
+         * bus_profile : http://54.193.18.54:3000/api/uploads/1634908456637.pdf
+         * bus_proof : http://54.193.18.54:3000/api/uploads/1634908466319.pdf
+         * date_and_time : 22/10/2021 06:44 PM
+         * mobile_type : Android
          * profile_status : true
          * profile_verification_status : Verified
          * thumbnail_image :
-         * sp_loc : 5-38A, 2nd Main Rd, Ram Nagar, Karnam Street, Karunabigai Colony, Velachery, Chennai, Tamil Nadu 600042, India
-         * sp_lat : 12.983360290527344
-         * sp_long : 80.22343632290122
-         * city_name : Chennai
+         * sp_loc : Salem 103, Vmr Theatre Back Side Rd, Shevapet, Salem, Tamil Nadu 636002, India
+         * sp_lat : 11.6617029
+         * sp_long : 78.1375607
+         * city_name : Salem
          * delete_status : false
          * calender_status : true
          * comments : 0
          * rating : 5
-         * updatedAt : 2021-08-26T12:37:43.458Z
-         * createdAt : 2021-08-26T12:29:14.243Z
+         * sp_info : Good Service
+         * updatedAt : 2021-10-22T13:15:45.715Z
+         * createdAt : 2021-10-22T13:14:38.225Z
          * __v : 0
          */
 
@@ -511,6 +526,62 @@ public class SPAppointmentDetailsResponse {
 
         public void setEnd_otp(String end_otp) {
             this.end_otp = end_otp;
+        }
+
+        public String getAddress_text() {
+            return address_text;
+        }
+
+        public void setAddress_text(String address_text) {
+            this.address_text = address_text;
+        }
+
+        public String getState() {
+            return state;
+        }
+
+        public void setState(String state) {
+            this.state = state;
+        }
+
+        public String getCity() {
+            return city;
+        }
+
+        public void setCity(String city) {
+            this.city = city;
+        }
+
+        public String getPin_code() {
+            return pin_code;
+        }
+
+        public void setPin_code(String pin_code) {
+            this.pin_code = pin_code;
+        }
+
+        public String getLat() {
+            return lat;
+        }
+
+        public void setLat(String lat) {
+            this.lat = lat;
+        }
+
+        public String getLon() {
+            return lon;
+        }
+
+        public void setLon(String lon) {
+            this.lon = lon;
+        }
+
+        public String getWork_status() {
+            return work_status;
+        }
+
+        public void setWork_status(String work_status) {
+            this.work_status = work_status;
         }
 
         public String getUpdatedAt() {
@@ -959,13 +1030,13 @@ public class SPAppointmentDetailsResponse {
             private boolean calender_status;
             private int comments;
             private int rating;
+            private String sp_info;
             private String updatedAt;
             private String createdAt;
             private int __v;
             /**
-             * amount : 100
-             * time_slots : 60 mins
-             * bus_service_list :  Pet Training
+             * service_name : Cleaning Services
+             * subsericelist : [{"_id":"616feeb83d269556cda2bd99","isservice":true,"service_id":"616feca476f39652d97de5d2","title":"Plumber Services"},{"_id":"616feee93d269556cda2bd9a","isservice":false,"service_id":"616feca476f39652d97de5d2","title":"cleaning & spring"}]
              */
 
             private List<BusServiceListBean> bus_service_list;
@@ -975,12 +1046,12 @@ public class SPAppointmentDetailsResponse {
 
             private List<BusSpecListBean> bus_spec_list;
             /**
-             * bus_service_gall : http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb152608175750
+             * bus_service_gall : http://54.193.18.54:3000/api/uploads/1634908414324.jpg
              */
 
             private List<BusServiceGallBean> bus_service_gall;
             /**
-             * bus_certif : http://54.193.18.54:3000/api/uploads/61275eccdc2406057b5aeb15certificate.pdf
+             * bus_certif : http://54.193.18.54:3000/api/uploads/1634908475186.pdf
              */
 
             private List<BusCertifBean> bus_certif;
@@ -1153,6 +1224,14 @@ public class SPAppointmentDetailsResponse {
                 this.rating = rating;
             }
 
+            public String getSp_info() {
+                return sp_info;
+            }
+
+            public void setSp_info(String sp_info) {
+                this.sp_info = sp_info;
+            }
+
             public String getUpdatedAt() {
                 return updatedAt;
             }
@@ -1210,32 +1289,69 @@ public class SPAppointmentDetailsResponse {
             }
 
             public static class BusServiceListBean {
-                private int amount;
-                private String time_slots;
-                private String bus_service_list;
+                private String service_name;
+                /**
+                 * _id : 616feeb83d269556cda2bd99
+                 * isservice : true
+                 * service_id : 616feca476f39652d97de5d2
+                 * title : Plumber Services
+                 */
 
-                public int getAmount() {
-                    return amount;
+                private List<SubsericelistBean> subsericelist;
+
+                public String getService_name() {
+                    return service_name;
                 }
 
-                public void setAmount(int amount) {
-                    this.amount = amount;
+                public void setService_name(String service_name) {
+                    this.service_name = service_name;
                 }
 
-                public String getTime_slots() {
-                    return time_slots;
+                public List<SubsericelistBean> getSubsericelist() {
+                    return subsericelist;
                 }
 
-                public void setTime_slots(String time_slots) {
-                    this.time_slots = time_slots;
+                public void setSubsericelist(List<SubsericelistBean> subsericelist) {
+                    this.subsericelist = subsericelist;
                 }
 
-                public String getBus_service_list() {
-                    return bus_service_list;
-                }
+                public static class SubsericelistBean {
+                    private String _id;
+                    private boolean isservice;
+                    private String service_id;
+                    private String title;
 
-                public void setBus_service_list(String bus_service_list) {
-                    this.bus_service_list = bus_service_list;
+                    public String get_id() {
+                        return _id;
+                    }
+
+                    public void set_id(String _id) {
+                        this._id = _id;
+                    }
+
+                    public boolean isIsservice() {
+                        return isservice;
+                    }
+
+                    public void setIsservice(boolean isservice) {
+                        this.isservice = isservice;
+                    }
+
+                    public String getService_id() {
+                        return service_id;
+                    }
+
+                    public void setService_id(String service_id) {
+                        this.service_id = service_id;
+                    }
+
+                    public String getTitle() {
+                        return title;
+                    }
+
+                    public void setTitle(String title) {
+                        this.title = title;
+                    }
                 }
             }
 

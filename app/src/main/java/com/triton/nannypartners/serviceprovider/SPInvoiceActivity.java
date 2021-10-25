@@ -21,9 +21,11 @@ import com.triton.nannypartners.api.APIClient;
 import com.triton.nannypartners.api.RestApiInterface;
 import com.triton.nannypartners.requestpojo.AppoinmentCompleteRequest;
 import com.triton.nannypartners.requestpojo.AppointmentDetailsRequest;
+import com.triton.nannypartners.requestpojo.RaiseInvoiceRequest;
 import com.triton.nannypartners.responsepojo.AppoinmentCompleteResponse;
 import com.triton.nannypartners.responsepojo.PetNewAppointmentDetailsResponse;
 import com.triton.nannypartners.responsepojo.SPAppointmentDetailsResponse;
+import com.triton.nannypartners.responsepojo.SPAppointmentProcessCompleteResponse;
 import com.triton.nannypartners.utils.ConnectionDetector;
 import com.triton.nannypartners.utils.RestUtils;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -443,6 +445,57 @@ public class SPInvoiceActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    @SuppressLint({"LongLogTag", "LogNotTimber"})
+    private void payStatusUpdateResponseCall() {
+        RestApiInterface apiInterface = APIClient.getClient().create(RestApiInterface.class);
+        Call<SPAppointmentProcessCompleteResponse> call = apiInterface.payStatusUpdateResponseCall(RestUtils.getContentType(), RaiseInvoiceRequest());
+        Log.w(TAG,"SPAppointmentProcessCompleteResponse url  :%s"+" "+ call.request().url().toString());
+
+        call.enqueue(new Callback<SPAppointmentProcessCompleteResponse>() {
+            @SuppressLint("LogNotTimber")
+            @Override
+            public void onResponse(@NonNull Call<SPAppointmentProcessCompleteResponse> call, @NonNull Response<SPAppointmentProcessCompleteResponse> response) {
+
+                Log.w(TAG,"SPAppointmentProcessCompleteResponse"+ "--->" + new Gson().toJson(response.body()));
+
+                if (response.body() != null) {
+                    if(response.body().getCode() == 200){
+
+                    }
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<SPAppointmentProcessCompleteResponse> call, @NonNull Throwable t) {
+
+                Log.w(TAG,"SPAppointmentProcessCompleteResponseflr"+"--->" + t.getMessage());
+            }
+        });
+
+    }
+    @SuppressLint({"LongLogTag", "LogNotTimber"})
+    private RaiseInvoiceRequest RaiseInvoiceRequest() {
+
+
+        /**
+         * _id : 6176a1378dd3e15b142de08e
+         * addition_payment_status :
+         */
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm aa", Locale.getDefault());
+        String currentDateandTime = sdf.format(new Date());
+
+        RaiseInvoiceRequest RaiseInvoiceRequest = new RaiseInvoiceRequest();
+        RaiseInvoiceRequest.set_id("");
+        RaiseInvoiceRequest.setAddition_payment_status("");
+
+        Log.w(TAG,"RaiseInvoiceRequest"+ "--->" + new Gson().toJson(RaiseInvoiceRequest));
+        return RaiseInvoiceRequest;
     }
 
     @SuppressLint({"LongLogTag", "LogNotTimber"})

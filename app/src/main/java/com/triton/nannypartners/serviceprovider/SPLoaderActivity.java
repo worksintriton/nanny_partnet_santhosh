@@ -6,20 +6,34 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.triton.nannypartners.R;
+import com.triton.nannypartners.api.APIClient;
+import com.triton.nannypartners.api.RestApiInterface;
+import com.triton.nannypartners.requestpojo.TimeCalRequest;
 import com.triton.nannypartners.responsepojo.CartDetailsResponse;
+import com.triton.nannypartners.responsepojo.SPAppointmentProcessCompleteResponse;
 import com.triton.nannypartners.responsepojo.SPDetailsRepsonse;
+import com.triton.nannypartners.utils.RestUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SPLoaderActivity extends AppCompatActivity {
 
@@ -35,46 +49,15 @@ public class SPLoaderActivity extends AppCompatActivity {
     @BindView(R.id.logo)
     ImageView logo;
 
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.txt_title)
+    TextView txt_title;
 
-    String fromactivity,SP_ava_Date,selectedTimeSlot,subcatid,subservname,servname,icon_banner,servicedate;
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.txt_sub_title)
+    TextView txt_sub_title;
 
-    String serv_name,selectedServiceImagepath;
-
-
-    private int distance;
-    private int reviewcount;
-    private int Count_value_start;
-    private int Count_value_end;
-
-    List<CartDetailsResponse.DataBean> Data = new ArrayList<>();
-
-    private int prodouct_total;
-
-    private int shipping_charge;
-
-    private int discount_price;
-
-    private int grand_total;
-
-    private int prodcut_count;
-
-    private int prodcut_item_count;
-
-    private String userid;
-    private String spid,catid;
-    private List<SPDetailsRepsonse.DataBean.BusServiceGallBean> spServiceGalleryResponseList;
-    private String from;
-    private String spuserid;
-    private String selectedServiceTitle;
-    private String servicetime;
-    private int serviceamount;
-
-
-    private String serviceprovidingcompanyname = "";
-    private String spprovidername = "";
-    private int ratingcount;
-
-    private String location,count_number,total_amount;
+    String fromactivity,appointment_id, start_appointment_status,end_appointment_status,service_amount,hrs,_id,appoinment_status,payment_method;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,70 +72,26 @@ public class SPLoaderActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            spid = extras.getString("spid");
-            catid = extras.getString("catid");
-            from = extras.getString("from");
-            spuserid = extras.getString("spuserid");
-            selectedServiceTitle = extras.getString("selectedServiceTitle");
-            serviceamount = extras.getInt("serviceamount");
-            servicetime = extras.getString("servicetime");
-            distance = extras.getInt("distance");
-            serviceamount = extras.getInt("serviceamount");
-            servicetime = extras.getString("servicetime");
-            SP_ava_Date = extras.getString("SP_ava_Date");
-            selectedTimeSlot = extras.getString("selectedTimeSlot");
-            count_number = extras.getString("count_number");
-            total_amount = extras.getString("total_amount");
-            Log.w(TAG, "spid : " + spid + " catid : " + catid + " from : " + from);
-            Log.w(TAG, "distance : " + distance);
+
             fromactivity = extras.getString("fromactivity");
 
-            Log.w(TAG, "From " + fromactivity + " : true-->");
+            appointment_id = extras.getString("appointment_id");
 
-            Data = (List<CartDetailsResponse.DataBean>) extras.getSerializable("data");
+            start_appointment_status = extras.getString("start_appointment_status");
 
-            prodouct_total = extras.getInt("product_total");
+            end_appointment_status = extras.getString("end_appointment_status");
 
-            shipping_charge = extras.getInt("shipping_charge");
+            service_amount = extras.getString("service_amount");
 
-            discount_price = extras.getInt("discount_price");
+            hrs = extras.getString("hrs");
 
-            grand_total = extras.getInt("grand_total");
+            _id = extras.getString("_id");
 
-            prodcut_count = extras.getInt("prodcut_count");
+            appoinment_status = extras.getString("appoinment_status");
 
-            prodcut_item_count = extras.getInt("prodcut_item_count");
+            payment_method = extras.getString("payment_method");
 
-
-            /**/
-
-            catid = extras.getString("catid");
-
-            subcatid = extras.getString("subcatid");
-
-            servname = extras.getString("servname");
-
-            subservname = extras.getString("subservname");
-
-            icon_banner = extras.getString("icon_banner");
-
-            serviceamount = extras.getInt("serviceamount");
-
-            servicetime = extras.getString("servicetime");
-
-            servicedate = extras.getString("servicedate");
-
-
-
-
-            Log.w(TAG,"spid : "+spid +" catid : "+catid+"subcatid : "+subcatid+"  from : "+from);
-
-            Log.w(TAG,"servname : "+servname +" subservname : "+subservname+"icon_banner : "+icon_banner+"  serviceamount : "+serviceamount);
-
-            Log.w(TAG,"servicetime : "+servicetime +" servicedate : "+servicetime);
-
-
-            Log.w(TAG,"distance : "+distance);
+            Log.w(TAG,"fromactivity : "+fromactivity);
 
 
         }
@@ -187,30 +126,7 @@ public class SPLoaderActivity extends AppCompatActivity {
             public void onFinish() {
                 // DO something when 1 minute is up
 
-                Intent intent = new Intent(SPLoaderActivity.this, SPInvoiceActivity.class);
-                intent.putExtra("spid",spid);
-                intent.putExtra("catid",catid);
-                intent.putExtra("subcatid",subcatid);
-                intent.putExtra("servname",servname);
-                intent.putExtra("subservname",subservname);
-                intent.putExtra("icon_banner",icon_banner);
-                intent.putExtra("serviceamount",serviceamount);
-                intent.putExtra("servicedate",servicedate);
-                intent.putExtra("servicetime",servicetime);
-                intent.putExtra("catid",catid);
-                intent.putExtra("from",from);
-                intent.putExtra("spuserid",spuserid);
-                intent.putExtra("selectedServiceTitle",selectedServiceTitle);
-                intent.putExtra("serviceamount",serviceamount);
-                intent.putExtra("servicetime",servicetime);
-                intent.putExtra("SP_ava_Date",SP_ava_Date);
-                intent.putExtra("selectedTimeSlot",selectedTimeSlot);
-                intent.putExtra("distance",distance);
-                intent.putExtra("fromactivity",TAG);
-                intent.putExtra("count_number",count_number);
-                intent.putExtra("total_amount",total_amount);
-                Log.w(TAG,"gotoServiceBookAppoinment : "+"SP_ava_Date : "+SP_ava_Date);
-                startActivity(intent);
+
 
 
             }
@@ -229,4 +145,69 @@ public class SPLoaderActivity extends AppCompatActivity {
     public void onBackPressed() {
         /*super.onBackPressed();*/
     }
+
+
+    @SuppressLint({"LongLogTag", "LogNotTimber"})
+    private void timeCalResponseCall() {
+        RestApiInterface apiInterface = APIClient.getClient().create(RestApiInterface.class);
+        Call<SPAppointmentProcessCompleteResponse> call = apiInterface.timeCalResponseCall(RestUtils.getContentType(), TimeCalRequest());
+        Log.w(TAG,"SPAppointmentProcessCompleteResponse url  :%s"+" "+ call.request().url().toString());
+
+        call.enqueue(new Callback<SPAppointmentProcessCompleteResponse>() {
+            @SuppressLint("LogNotTimber")
+            @Override
+            public void onResponse(@NonNull Call<SPAppointmentProcessCompleteResponse> call, @NonNull Response<SPAppointmentProcessCompleteResponse> response) {
+
+                Log.w(TAG,"SPAppointmentProcessCompleteResponse"+ "--->" + new Gson().toJson(response.body()));
+
+                if (response.body() != null) {
+                    if(response.body().getCode() == 200){
+
+                    }
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<SPAppointmentProcessCompleteResponse> call, @NonNull Throwable t) {
+
+                Log.w(TAG,"SPAppointmentProcessCompleteResponseflr"+"--->" + t.getMessage());
+            }
+        });
+
+    }
+    @SuppressLint({"LongLogTag", "LogNotTimber"})
+    private TimeCalRequest TimeCalRequest() {
+
+
+        /**
+         * _id : 6176a1378dd3e15b142de08e
+         * total_hours :
+         * additional_hours :
+         * addition_amount :
+         * addition_payment_method :
+         * addition_payment_status :
+         * total_paid_amount :
+         * work_status :
+         */
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm aa", Locale.getDefault());
+        String currentDateandTime = sdf.format(new Date());
+
+        TimeCalRequest TimeCalRequest = new TimeCalRequest();
+        TimeCalRequest.set_id(_id);
+        TimeCalRequest.setTotal_hours("");
+        TimeCalRequest.setAdditional_hours("");
+        TimeCalRequest.setAddition_amount("");
+        TimeCalRequest.setAddition_payment_method("");
+        TimeCalRequest.setAddition_payment_status("");
+        TimeCalRequest.setTotal_paid_amount("");
+        TimeCalRequest.setWork_status("");
+        Log.w(TAG,"TimeCalRequest"+ "--->" + new Gson().toJson(TimeCalRequest));
+        return TimeCalRequest;
+    }
+
+
 }

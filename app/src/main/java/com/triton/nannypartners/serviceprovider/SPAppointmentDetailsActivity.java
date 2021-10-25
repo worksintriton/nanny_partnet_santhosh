@@ -192,7 +192,7 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
 
     private String concatenatedStarNames = "";
     private String start_otp = "";
-    private String end_otp = "";
+    private String end_otp = "",service_amount, hrs, work_status, payment_method,_id;
     CountDownTimer timer;
     private long pauseOffset;
     private boolean running;
@@ -332,6 +332,9 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
 
                         String usr_image = "";
                         if (response.body().getData() != null) {
+
+                            _id = response.body().getData().get_id();
+
                             spid = response.body().getData().getSp_id().get_id();
                             appointmentid = response.body().getData().getAppointment_UID();
                             userid = response.body().getData().getUser_id().get_id();
@@ -346,7 +349,7 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
 
                             String servname = response.body().getData().getService_name();
 
-                            String hrs = response.body().getData().getHrs();
+                            hrs = response.body().getData().getHrs();
 
                             String datetimeslot = response.body().getData().getBooking_time();
 
@@ -374,6 +377,8 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
                             start_otp = response.body().getData().getStart_otp();
 
                             end_otp = response.body().getData().getEnd_otp();
+
+                            payment_method = response.body().getData().getAddition_payment_method();
 
                             Log.w(TAG,"start_otp  "+ start_otp);
 
@@ -1116,6 +1121,8 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
 
                         chronometer.setVisibility(View.GONE);
 
+                        gotoInvoiceLoader();
+
                         Toasty.success(getApplicationContext(),""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
@@ -1132,6 +1139,22 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
                 Log.w(TAG,"EndAppointmentStatusResponseflr"+"--->" + t.getMessage());
             }
         });
+
+    }
+
+    private void gotoInvoiceLoader() {
+
+        Intent intent = new Intent(getApplicationContext(), SPLoaderActivity.class);
+        intent.putExtra("fromactivity",TAG);
+        intent.putExtra("appointment_id",appointment_id);
+        intent.putExtra("start_appointment_status",start_appointment_status);
+        intent.putExtra("end_appointment_status",end_appointment_status);
+        intent.putExtra("service_amount",service_amount);
+        intent.putExtra("hrs",hrs);
+        intent.putExtra("_id",_id);
+        intent.putExtra("appoinment_status",appoinment_status);
+        intent.putExtra("payment_method",payment_method);
+        startActivity(intent);
 
     }
 

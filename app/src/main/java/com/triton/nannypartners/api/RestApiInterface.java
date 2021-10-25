@@ -416,7 +416,7 @@ public interface RestApiInterface {
 
     /*SP Raise Invoice*/
     @POST("sp_appointments/payment_status_update")
-    Call<SPAppointmentProcessCompleteResponse> payStatusUpdateResponseCall(@Header("Content-Type") String type, @Body TimeCalRequest timeCalRequest);
+    Call<SPAppointmentProcessCompleteResponse> payStatusUpdateResponseCall(@Header("Content-Type") String type, @Body RaiseInvoiceRequest raiseInvoiceRequest);
 
     /*Update Appointment Status complete*/
     @POST("sp_appointments/edit")
