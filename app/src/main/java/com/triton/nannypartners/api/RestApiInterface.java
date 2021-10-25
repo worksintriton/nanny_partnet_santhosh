@@ -428,6 +428,11 @@ public interface RestApiInterface {
 
 
 
+    /*session clear*/
+    @POST("userdetails/logout")
+    Call<SuccessResponse> logoutResponseCall(@Header("Content-Type") String type, @Body LogoutRequest logoutRequest);
+
+
 
     /*Vendor*/
 

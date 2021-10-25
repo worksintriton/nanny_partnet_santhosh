@@ -19,6 +19,7 @@ import android.widget.ImageView;
 
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,8 +35,10 @@ import com.triton.nannypartners.activity.NotificationActivity;
 
 import com.triton.nannypartners.api.APIClient;
 import com.triton.nannypartners.api.RestApiInterface;
+import com.triton.nannypartners.requestpojo.LogoutRequest;
 import com.triton.nannypartners.requestpojo.NotificationCartCountRequest;
 import com.triton.nannypartners.responsepojo.NotificationCartCountResponse;
+import com.triton.nannypartners.responsepojo.SuccessResponse;
 import com.triton.nannypartners.serviceprovider.shop.SPCartActivity;
 import com.triton.nannypartners.serviceprovider.shop.SPMyOrdrersActivity;
 import com.triton.nannypartners.serviceprovider.shop.SPProductsFavActivity;
@@ -440,12 +443,11 @@ public class ServiceProviderNavigationDrawer extends AppCompatActivity implement
 
 
     private void gotoLogout() {
-        session.logoutUser();
-        session.setIsLogin(false);
-        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-        finish();
 
+        if (new ConnectionDetector(getApplicationContext()).isNetworkAvailable(getApplicationContext())) {
 
+            logoutResponseCall();
+        }
     }
 
     private void showLogOutAppAlert() {
@@ -481,6 +483,48 @@ public class ServiceProviderNavigationDrawer extends AppCompatActivity implement
 
 
     }
+
+    @SuppressLint("LogNotTimber")
+    private void logoutResponseCall() {
+        RestApiInterface apiInterface = APIClient.getClient().create(RestApiInterface.class);
+        Call<SuccessResponse> call = apiInterface.logoutResponseCall(RestUtils.getContentType(), logoutRequest());
+        Log.w(TAG,"SignupResponse url  :%s"+" "+ call.request().url().toString());
+        call.enqueue(new Callback<SuccessResponse>() {
+            @SuppressLint("LogNotTimber")
+            @Override
+            public void onResponse(@NonNull Call<SuccessResponse> call, @NonNull Response<SuccessResponse> response) {
+                Log.w(TAG,"SuccessResponse" + new Gson().toJson(response.body()));
+                if (response.body() != null) {
+                    if (200 == response.body().getCode()) {
+                        session.logoutUser();
+                        session.setIsLogin(false);
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        finish();
+
+
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<SuccessResponse> call,@NonNull Throwable t) {
+
+                Log.e("SuccessResponse flr", "--->" + t.getMessage());
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+    private LogoutRequest logoutRequest() {
+        LogoutRequest defaultLocationRequest = new LogoutRequest();
+        defaultLocationRequest.setUser_id(userid);
+
+        Log.w(TAG,"LogoutRequest "+ new Gson().toJson(logoutRequest()));
+        return logoutRequest();
+    }
+
 
 
 
