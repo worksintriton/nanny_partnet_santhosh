@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             Date date1 = simpleDateFormat.parse("02-10-2021 02:03 AM");
-            Date date2 = simpleDateFormat.parse("13/10/2013 20:35:55");
+            Date date2 = simpleDateFormat.parse("02-10-2021 02:03 AM");
 
             printDifference(date1, date2);
 

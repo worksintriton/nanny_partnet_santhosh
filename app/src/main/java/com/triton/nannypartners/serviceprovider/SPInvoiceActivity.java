@@ -9,14 +9,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.triton.nannypartners.R;
+import com.triton.nannypartners.activity.ChooseUserTypeActivity;
+import com.triton.nannypartners.activity.LoginActivity;
 import com.triton.nannypartners.api.APIClient;
 import com.triton.nannypartners.api.RestApiInterface;
 import com.triton.nannypartners.requestpojo.AppoinmentCompleteRequest;
@@ -36,13 +43,15 @@ import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SPInvoiceActivity extends AppCompatActivity {
+public class SPInvoiceActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private  String TAG = "ViewSPInvoiceActivity";
+    private  String TAG = "SPInvoiceActivity";
 
 
     @SuppressLint("NonConstantResourceId")
@@ -77,10 +86,12 @@ public class SPInvoiceActivity extends AppCompatActivity {
     private String start_otp = "";
     private String end_otp = "";
 
+/*
 
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.include_petlover_footer)
     View include_petlover_footer;
+*/
 
     BottomNavigationView bottom_navigation_view;
 
@@ -173,10 +184,31 @@ public class SPInvoiceActivity extends AppCompatActivity {
     @BindView(R.id.txt_baldue)
     TextView txt_baldue;
 
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.ll_payment_method)
+    LinearLayout ll_payment_method;
+
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.btn_raise_invoice)
+    Button btn_raise_invoice;
+
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.btn_submit)
+    Button btn_submit;
+
+    String work_status,_id;
+
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.rdGroupPayment)
+    RadioGroup rdGroupPayment;
+
+    String radioValue = "Online";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sp_invoice);
+        ButterKnife.bind(this);
 
         ImageView img_back = include_petlover_header.findViewById(R.id.img_back);
         ImageView img_sos = include_petlover_header.findViewById(R.id.img_sos);
@@ -192,6 +224,16 @@ public class SPInvoiceActivity extends AppCompatActivity {
 
 
         img_back.setOnClickListener(v -> onBackPressed());
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            appointment_id = extras.getString("appointment_id");
+
+            from = extras.getString("fromactivity");
+
+            Log.w(TAG,"appointment_id : "+appointment_id+" from : "+from);
+
+        }
 
         if (new ConnectionDetector(SPInvoiceActivity.this).isNetworkAvailable(SPInvoiceActivity.this)) {
             spAppointmentDetailsResponse();
@@ -226,6 +268,11 @@ public class SPInvoiceActivity extends AppCompatActivity {
 
                         String usr_image = "";
                         if (response.body().getData() != null) {
+
+                            work_status = response.body().getData().getWork_status();
+
+                            _id = response.body().getData().get_id();
+
                             spid = response.body().getData().getSp_id().get_id();
                             appointmentid = response.body().getData().getAppointment_UID();
                             userid = response.body().getData().getUser_id().get_id();
@@ -277,19 +324,19 @@ public class SPInvoiceActivity extends AppCompatActivity {
 
                             String cust_name = response.body().getData().getUser_id().getFirst_name();
 
-//                            String custaddress_st = response.body().getData().getUser_id().g();
+                            String custaddress_st = response.body().getData().getAddress_text();
 
-                            String custaddress_st = "";
+                           // String custaddress_st = "";
 
                             String invoicebilldate = response.body().getData().getDisplay_date();
 
-//                            String cust_addr_landmark = response.body().getData().get;
+                            String cust_addr_landmark = response.body().getData().getCity() + " "+response.body().getData().getState();
 
-//                            String custaddr_pincode = response.body().getData().get;
+                            String custaddr_pincode = response.body().getData().getPin_code();
 
-                            String cust_addr_landmark = "";
+                          /*  String cust_addr_landmark = "";
 
-                            String custaddr_pincode = "";
+                            String custaddr_pincode = "";*/
 
 
 
@@ -351,15 +398,18 @@ public class SPInvoiceActivity extends AppCompatActivity {
         if(balance_due != null && !balance_due.isEmpty()){
 
             txt_lbl_balance_due.setVisibility(View.VISIBLE);
+            txt_balance_due.setVisibility(View.VISIBLE);
             txt_balance_due.setText(balance_due);
             txt_lbl_baldue.setVisibility(View.VISIBLE);
+            txt_baldue.setVisibility(View.VISIBLE);
             txt_baldue.setText(balance_due);
         }
         else{
 
             txt_lbl_balance_due.setVisibility(View.GONE);
+            txt_balance_due.setVisibility(View.GONE);
             txt_lbl_baldue.setVisibility(View.GONE);
-
+            txt_baldue.setVisibility(View.GONE);
         }
 
         if(invoicedate != null && !invoicedate.isEmpty()){
@@ -372,7 +422,7 @@ public class SPInvoiceActivity extends AppCompatActivity {
 
         if(cust_name != null && !cust_name.isEmpty()){
 
-            txt_cust_name.setText(invoicedate);
+            txt_cust_name.setText(cust_name);
         }
         else{
             txt_cust_name.setText("");
@@ -445,6 +495,58 @@ public class SPInvoiceActivity extends AppCompatActivity {
         }
 
 
+        if (work_status!=null&&!work_status.isEmpty()&&work_status.equals("customer paid")){
+
+            ll_payment_method.setVisibility(View.GONE);
+
+            btn_raise_invoice.setVisibility(View.GONE);
+
+            btn_submit.setVisibility(View.VISIBLE);
+        }
+
+        else {
+
+            ll_payment_method.setVisibility(View.VISIBLE);
+
+            btn_raise_invoice.setVisibility(View.VISIBLE);
+
+            btn_submit.setVisibility(View.GONE);
+        }
+
+        rdGroupPayment.setOnCheckedChangeListener(new  RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                RadioButton rb = (RadioButton) group.findViewById(checkedId);
+                if (null != rb) {
+
+                    // checkedId is the RadioButton selected
+                    switch (checkedId) {
+                        case R.id.rdonline:
+                            // Do Something
+                            radioValue="Online";
+                              btn_raise_invoice.setVisibility(View.VISIBLE);
+                              btn_submit.setVisibility(View.GONE);
+                            break;
+
+                        case R.id.rdcod:
+                            // Do Something
+                            radioValue="Cash";
+                            btn_raise_invoice.setVisibility(View.GONE);
+                            btn_submit.setVisibility(View.VISIBLE);
+                            break;
+
+                    }
+                }
+            }
+
+        });
+
+        btn_raise_invoice.setOnClickListener(this);
+
+        btn_submit.setOnClickListener(this);
+
+
     }
 
     @SuppressLint({"LongLogTag", "LogNotTimber"})
@@ -463,6 +565,9 @@ public class SPInvoiceActivity extends AppCompatActivity {
                 if (response.body() != null) {
                     if(response.body().getCode() == 200){
 
+                        Toasty.success(getApplicationContext(),""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                        gotoDashboard();
                     }
 
                 }
@@ -491,8 +596,8 @@ public class SPInvoiceActivity extends AppCompatActivity {
         String currentDateandTime = sdf.format(new Date());
 
         RaiseInvoiceRequest RaiseInvoiceRequest = new RaiseInvoiceRequest();
-        RaiseInvoiceRequest.set_id("");
-        RaiseInvoiceRequest.setAddition_payment_status("");
+        RaiseInvoiceRequest.set_id(appointment_id);
+        RaiseInvoiceRequest.setAddition_payment_status("Not Paid");
 
         Log.w(TAG,"RaiseInvoiceRequest"+ "--->" + new Gson().toJson(RaiseInvoiceRequest));
         return RaiseInvoiceRequest;
@@ -517,7 +622,10 @@ public class SPInvoiceActivity extends AppCompatActivity {
 
                 if (response.body() != null) {
                     if(response.body().getCode() == 200){
-                        startActivity(new Intent(getApplicationContext(), ServiceProviderDashboardActivity.class));
+
+                        Toasty.success(getApplicationContext(),""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                        gotoDashboard();
                     }
 
                 }
@@ -534,12 +642,21 @@ public class SPInvoiceActivity extends AppCompatActivity {
         });
 
     }
+
+    private void gotoDashboard() {
+
+        startActivity(new Intent(getApplicationContext(), ServiceProviderDashboardActivity.class));
+
+    }
+
     @SuppressLint({"LongLogTag", "LogNotTimber"})
     private AppoinmentCompleteRequest appoinmentCompleteRequest(String id) {
         /*
          * _id : 5fc639ea72fc42044bfa1683
          * completed_at : 23-10-2000 10 : 00 AM
          * appoinment_status : Completed
+         * "work_status" : "customer paid"
+         * "addition_payment_status": "Paid"
          */
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm aa", Locale.getDefault());
@@ -554,6 +671,27 @@ public class SPInvoiceActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
 
+        switch (v.getId()){
+            case R.id.btn_raise_invoice:
+                if (new ConnectionDetector(SPInvoiceActivity.this).isNetworkAvailable(SPInvoiceActivity.this)) {
+                    payStatusUpdateResponseCall();
+                }
+                break;
+            case R.id.btn_submit:
+                if (new ConnectionDetector(SPInvoiceActivity.this).isNetworkAvailable(SPInvoiceActivity.this)) {
+                    appoinmentCompleteResponseCall(appointment_id);
+                }
+                break;
+        }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        gotoDashboard();
+    }
 }

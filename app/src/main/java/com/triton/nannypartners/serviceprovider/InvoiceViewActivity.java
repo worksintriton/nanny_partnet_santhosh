@@ -27,13 +27,14 @@ import com.wang.avi.AVLoadingIndicatorView;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class InvoiceViewActivity extends AppCompatActivity {
 
-    private  String TAG = "ViewSPInvoiceActivity";
+    private  String TAG = "InvoiceViewActivity";
 
 
     @SuppressLint("NonConstantResourceId")
@@ -67,11 +68,6 @@ public class InvoiceViewActivity extends AppCompatActivity {
     private String concatenatedStarNames = "";
     private String start_otp = "";
     private String end_otp = "";
-
-
-    @SuppressLint("NonConstantResourceId")
-    @BindView(R.id.include_petlover_footer)
-    View include_petlover_footer;
 
     BottomNavigationView bottom_navigation_view;
 
@@ -168,6 +164,7 @@ public class InvoiceViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_spinvoice);
+        ButterKnife.bind(this);
 
         ImageView img_back = include_petlover_header.findViewById(R.id.img_back);
         ImageView img_sos = include_petlover_header.findViewById(R.id.img_sos);
@@ -181,9 +178,17 @@ public class InvoiceViewActivity extends AppCompatActivity {
         img_profile.setVisibility(View.GONE);
         img_notification.setVisibility(View.GONE);
 
-
-
         img_back.setOnClickListener(v -> onBackPressed());
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            appointment_id = extras.getString("appointment_id");
+
+            from = extras.getString("fromactivity");
+
+            Log.w(TAG,"appointment_id : "+appointment_id+" from : "+from);
+
+        }
 
         if (new ConnectionDetector(InvoiceViewActivity.this).isNetworkAvailable(InvoiceViewActivity.this)) {
             spAppointmentDetailsResponse();
@@ -269,21 +274,19 @@ public class InvoiceViewActivity extends AppCompatActivity {
 
                             String cust_name = response.body().getData().getUser_id().getFirst_name();
 
-//                            String custaddress_st = response.body().getData().getUser_id().g();
+                            String custaddress_st = response.body().getData().getAddress_text();
 
-                            String custaddress_st = "";
+                            // String custaddress_st = "";
 
                             String invoicebilldate = response.body().getData().getDisplay_date();
 
-//                            String cust_addr_landmark = response.body().getData().get;
+                            String cust_addr_landmark = response.body().getData().getCity() + " "+response.body().getData().getState();
 
-//                            String custaddr_pincode = response.body().getData().get;
+                            String custaddr_pincode = response.body().getData().getPin_code();
 
-                            String cust_addr_landmark = "";
+                          /*  String cust_addr_landmark = "";
 
-                            String custaddr_pincode = "";
-
-
+                            String custaddr_pincode = "";*/
 
                             String servname = response.body().getData().getService_name();
 
@@ -343,16 +346,20 @@ public class InvoiceViewActivity extends AppCompatActivity {
         if(balance_due != null && !balance_due.isEmpty()){
 
             txt_lbl_balance_due.setVisibility(View.VISIBLE);
+            txt_balance_due.setVisibility(View.VISIBLE);
             txt_balance_due.setText(balance_due);
             txt_lbl_baldue.setVisibility(View.VISIBLE);
+            txt_baldue.setVisibility(View.VISIBLE);
             txt_baldue.setText(balance_due);
         }
         else{
 
             txt_lbl_balance_due.setVisibility(View.GONE);
+            txt_balance_due.setVisibility(View.GONE);
             txt_lbl_baldue.setVisibility(View.GONE);
-
+            txt_baldue.setVisibility(View.GONE);
         }
+
 
         if(invoicedate != null && !invoicedate.isEmpty()){
 
@@ -364,7 +371,7 @@ public class InvoiceViewActivity extends AppCompatActivity {
 
         if(cust_name != null && !cust_name.isEmpty()){
 
-            txt_cust_name.setText(invoicedate);
+            txt_cust_name.setText(cust_name);
         }
         else{
             txt_cust_name.setText("");

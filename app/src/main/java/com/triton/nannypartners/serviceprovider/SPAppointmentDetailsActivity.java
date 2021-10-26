@@ -326,70 +326,86 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
                 if (response.body() != null) {
 
                     if (200 == response.body().getCode()) {
-                        scrollablContent.setVisibility(View.VISIBLE);
 
                         String vaccinated, addr;
 
                         String usr_image = "";
                         if (response.body().getData() != null) {
 
+                            work_status = response.body().getData().getWork_status();
+
                             _id = response.body().getData().get_id();
 
-                            spid = response.body().getData().getSp_id().get_id();
-                            appointmentid = response.body().getData().getAppointment_UID();
-                            userid = response.body().getData().getUser_id().get_id();
+                            if(work_status!=null&&!work_status.isEmpty()&&work_status.equals("Completed")&&from!=null&&from.equals("SPNewAppointmentAdapter")){
 
-                            String img_user = response.body().getData().getSp_id().getProfile_img();
+                                gotoInvoice();
+                            }
 
-                            String usrname = response.body().getData().getSp_id().getFirst_name();
+                            else {
 
-                            String serv_name = response.body().getData().getService_name();
+                                scrollablContent.setVisibility(View.VISIBLE);
 
-                            String service_amount = response.body().getData().getService_amount();
+                                spid = response.body().getData().getSp_id().get_id();
 
-                            String servname = response.body().getData().getService_name();
+                                appointmentid = response.body().getData().getAppointment_UID();
 
-                            hrs = response.body().getData().getHrs();
+                                userid = response.body().getData().getUser_id().get_id();
 
-                            String datetimeslot = response.body().getData().getBooking_time();
+                                String img_user = response.body().getData().getSp_id().getProfile_img();
 
-                            String service_cost = response.body().getData().getService_amount();
+                                String usrname = response.body().getData().getSp_id().getFirst_name();
 
-                            String appointment_status = response.body().getData().getAppoinment_status();
+                                String serv_name = response.body().getData().getService_name();
 
-                            String appointment_date = response.body().getData().getDisplay_date();
+                                String service_amount = response.body().getData().getService_amount();
 
-                            String order_date = response.body().getData().getDate_and_time();
+                                String servname = response.body().getData().getService_name();
+
+                                hrs = response.body().getData().getHrs();
+
+                                String datetimeslot = response.body().getData().getBooking_time();
+
+                                String service_cost = response.body().getData().getService_amount();
+
+                                String appointment_status = response.body().getData().getAppoinment_status();
+
+                                String appointment_date = response.body().getData().getDisplay_date();
+
+                                String order_date = response.body().getData().getDate_and_time();
 
 
-                            String orderid = response.body().getData().getAppointment_UID();
+                                String orderid = response.body().getData().getAppointment_UID();
 
-                            String order_cost = response.body().getData().getService_amount();
+                                String order_cost = response.body().getData().getService_amount();
 
-                            addr = response.body().getData().getSp_business_info().get(0).getSp_loc();
+                                addr = response.body().getData().getSp_business_info().get(0).getSp_loc();
 
-                            appoinment_status = response.body().getData().getAppoinment_status();
+                                appoinment_status = response.body().getData().getAppoinment_status();
 
-                            start_appointment_status = response.body().getData().getStart_appointment_status();
+                                start_appointment_status = response.body().getData().getStart_appointment_status();
 
-                            end_appointment_status = response.body().getData().getEnd_appointment_status();
+                                end_appointment_status = response.body().getData().getEnd_appointment_status();
 
-                            start_otp = response.body().getData().getStart_otp();
+                                start_otp = response.body().getData().getStart_otp();
 
-                            end_otp = response.body().getData().getEnd_otp();
+                                end_otp = response.body().getData().getEnd_otp();
 
-                            payment_method = response.body().getData().getAddition_payment_method();
+                                payment_method = response.body().getData().getPayment_method();
 
-                            Log.w(TAG,"start_otp  "+ start_otp);
+                                Log.w(TAG,"start_otp  "+ start_otp);
 
-                            Log.w(TAG,"end_otp  "+ end_otp);
+                                Log.w(TAG,"end_otp  "+ end_otp);
 
-                            List<SPAppointmentDetailsResponse.DataBean.SpBusinessInfoBean> Address = response.body().getData().getSp_business_info();
-                            for (int i = 0; i < Address.size(); i++) {
-                                usr_image = Address.get(i).getThumbnail_image();
+                                List<SPAppointmentDetailsResponse.DataBean.SpBusinessInfoBean> Address = response.body().getData().getSp_business_info();
+                                for (int i = 0; i < Address.size(); i++) {
+                                    usr_image = Address.get(i).getThumbnail_image();
+
+                                }
+                                setView(img_user, usrname, serv_name ,service_amount ,servname, hrs,datetimeslot,service_cost,appointment_status,appointment_date,order_date,orderid,order_cost,addr);
 
                             }
-                            setView(img_user, usrname, serv_name ,service_amount ,servname, hrs,datetimeslot,service_cost,appointment_status,appointment_date,order_date,orderid,order_cost,addr);
+
+
 
 
                         }
@@ -689,7 +705,15 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        finish();
+        if (!running) {
+            Intent intent = new Intent(getApplicationContext(), ServiceProviderDashboardActivity.class);
+            startActivity(intent);
+        }
+        else {
+
+            Toasty.warning(getApplicationContext(),"Back is Disabled when timer is running", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 
@@ -960,7 +984,7 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
                 break;
 
             case R.id.btn_viewinvoice:
-
+                ViewInvoice();
                 break;
 
         }
@@ -1221,6 +1245,38 @@ public class SPAppointmentDetailsActivity extends AppCompatActivity implements V
     public void resetChronometer() {
         chronometer.setBase(SystemClock.elapsedRealtime());
         pauseOffset = 0;
+    }
+
+    private void gotoInvoice() {
+
+        Intent intent = new Intent(getApplicationContext(), SPInvoiceActivity.class);
+        intent.putExtra("fromactivity",TAG);
+        intent.putExtra("appointment_id",appointment_id);
+        intent.putExtra("start_appointment_status",start_appointment_status);
+        intent.putExtra("end_appointment_status",end_appointment_status);
+        intent.putExtra("service_amount",service_amount);
+        intent.putExtra("hrs",hrs);
+        intent.putExtra("_id",_id);
+        intent.putExtra("appoinment_status",appoinment_status);
+        intent.putExtra("payment_method",payment_method);
+        intent.putExtra("work_status",work_status);
+        startActivity(intent);
+    }
+
+    private void ViewInvoice() {
+
+        Intent intent = new Intent(getApplicationContext(), InvoiceViewActivity.class);
+        intent.putExtra("fromactivity",TAG);
+        intent.putExtra("appointment_id",appointment_id);
+        intent.putExtra("start_appointment_status",start_appointment_status);
+        intent.putExtra("end_appointment_status",end_appointment_status);
+        intent.putExtra("service_amount",service_amount);
+        intent.putExtra("hrs",hrs);
+        intent.putExtra("_id",_id);
+        intent.putExtra("appoinment_status",appoinment_status);
+        intent.putExtra("payment_method",payment_method);
+        intent.putExtra("work_status",work_status);
+        startActivity(intent);
     }
 
 }
