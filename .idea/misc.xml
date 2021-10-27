@@ -26,12 +26,19 @@
         <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/activity_sp_appointment_details.xml" value="0.8333333333333334" />
         <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/activity_sp_invoice.xml" value="0.4492753623188406" />
         <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/activity_sp_loader.xml" value="0.4496487119437939" />
+        <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/activity_transaction_history.xml" value="0.6182669789227166" />
         <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/activity_view_spinvoice.xml" value="0.617096018735363" />
         <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/adapter_petlover_services.xml" value="0.14375" />
         <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/adapter_petloversplist.xml" value="0.14375" />
         <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/adapter_petloversplist_subservice.xml" value="0.14375" />
+        <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/adapter_transaction_history_cardview.xml" value="0.6182669789227166" />
         <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/alert_sp_accept_reject_appointment.xml" value="0.6182669789227166" />
+        <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/navigation_drawer_sp_layout.xml" value="0.6182669789227166" />
         <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/sliding_image_banner_new.xml" value="0.14375" />
+        <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/layout/toolbar_layout_doctor_footer.xml" value="0.6182669789227166" />
+        <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/menu/navigation_menu_drawer_doctor.xml" value="0.6182669789227166" />
+        <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/menu/navigation_menu_drawer_sp.xml" value="0.6182669789227166" />
+        <entry key="..\:/Users/santh/Documents/GitHub/nanny_partnet_santhosh/app/src/main/res/menu/navigation_menu_drawer_vendor.xml" value="0.6182669789227166" />
         <entry key="..\:/Workspace/Petfolio_Clone_Nann_Partners/app/src/main/res/layout/activity_add_my_address.xml" value="0.2" />
         <entry key="..\:/Workspace/Petfolio_Clone_Nann_Partners/app/src/main/res/layout/activity_add_my_address_spactivity.xml" value="0.275" />
         <entry key="..\:/Workspace/Petfolio_Clone_Nann_Partners/app/src/main/res/layout/activity_custspappointment_details.xml" value="0.275" />

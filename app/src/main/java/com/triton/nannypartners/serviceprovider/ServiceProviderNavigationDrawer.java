@@ -220,6 +220,10 @@ public class ServiceProviderNavigationDrawer extends AppCompatActivity implement
                     //confirmLogoutDialog();
                     showLogOutAppAlert();
                     return true;
+                case R.id.nav_item_nine:
+                    //confirmLogoutDialog();
+                    gotoTransactionHistory();
+                    return true;
 
 
                 default:
@@ -229,6 +233,12 @@ public class ServiceProviderNavigationDrawer extends AppCompatActivity implement
         });
 
 
+    }
+
+    private void gotoTransactionHistory() {
+        Intent intent = new Intent(getApplicationContext(), TransactionHistoryActivity.class);
+        intent.putExtra("fromactivity", TAG);
+        startActivity(intent);
     }
 
     private void gotoSPDashboard() {

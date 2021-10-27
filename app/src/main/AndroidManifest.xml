@@ -46,6 +46,11 @@
         tools:ignore="AllowBackup,UnusedAttribute"
         tools:replace="android:allowBackup,icon,theme,label,name">
         <activity
+            android:name=".serviceprovider.TransactionHistoryActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".MainActivity"
             android:exported="true" />
         <activity

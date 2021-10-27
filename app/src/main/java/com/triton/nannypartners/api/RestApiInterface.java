@@ -426,7 +426,9 @@ public interface RestApiInterface {
     @POST("sp_appointments/edit")
     Call<AppoinmentCancelledResponse> spappoinmentCancelledResponseCall(@Header("Content-Type") String type, @Body AppoinmentCancelledRequest appoinmentCancelledRequest);
 
-
+    /*Transaction History list*/
+    @POST("transaction/getlist_sp_id")
+    Call<TransactionHistoryResponse> transactionHistoryResponseCall(@Header("Content-Type") String type, @Body TransactionHistoryRequest transctionHistoryRequest);
 
     /*session clear*/
     @POST("userdetails/logout")
